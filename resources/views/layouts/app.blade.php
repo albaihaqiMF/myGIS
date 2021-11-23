@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-Template Name: Tinker - HTML Admin Dashboard Template
+Template Name: MyGIS - HTML Admin Dashboard Template
 Author: Left4code
 Website: http://www.left4code.com/
 Contact: muhammadrizki@left4code.com
@@ -16,13 +16,14 @@ License: You must have a valid license purchased only from themeforest(the above
     <link href="images/logo.svg" rel="shortcut icon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description"
-        content="Tinker admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.">
+        content="MyGIS admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.">
     <meta name="keywords"
-        content="admin template, Tinker Admin Template, dashboard template, flat admin template, responsive admin template, web app">
+        content="admin template, MyGIS Admin Template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="LEFT4CODE">
-    <title>Dashboard - Tinker - Tailwind HTML Admin Template</title>
+    <title>Dashboard - MyGIS - Tailwind HTML Admin Template</title>
     <!-- BEGIN: CSS Assets-->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
+    @livewireStyles
     <!-- END: CSS Assets-->
 </head>
 <!-- END: Head -->
@@ -51,7 +52,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             <div class="notification-content__title">Notifications</div>
                             <div class="cursor-pointer relative flex items-center ">
                                 <div class="w-12 h-12 flex-none image-fit mr-1">
-                                    <img alt="Tinker Tailwind HTML Admin Template" class="rounded-full"
+                                    <img alt="MyGIS Tailwind HTML Admin Template" class="rounded-full"
                                         src="/images/profile-12.jpg">
                                     <div
                                         class="w-3 h-3 bg-theme-20 absolute right-0 bottom-0 rounded-full border-2 border-white">
@@ -69,7 +70,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             </div>
                             <div class="cursor-pointer relative flex items-center mt-5">
                                 <div class="w-12 h-12 flex-none image-fit mr-1">
-                                    <img alt="Tinker Tailwind HTML Admin Template" class="rounded-full"
+                                    <img alt="MyGIS Tailwind HTML Admin Template" class="rounded-full"
                                         src="/images/profile-7.jpg">
                                     <div
                                         class="w-3 h-3 bg-theme-20 absolute right-0 bottom-0 rounded-full border-2 border-white">
@@ -87,7 +88,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             </div>
                             <div class="cursor-pointer relative flex items-center mt-5">
                                 <div class="w-12 h-12 flex-none image-fit mr-1">
-                                    <img alt="Tinker Tailwind HTML Admin Template" class="rounded-full"
+                                    <img alt="MyGIS Tailwind HTML Admin Template" class="rounded-full"
                                         src="/images/profile-10.jpg">
                                     <div
                                         class="w-3 h-3 bg-theme-20 absolute right-0 bottom-0 rounded-full border-2 border-white">
@@ -105,7 +106,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             </div>
                             <div class="cursor-pointer relative flex items-center mt-5">
                                 <div class="w-12 h-12 flex-none image-fit mr-1">
-                                    <img alt="Tinker Tailwind HTML Admin Template" class="rounded-full"
+                                    <img alt="MyGIS Tailwind HTML Admin Template" class="rounded-full"
                                         src="/images/profile-4.jpg">
                                     <div
                                         class="w-3 h-3 bg-theme-20 absolute right-0 bottom-0 rounded-full border-2 border-white">
@@ -123,7 +124,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             </div>
                             <div class="cursor-pointer relative flex items-center mt-5">
                                 <div class="w-12 h-12 flex-none image-fit mr-1">
-                                    <img alt="Tinker Tailwind HTML Admin Template" class="rounded-full"
+                                    <img alt="MyGIS Tailwind HTML Admin Template" class="rounded-full"
                                         src="/images/profile-14.jpg">
                                     <div
                                         class="w-3 h-3 bg-theme-20 absolute right-0 bottom-0 rounded-full border-2 border-white">
@@ -147,7 +148,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <div class="intro-x dropdown w-8 h-8">
                     <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in"
                         role="button" aria-expanded="false">
-                        <img alt="Tinker Tailwind HTML Admin Template" src="/images/profile-4.jpg">
+                        <img alt="MyGIS Tailwind HTML Admin Template" src="/images/profile-4.jpg">
                     </div>
                     <div class="dropdown-menu w-56">
                         <div class="dropdown-menu__content box dark:bg-dark-6">
@@ -188,6 +189,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- END: Content -->
     </div>
     <!-- BEGIN: JS Assets-->
+    @livewireScripts
     <script
         src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
     </script>

@@ -28,8 +28,4 @@ mix.js("resources/js/app.js", "public/js")
     })
     .copyDirectory("resources/json", "public/json")
     .copyDirectory("resources/fonts", "public/fonts")
-    .copyDirectory("resources/images", "public/images")
-    .browserSync({
-        proxy: "tinker-html.test",
-        files: ["resources/**/*.*"],
-    });
+    .copyDirectory("resources/images", "public/images");
