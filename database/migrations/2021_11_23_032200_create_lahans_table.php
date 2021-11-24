@@ -15,6 +15,15 @@ class CreateLahansTable extends Migration
     {
         Schema::create('lahans', function (Blueprint $table) {
             $table->id();
+            $table->string('name', 127);
+            $table->string('slug');
+            $table->unsignedTinyInteger('created_by');
+            $table->decimal('sw_latitude', 24, 21);
+            $table->decimal('sw_longitude', 24, 21);
+            $table->decimal('ne_latitude', 24, 21);
+            $table->decimal('ne_longitude', 24, 21);
+            $table->string('gambar_taksasi');
+            $table->string('gambar_ndvi');
             $table->timestamps();
         });
     }

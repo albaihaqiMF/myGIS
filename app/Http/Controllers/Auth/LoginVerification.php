@@ -30,7 +30,7 @@ class LoginVerification extends Controller
             Auth::login($user);
         }
 
-        return redirect(route('dashboard'));
+        return redirect(route('dashboard'))->with('success', 'Berhasil Melakukan Login');
     }
 
     public function destroy()

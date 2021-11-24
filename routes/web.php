@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\LahanController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +19,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::middleware('auth')->group(function () {
+    Route::get('dashboard', [Controller::class, 'dashboard'])->name('dashboard');
+    Route::group(['prefix' => 'map'], function () {
+        Route::get('/', [LahanController::class, 'index'])->name('map.list');
+        Route::get('/{id}', [LahanController::class, 'show'])->name('map.show');
+    });
+});
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
