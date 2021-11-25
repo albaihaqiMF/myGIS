@@ -20,7 +20,7 @@ License: You must have a valid license purchased only from themeforest(the above
     <meta name="keywords"
         content="admin template, MyGIS Admin Template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="LEFT4CODE">
-    <title>Dashboard - MyGIS - Tailwind HTML Admin Template</title>
+    <title>{{ $title }}</title>
     <!-- BEGIN: CSS Assets-->
     @livewireStyles
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"

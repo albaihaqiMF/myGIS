@@ -12,6 +12,7 @@ class Lahan extends Model
     protected $fillable = [
         'name',
         'slug',
+        'created_by',
         'sw_latitude',
         'sw_longitude',
         'ne_latitude',
@@ -19,4 +20,9 @@ class Lahan extends Model
         'gambar_taksasi',
         'gambar_ndvi',
     ];
+
+    public function creator()
+    {
+         return $this->belongsTo(User::class, 'created_by', 'id');
+    }
 }

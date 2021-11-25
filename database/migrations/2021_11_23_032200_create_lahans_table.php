@@ -17,7 +17,7 @@ class CreateLahansTable extends Migration
             $table->id();
             $table->string('name', 127);
             $table->string('slug');
-            $table->unsignedTinyInteger('created_by');
+            $table->tinyInteger('created_by')->nullable();
             $table->decimal('sw_latitude', 24, 21);
             $table->decimal('sw_longitude', 24, 21);
             $table->decimal('ne_latitude', 24, 21);

@@ -11,6 +11,13 @@ class AppLayout extends Component
      *
      * @return \Illuminate\View\View
      */
+    public $title;
+    public function __construct($title = null)
+    {
+        $app = "MyGIS";
+        $this->title = $title === null ? $app
+            : $app . " | " . $title;
+    }
     public function render()
     {
         return view('layouts.app');
