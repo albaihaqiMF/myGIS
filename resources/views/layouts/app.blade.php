@@ -160,16 +160,19 @@ License: You must have a valid license purchased only from themeforest(the above
                     <div class="dropdown-menu w-56">
                         <div class="dropdown-menu__content box dark:bg-dark-6">
                             <div class="p-4 border-b border-black border-opacity-5 dark:border-dark-3">
-                                <div class="font-medium">Keanu Reeves</div>
-                                <div class="text-xs text-gray-600 mt-0.5 dark:text-gray-600">Frontend Engineer</div>
+                                <div class="font-medium">{{ auth()->user()->name }}</div>
+                                <div class="text-xs text-gray-600 mt-0.5 dark:text-gray-600">{{ auth()->user()->email }}
+                                </div>
                             </div>
                             <div class="p-2">
                                 <a href=""
                                     class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-gray-200 dark:hover:bg-dark-3 rounded-md">
                                     <i data-feather="user" class="w-4 h-4 mr-2"></i> Profile </a>
+                                @if (auth()->user()->id == 1)
                                 <a href=""
                                     class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-gray-200 dark:hover:bg-dark-3 rounded-md">
                                     <i data-feather="edit" class="w-4 h-4 mr-2"></i> Add Account </a>
+                                @endif
                                 <a href=""
                                     class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-gray-200 dark:hover:bg-dark-3 rounded-md">
                                     <i data-feather="lock" class="w-4 h-4 mr-2"></i> Reset Password </a>
@@ -177,11 +180,11 @@ License: You must have a valid license purchased only from themeforest(the above
                                     class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-gray-200 dark:hover:bg-dark-3 rounded-md">
                                     <i data-feather="help-circle" class="w-4 h-4 mr-2"></i> Help </a>
                             </div>
-                            <div class="p-2 border-t border-black border-opacity-5 dark:border-dark-3">
+                            <div class="p-2 border-t border-black border-opacity-5 dark:border-dark-3 w-full">
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
                                     <button type="submit"
-                                        class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-gray-200 dark:hover:bg-dark-3 rounded-md">
+                                        class="flex items-center w-full block p-2 transition duration-300 ease-in-out hover:bg-gray-200 dark:hover:bg-dark-3 rounded-md">
                                         <i data-feather="toggle-right" class="w-4 h-4 mr-2"></i> Logout </button>
                                 </form>
                             </div>

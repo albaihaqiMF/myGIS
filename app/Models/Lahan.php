@@ -19,10 +19,11 @@ class Lahan extends Model
         'ne_longitude',
         'gambar_taksasi',
         'gambar_ndvi',
+        'deleted_at',
     ];
 
     public function creator()
     {
-         return $this->belongsTo(User::class, 'created_by', 'id');
+        return $this->belongsTo(User::class, 'created_by', 'id');
     }
 }

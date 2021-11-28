@@ -26,6 +26,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/create', [LahanController::class, 'create'])->name('map.create');
         Route::post('/store', [LahanController::class, 'store'])->name('map.store');
         Route::get('/show/{lahan:slug}', [LahanController::class, 'show'])->name('map.show');
+        Route::put('/update/{lahan:slug}', [LahanController::class, 'update'])->name('map.update');
+        Route::delete('/delete/{lahan:slug}', [LahanController::class, 'delete'])->name('map.delete');
     });
     Route::get('/test', function () {
         return auth()->user()->id;

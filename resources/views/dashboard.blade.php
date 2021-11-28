@@ -8,9 +8,7 @@
     @if (session()->has('success'))
     <div class="alert alert-dismissible show box bg-theme-25 text-white flex items-center mb-6" role="alert">
         <span>
-            {{ session()->get('success') }} <a
-                href="https://themeforest.net/item/midone-jquery-tailwindcss-html-admin-template/26366820"
-                class="underline ml-1" target="blank">Hai, {{ auth()->user()->name }}</a>.
+            {{ session()->get('success') }} <span class="underline ml-1">Hai, {{ auth()->user()->name }}</span>.
         </span>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"> <svg
                 xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"

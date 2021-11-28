@@ -5,7 +5,8 @@
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
-                    <input id="name" name="name" type="text" class="form-control w-full" placeholder="Name">
+                    <input id="name" name="name" type="text" class="form-control w-full" placeholder="Name"
+                        value="{{ old('name') }}">
                 </div>
                 <div class="mb-3">
                     <label for="gambar_taksasi" class="form-label">Taksasi</label>
@@ -22,14 +23,14 @@
                         <div>
                             <label for="sw_latitude" class="form-label">Southwest Latitude</label>
                             <input id="sw_latitude" name="sw_latitude" type="text" class="form-control w-full"
-                                placeholder="Southwest Latitude">
+                                placeholder="Southwest Latitude" value="{{ old('sw_latitude') }}">
                         </div>
                     </div>
                     <div class="col-span-2 md:col-span-1">
                         <div>
                             <label for="sw_longitude" class="form-label">Southwest Longitude</label>
                             <input id="sw_longitude" name="sw_longitude" type="text" class="form-control w-full"
-                                placeholder="Southwest Longitude">
+                                placeholder="Southwest Longitude" value="{{ old('sw_longitude') }}">
                         </div>
                     </div>
                 </div>
@@ -38,14 +39,14 @@
                         <div>
                             <label for="ne_latitude" class="form-label">Northeast Latitude</label>
                             <input id="ne_latitude" name="ne_latitude" type="text" class="form-control w-full"
-                                placeholder="Northeast Latitude">
+                                placeholder="Northeast Latitude" value="{{ old('ne_latitude') }}">
                         </div>
                     </div>
                     <div class="col-span-2 md:col-span-1">
                         <div>
                             <label for="ne_longitude" class="form-label">Northeast Longitude</label>
                             <input id="ne_longitude" name="ne_longitude" type="text" class="form-control w-full"
-                                placeholder="Northeast Longitude">
+                                placeholder="Northeast Longitude" value="{{ old('ne_longitude') }}">
                         </div>
                     </div>
                 </div>

@@ -24,6 +24,7 @@ class CreateLahansTable extends Migration
             $table->decimal('ne_longitude', 24, 21);
             $table->string('gambar_taksasi');
             $table->string('gambar_ndvi');
+            $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
     }

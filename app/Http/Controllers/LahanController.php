@@ -46,11 +46,29 @@ class LahanController extends Controller
         )->with('success', 'Created Map Data Successfully');
     }
 
+    public function update(Lahan $lahan, Request $request)
+    {
+        $attr = $this->validate($request, []);
+
+        $lahan->update($attr);
+
+        return redirect(route('map.show', ['lahan' => $lahan->slug]))->with('success', 'Berhasil memperbarui data');
+    }
+
+    public function delete(Lahan $lahan)
+    {
+        $lahan->update([
+            'deleted_at' => now()
+        ]);
+
+        return redirect(route('map.list'))->with('success', 'Berhasil Menghapus data ' . $lahan->name);
+    }
+
 
     // DATA URL FOR //
     public function list()
     {
-        $data = Lahan::all();
+        $data = Lahan::where('deleted_at', null)->get();
 
         $mapData = $data->map(function ($map) {
             return [
