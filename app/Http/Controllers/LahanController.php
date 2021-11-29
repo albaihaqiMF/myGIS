@@ -35,7 +35,9 @@ class LahanController extends Controller
         ]);
         $attr['created_by'] = auth()->user()->id;
 
-        $attr['slug'] = \Str::slug($request->name) . \Str::random(8) . date('-ymdHis', strtotime(now()));
+        $attr['slug'] = \Str::slug($request->name) . "-"
+            . \Str::random(8)
+            . date('-ymdHis', strtotime(now()));
         $attr['gambar_taksasi'] = $this->storeImage($request->file('gambar_taksasi'), 'taksasi');
         $attr['gambar_ndvi'] = $this->storeImage($request->file('gambar_ndvi'), 'ndvi');
 

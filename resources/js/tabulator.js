@@ -53,7 +53,7 @@ import Tabulator from "tabulator-tables";
                 {
                     title: "TAKSASI",
                     minWidth: 200,
-                    field: "images",
+                    field: "taksasi",
                     hozAlign: "center",
                     vertAlign: "middle",
                     print: false,
@@ -89,7 +89,7 @@ import Tabulator from "tabulator-tables";
                 {
                     title: "DATE",
                     minWidth: 200,
-                    field: "status",
+                    field: "date",
                     hozAlign: "center",
                     vertAlign: "middle",
                     print: false,
