@@ -14,7 +14,7 @@
             </a>
         </li>
         <li>
-            <a href="javascript:;" class="side-menu{{ request()->is('map') ? ' side-menu--active' : '' }}">
+            <a href="javascript:;" class="side-menu{{ request()->routeIs('map.*') ? ' side-menu--active' : '' }}">
                 <div class="side-menu__icon"> <i data-feather="map"></i> </div>
                 <div class="side-menu__title"> Map
                     <div class="side-menu__sub-icon "> <i data-feather="chevron-down"></i> </div>
