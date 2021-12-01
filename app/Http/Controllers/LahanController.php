@@ -38,7 +38,7 @@ class LahanController extends Controller
 
         $attr['slug'] = Str::slug($request->name) . "-"
             . Str::random(8)
-            . date('-ymdHis', strtotime(now()));
+            . date('-ymd', strtotime(now()));
         $attr['gambar_taksasi'] = $this->storeImage($request->file('gambar_taksasi'), 'taksasi');
         $attr['gambar_ndvi'] = $this->storeImage($request->file('gambar_ndvi'), 'ndvi');
 
