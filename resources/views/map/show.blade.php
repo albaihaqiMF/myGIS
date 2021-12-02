@@ -112,6 +112,9 @@
         ]);
         var accessToken =
         "pk.eyJ1IjoiZmhtYWxiYSIsImEiOiJja3BlMnMxMmoxdG5tMm9ueDg2bGhkd25uIn0._R9TCI9p116Gvg1fdsc9GQ";
+
+        var weatherMap = "http://maps.openweathermap.org/maps/2.0/weather/TA2/{z}/{x}/{y}?appid=b1b15e88fa797225412429c1c50c122a1"
+
         L.tileLayer(
             "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
             {
@@ -124,14 +127,20 @@
                 accessToken: accessToken,
             }
         ).addTo(map);
+        var overlay = L.tileLayer(weatherMap)
 
         var taksasi = L.imageOverlay("http://localhost:8000/storage/"+urlTaksasi, [ne, sw]).addTo(map);
         var ndvi = L.imageOverlay("http://localhost:8000/storage/"+urlNdvi, [ne, sw]);
         var baseMaps = {
             "Taksasi Overlay":taksasi,
-            "NDVI Overlay" : ndvi
+            "NDVI Overlay" : ndvi,
         };
-        L.control.layers(baseMaps).addTo(map);
+
+        var overlaysMaps = {
+            "Weather" : overlay,
+        }
+
+        L.control.layers(baseMaps, overlaysMaps).addTo(map);
 
 
     </script>
