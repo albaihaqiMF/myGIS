@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\LahanController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +29,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/show/{lahan:slug}', [LahanController::class, 'show'])->name('map.show');
         Route::put('/update/{lahan:slug}', [LahanController::class, 'update'])->name('map.update');
         Route::delete('/delete/{lahan:slug}', [LahanController::class, 'delete'])->name('map.delete');
+    });
+
+    Route::prefix('user')->group(function () {
+        Route::get('/', [UserController::class, 'index'])->name('user.list');
+        Route::get('create', [UserController::class, 'create'])->name('user.create');
+        Route::post('store', [UserController::class, 'store'])->name('user.store');
     });
     Route::get('/test', function () {
         return auth()->user()->id;
