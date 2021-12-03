@@ -42,4 +42,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function roles()
+    {
+        return $this->belongsTo(Role::class, 'role_id', 'id');
+    }
+
+    public function lahan()
+    {
+        return $this->hasMany(Lahan::class, 'created_by', 'id');
+    }
 }
