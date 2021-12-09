@@ -3494,6 +3494,9 @@ video {
 .-ml-2{
 	margin-left: -0.5rem;
 }
+.mr-4{
+	margin-right: 1rem;
+}
 .block{
 	display: block;
 }
@@ -13483,6 +13486,9 @@ html body {
 	}
 	.sm\:ml-2{
 		margin-left: 0.5rem;
+	}
+	.sm\:ml-auto{
+		margin-left: auto;
 	}
 	.sm\:block{
 		display: block;
