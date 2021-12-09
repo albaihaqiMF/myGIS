@@ -32,54 +32,50 @@
                 </div>
                 <div class="mb-3 grid grid-cols-2 gap-4">
                     <div class="col-span-2 md:col-span-1">
-                        <div>
-                            <label for="sw_latitude" class="form-label w-full flex flex-col sm:flex-row">Southwest
-                                Latitude
-                                @error('sw_latitude')
-                                <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-gray-600">{{ $message
-                                    }}</span></label>
+                        <label for="sw_latitude" class="form-label w-full flex flex-col sm:flex-row">Southwest
+                            Latitude
+                            @error('sw_latitude')
+                            <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-gray-600">{{ $message
+                                }}</span>
                             @enderror
-                            <input id="sw_latitude" name="sw_latitude" type="text" class="form-control w-full"
-                                placeholder="Southwest Latitude" value="{{ old('sw_latitude') }}">
-                        </div>
+                        </label>
+                        <input id="sw_latitude" name="sw_latitude" type="text" class="form-control w-full"
+                            placeholder="Southwest Latitude" value="{{ old('sw_latitude') }}">
                     </div>
                     <div class="col-span-2 md:col-span-1">
-                        <div>
-                            <label for="sw_longitude" class="form-label w-full flex flex-col sm:flex-row">Southwest
-                                Longitude
-                                @error('sw_longitude')
-                                <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-gray-600">{{ $message
-                                    }}</span></label>
+                        <label for="sw_longitude" class="form-label w-full flex flex-col sm:flex-row">Southwest
+                            Longitude
+                            @error('sw_longitude')
+                            <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-gray-600">{{ $message
+                                }}</span>
                             @enderror
-                            <input id="sw_longitude" name="sw_longitude" type="text" class="form-control w-full"
-                                placeholder="Southwest Longitude" value="{{ old('sw_longitude') }}">
-                        </div>
+                        </label>
+                        <input id="sw_longitude" name="sw_longitude" type="text" class="form-control w-full"
+                            placeholder="Southwest Longitude" value="{{ old('sw_longitude') }}">
                     </div>
                 </div>
                 <div class="mb-3 grid grid-cols-2 gap-4">
                     <div class="col-span-2 md:col-span-1">
-                        <div>
-                            <label for="ne_latitude" class="form-label w-full flex flex-col sm:flex-row">Northeast
-                                Latitude
-                                @error('ne_latitude')
-                                <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-gray-600">{{ $message
-                                    }}</span></label>
+                        <label for="ne_latitude" class="form-label w-full flex flex-col sm:flex-row">Northeast
+                            Latitude
+                            @error('ne_latitude')
+                            <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-gray-600">{{ $message
+                                }}</span>
                             @enderror
-                            <input id="ne_latitude" name="ne_latitude" type="text" class="form-control w-full"
-                                placeholder="Northeast Latitude" value="{{ old('ne_latitude') }}">
-                        </div>
+                        </label>
+                        <input id="ne_latitude" name="ne_latitude" type="text" class="form-control w-full"
+                            placeholder="Northeast Latitude" value="{{ old('ne_latitude') }}">
                     </div>
                     <div class="col-span-2 md:col-span-1">
-                        <div>
-                            <label for="ne_longitude" class="form-label w-full flex flex-col sm:flex-row">Northeast
-                                Longitude
-                                @error('ne_longitude')
-                                <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-gray-600">{{ $message
-                                    }}</span></label>
+                        <label for="ne_longitude" class="form-label w-full flex flex-col sm:flex-row">Northeast
+                            Longitude
+                            @error('ne_longitude')
+                            <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-gray-600">{{ $message
+                                }}</span>
                             @enderror
-                            <input id="ne_longitude" name="ne_longitude" type="text" class="form-control w-full"
-                                placeholder="Northeast Longitude" value="{{ old('ne_longitude') }}">
-                        </div>
+                        </label>
+                        <input id="ne_longitude" name="ne_longitude" type="text" class="form-control w-full"
+                            placeholder="Northeast Longitude" value="{{ old('ne_longitude') }}">
                     </div>
                 </div>
                 <div class="flex flex-col md:flex-row justify-end pt-3 gap-4">
