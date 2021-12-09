@@ -26,7 +26,7 @@ class LahanController extends Controller
     public function store(Request $request)
     {
         $attr = $this->validate($request, [
-            'name' => 'required',
+            'name' => 'required|min:4',
             'gambar_taksasi' => 'required',
             'gambar_ndvi' => 'required',
             'sw_latitude' => 'required',
