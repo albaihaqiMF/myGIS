@@ -11,7 +11,6 @@ class Lahan extends Model
 
     protected $fillable = [
         'name',
-        'slug',
         'created_by',
         'sw_latitude',
         'sw_longitude',

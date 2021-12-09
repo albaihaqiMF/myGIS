@@ -15,6 +15,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         $admin = [
+            'id' => '2112091001',
             'name' => 'Admin',
             'username' => 'admin',
             'email' => 'admin@admin.com',
@@ -22,6 +23,7 @@ class UserSeeder extends Seeder
             'role_id' => 1,
         ];
         $user = [
+            'id' => '2112091002',
             'name' => 'User',
             'username' => 'user',
             'email' => 'user@user.com',

@@ -14,10 +14,10 @@ class CreateLahansTable extends Migration
     public function up()
     {
         Schema::create('lahans', function (Blueprint $table) {
-            $table->id();
+            $table->char('id',10)->primary();
             $table->string('name', 127);
-            $table->string('slug');
-            $table->tinyInteger('created_by')->nullable();
+            $table->char('created_by', 10);
+            $table->foreign('created_by')->references('id')->on('users');
             $table->decimal('sw_latitude', 24, 21);
             $table->decimal('sw_longitude', 24, 21);
             $table->decimal('ne_latitude', 24, 21);

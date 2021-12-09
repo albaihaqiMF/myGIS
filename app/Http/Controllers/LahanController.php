@@ -35,10 +35,6 @@ class LahanController extends Controller
             'ne_longitude' => 'required',
         ]);
         $attr['created_by'] = auth()->user()->id;
-
-        $attr['slug'] = Str::slug($request->name) . "-"
-            . Str::random(8)
-            . date('-ymd', strtotime(now()));
         $attr['gambar_taksasi'] = $this->storeImage($request->file('gambar_taksasi'), 'taksasi');
         $attr['gambar_ndvi'] = $this->storeImage($request->file('gambar_ndvi'), 'ndvi');
 
@@ -51,11 +47,22 @@ class LahanController extends Controller
 
     public function update(Lahan $lahan, Request $request)
     {
-        $attr = $this->validate($request, []);
+        $attr = $this->validate($request, [
+            'name' => 'required',
+            'gambar_taksasi' => 'required',
+            'gambar_ndvi' => 'required',
+            'sw_latitude' => 'required',
+            'sw_longitude' => 'required',
+            'ne_latitude' => 'required',
+            'ne_longitude' => 'required',
+        ]);
+
+        $attr['gambar_taksasi'] = $this->storeImage($request->file('gambar_taksasi'), 'taksasi');
+        $attr['gambar_ndvi'] = $this->storeImage($request->file('gambar_ndvi'), 'ndvi');
 
         $lahan->update($attr);
 
-        return redirect(route('map.show', ['lahan' => $lahan->slug]))->with('success', 'Berhasil memperbarui data');
+        return redirect(route('map.show', ['lahan' => $lahan->id]))->with('success', 'Berhasil memperbarui data');
     }
 
     public function delete(Lahan $lahan)
@@ -87,7 +94,7 @@ class LahanController extends Controller
                     env('APP_URL') . "/" . $map->gambar_ndvi,
 
                 'date' => date('d-m-y H:i:s', strtotime($map->updated_at)),
-                'url' => env('APP_URL') . "/map/show/" . $map->slug,
+                'url' => env('APP_URL') . "/map/show/" . $map->id,
 
             ];
         });

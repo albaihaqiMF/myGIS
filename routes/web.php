@@ -26,9 +26,9 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [LahanController::class, 'index'])->name('map.list');
         Route::get('/create', [LahanController::class, 'create'])->name('map.create');
         Route::post('/store', [LahanController::class, 'store'])->name('map.store');
-        Route::get('/show/{lahan:slug}', [LahanController::class, 'show'])->name('map.show');
-        Route::put('/update/{lahan:slug}', [LahanController::class, 'update'])->name('map.update');
-        Route::delete('/delete/{lahan:slug}', [LahanController::class, 'delete'])->name('map.delete');
+        Route::get('/show/{lahan}', [LahanController::class, 'show'])->name('map.show');
+        Route::put('/update/{lahan}', [LahanController::class, 'update'])->name('map.update');
+        Route::delete('/delete/{lahan}', [LahanController::class, 'delete'])->name('map.delete');
     });
 
     Route::prefix('user')->group(function () {
@@ -43,6 +43,10 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('data')->group(function () {
     Route::get('map-list', [LahanController::class, 'list']);
+});
+
+Route::get('test', function () {
+    return App\Models\User::all()->count() + 1;
 });
 
 require __DIR__ . '/auth.php';

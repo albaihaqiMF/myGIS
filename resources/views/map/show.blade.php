@@ -3,7 +3,7 @@
     <div class="grid grid-col-12 gap-4 py-4">
         <div class="col-span-full md:col-span-8">
             <form action="{{ route('map.update', [
-                'lahan' => $data->slug,
+                'lahan' => $data->id,
             ]) }}" enctype="multipart/form-data" method="POST" class="box px-4 py-6">
                 @csrf
                 @method('PUT')
@@ -83,7 +83,7 @@
                                 <button type="button" data-dismiss="modal"
                                     class="btn btn-outline-secondary w-24 dark:border-dark-5 dark:text-gray-300 mr-1">Cancel</button>
                                 <form action="{{ route('map.delete', [
-                                                'lahan' => $data->slug
+                                                'lahan' => $data->id
                                             ]) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
@@ -113,7 +113,8 @@
         var accessToken =
         "pk.eyJ1IjoiZmhtYWxiYSIsImEiOiJja3BlMnMxMmoxdG5tMm9ueDg2bGhkd25uIn0._R9TCI9p116Gvg1fdsc9GQ";
 
-        var weatherMap = "http://maps.openweathermap.org/maps/2.0/weather/TA2/{z}/{x}/{y}?appid=b1b15e88fa797225412429c1c50c122a1"
+        var weatherMapKey = "b1b15e88fa797225412429c1c50c122a1"
+        var weatherMap = `http://maps.openweathermap.org/maps/2.0/weather/TA2/{z}/{x}/{y}?appid=${weatherMapKey}&fill_bound=true&opacity=0.6&palette=-65:821692;-55:821692;-45:821692;-40:821692;-30:8257db;-20:208cec;-10:20c4e8;0:23dddd;10:c2ff28;20:fff028;25:ffc228;30:fc8014`
 
         L.tileLayer(
             "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",

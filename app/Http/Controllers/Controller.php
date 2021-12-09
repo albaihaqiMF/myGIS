@@ -45,4 +45,34 @@ class Controller extends BaseController
 
         return $path;
     }
+
+    public function intTo3Digits($value)
+    {
+        $newValue = "";
+        switch ($value) {
+            case $value >= 100:
+                $newValue = strval($value);
+                break;
+            case $value >= 10:
+                $newValue = "0" . strval($value);
+                break;
+            case $value < 10:
+                $newValue = "00" . strval($value);
+                break;
+
+            default:
+                $newValue = "999";
+                break;
+        }
+
+
+        return $newValue;
+    }
+
+    public function todayString()
+    {
+        $date = date('ymd', strtotime(now()));
+
+        return $date;
+    }
 }
