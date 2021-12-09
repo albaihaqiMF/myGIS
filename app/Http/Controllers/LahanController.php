@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Lahan;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class LahanController extends Controller
 {
@@ -49,16 +49,27 @@ class LahanController extends Controller
     {
         $attr = $this->validate($request, [
             'name' => 'required',
-            'gambar_taksasi' => 'required',
-            'gambar_ndvi' => 'required',
             'sw_latitude' => 'required',
             'sw_longitude' => 'required',
             'ne_latitude' => 'required',
             'ne_longitude' => 'required',
         ]);
-
-        $attr['gambar_taksasi'] = $this->storeImage($request->file('gambar_taksasi'), 'taksasi');
-        $attr['gambar_ndvi'] = $this->storeImage($request->file('gambar_ndvi'), 'ndvi');
+        //Replace old pict for taksasi
+        if ($request->file('gambar_taksasi')) {
+            Storage::delete($lahan->gambar_taksasi);
+            $attr['gambar_taksasi'] = $this->storeImage($request->file('gambar_taksasi'), 'taksasi');
+        } else {
+            $attr['gambar_taksasi'] = $lahan->gambar_taksasi;
+        }
+        //Replace old pict for taksasi
+        if ($request->file('gambar_ndvi')) {
+            Storage::delete($lahan->gambar_ndvi);
+            $attr['gambar_ndvi'] = $request->file('gambar_ndvi') ?
+                $this->storeImage($request->file('gambar_ndvi'), 'ndvi')
+                : null;
+        } else {
+            $attr['gambar_ndvi'] = $lahan->gambar_taksasi;
+        }
 
         $lahan->update($attr);
 
