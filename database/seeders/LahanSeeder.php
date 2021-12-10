@@ -18,6 +18,7 @@ class LahanSeeder extends Seeder
             'id'                => '2112092001',
             'name'              => 'Jakarta',
             'created_by'        => '2112091001',
+            'area_id'        => '2112093001',
             'sw_latitude'       => -6.3914220000000,
             'sw_longitude'      => 106.7028170000000,
             'ne_latitude'       => -6.0926120000000,

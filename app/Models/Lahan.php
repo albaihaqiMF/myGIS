@@ -12,6 +12,7 @@ class Lahan extends Model
     protected $fillable = [
         'name',
         'created_by',
+        'area_id',
         'sw_latitude',
         'sw_longitude',
         'ne_latitude',
@@ -56,5 +57,10 @@ class Lahan extends Model
     public function creator()
     {
         return $this->belongsTo(User::class, 'created_by', 'id');
+    }
+
+    public function area()
+    {
+         return $this->belongsTo(Area::class);
     }
 }
