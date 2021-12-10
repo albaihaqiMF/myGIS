@@ -27,9 +27,11 @@ class Lahan extends Model
         'deleted_at'
     ];
 
-    public function scopeCget($query)
+    public function scopeCget($query, $area)
     {
-        $query = $query->where('deleted_at', null)->orderBy('updated_at','desc');
+        $query = $query->where('deleted_at', null)->orderBy('updated_at', 'desc');
+
+        $query = $area != null ? $query->where('area_id', $area) : $query;
 
         $query = $query->get();
 
@@ -43,6 +45,7 @@ class Lahan extends Model
         return [
             'id' => $value->id,
             'name' => $value->name,
+            'area' => $value->area->name,
             'created_by' => $value->creator->name,
             'sw_latitude' => $value->sw_latitude,
             'sw_longitude' => $value->sw_longitude,
@@ -50,9 +53,8 @@ class Lahan extends Model
             'ne_longitude' => $value->ne_longitude,
             'gambar_taksasi' => $value->gambar_taksasi,
             'gambar_ndvi' => $value->gambar_ndvi,
-            // 'created_at' => $value->created_at,
-            'created_at' => date('H:i:s, d M Y',strtotime($value->created_at)),
-            'updated_at' => date('H:i:s, d M Y',strtotime($value->updated_at)),
+            'created_at' => date('H:i:s, d M Y', strtotime($value->created_at)),
+            'updated_at' => date('H:i:s, d M Y', strtotime($value->updated_at)),
         ];
     }
     public function creator()
@@ -62,6 +64,6 @@ class Lahan extends Model
 
     public function area()
     {
-         return $this->belongsTo(Area::class);
+        return $this->belongsTo(Area::class);
     }
 }

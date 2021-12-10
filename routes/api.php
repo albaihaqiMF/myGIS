@@ -19,3 +19,7 @@ Route::prefix('map')->group(function () {
     Route::get('/', [ApiController::class, 'listMap']);
     Route::get('{id}', [ApiController::class, 'showMap']);
 });
+
+Route::prefix('area')->group(function () {
+    Route::get('/', [ApiController::class, 'areaList']);
+});

@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Area;
 use App\Models\Lahan;
 use Illuminate\Http\Request;
 
 class ApiController extends Controller
 {
-    public function listMap()
+    public function listMap(Request $request)
     {
-        $data = Lahan::cget();
+        $area = $request->area ? $request->area : null;
+        $data = Lahan::cget($area);
 
-        return $this->responseOK('Collected Data Successfully', $data);
+        return $this->responseOK('Data Collected Successfully', $data);
     }
 
     public function showMap($id)
@@ -27,5 +29,12 @@ class ApiController extends Controller
         } catch (\Throwable $th) {
             return $this->responseError('Failed to Load Data');
         }
+    }
+
+    public function areaList()
+    {
+        $data = Area::all();
+
+        return $this->responseOK('Data Collected Successfully', $data);
     }
 }
