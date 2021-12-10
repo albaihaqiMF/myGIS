@@ -16,6 +16,9 @@ class LahanController extends Controller
     }
     public function show(Lahan $lahan)
     {
+        if ($lahan->area_id !== auth()->user()->area_id) {
+            return redirect(route('map.list'))->with('error', 'You don\'t have permission');
+        }
         $data = $lahan;
         return view('map.show', compact('data'));
     }
@@ -34,6 +37,12 @@ class LahanController extends Controller
             'ne_latitude' => 'required',
             'ne_longitude' => 'required',
         ]);
+
+        $countData = Lahan::whereDate('created_at', date('Y-m-d'))->get()->count();
+        $id = $this->todayString() . "2" . $this->intTo3Digits($countData + 1);
+
+        $attr['id'] = $id;
+        $attr['area_id'] = auth()->user()->area_id;
         $attr['created_by'] = auth()->user()->id;
         $attr['gambar_taksasi'] = $this->storeImage($request->file('gambar_taksasi'), 'taksasi');
         $attr['gambar_ndvi'] = $this->storeImage($request->file('gambar_ndvi'), 'ndvi');
@@ -44,7 +53,12 @@ class LahanController extends Controller
             route('map.list')
         )->with('success', 'Created Map Data Successfully');
     }
-
+    public function edit(Lahan $lahan)
+    {
+        return view('map.edit', [
+            'data' => $lahan
+        ]);
+    }
     public function update(Lahan $lahan, Request $request)
     {
         $attr = $this->validate($request, [
@@ -89,7 +103,7 @@ class LahanController extends Controller
     // DATA URL FOR //
     public function list()
     {
-        $data = Lahan::where('deleted_at', null)->get();
+        $data = Lahan::where('deleted_at', null)->where('area_id', auth()->user()->area_id)->get();
 
         $mapData = $data->map(function ($map) {
             return [
@@ -105,7 +119,9 @@ class LahanController extends Controller
                     env('APP_URL') . "/" . $map->gambar_ndvi,
 
                 'date' => date('d-m-y H:i:s', strtotime($map->updated_at)),
-                'url' => env('APP_URL') . "/map/show/" . $map->id,
+                'url' => route('map.show', [
+                    'lahan' => $map->id,
+                ]),
 
             ];
         });

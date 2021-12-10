@@ -9,7 +9,7 @@ import Tabulator from "tabulator-tables";
     if (cash("#tabulator").length) {
         // Setup Tabulator
         let table = new Tabulator("#tabulator", {
-            ajaxURL: "http://localhost:8000/data/map-list",
+            ajaxURL: "/data/map-list",
             ajaxFiltering: true,
             ajaxSorting: true,
             printAsHtml: true,

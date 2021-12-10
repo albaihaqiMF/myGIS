@@ -10,6 +10,7 @@ class Lahan extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id',
         'name',
         'created_by',
         'area_id',

@@ -14,73 +14,42 @@
     </div>
     @endif
     <div class="h-80vh rounded relative z-0" id="map"></div>
-    <div class="grid grid-col-12 gap-4 py-4">
-        <div class="col-span-full md:col-span-8">
-            <form action="{{ route('map.update', [
-                'lahan' => $data->id,
-            ]) }}" enctype="multipart/form-data" method="POST" class="box px-4 py-6">
-                @csrf
-                @method('PUT')
-                <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
-                    <input id="name" name="name" type="text" class="form-control w-full" placeholder="Name"
-                        value="{{ old('name') ?? $data->name }}">
-                </div>
-                <div class="mb-3">
-                    <label for="gambar_taksasi" class="form-label">Taksasi</label>
-                    <input id="gambar_taksasi" name="gambar_taksasi" type="file" accept="image/*"
-                        class="form-control w-full" placeholder="Taksasi">
-                </div>
-                <div class="mb-3">
-                    <label for="gambar_ndvi" class="form-label">NDVI</label>
-                    <input id="gambar_ndvi" name="gambar_ndvi" type="file" accept="image/*" class="form-control w-full"
-                        placeholder="NDVI">
-                </div>
-                <div class="mb-3 grid grid-cols-2 gap-4">
-                    <div class="col-span-2 md:col-span-1">
-                        <div>
-                            <label for="sw_latitude" class="form-label">Southwest Latitude</label>
-                            <input id="sw_latitude" name="sw_latitude" type="text" class="form-control w-full"
-                                placeholder="Southwest Latitude" value="{{ old('sw_latitude') ?? $data->sw_latitude }}">
-                        </div>
-                    </div>
-                    <div class="col-span-2 md:col-span-1">
-                        <div>
-                            <label for="sw_longitude" class="form-label">Southwest Longitude</label>
-                            <input id="sw_longitude" name="sw_longitude" type="text" class="form-control w-full"
-                                placeholder="Southwest Longitude"
-                                value="{{ old('sw_longitude') ?? $data->sw_longitude }}">
-                        </div>
-                    </div>
-                </div>
-                <div class="mb-3 grid grid-cols-2 gap-4">
-                    <div class="col-span-2 md:col-span-1">
-                        <div>
-                            <label for="ne_latitude" class="form-label">Northeast Latitude</label>
-                            <input id="ne_latitude" name="ne_latitude" type="text" class="form-control w-full"
-                                placeholder="Northeast Latitude" value="{{ old('ne_latitude') ?? $data->ne_latitude }}">
-                        </div>
-                    </div>
-                    <div class="col-span-2 md:col-span-1">
-                        <div>
-                            <label for="ne_longitude" class="form-label">Northeast Longitude</label>
-                            <input id="ne_longitude" name="ne_longitude" type="text" class="form-control w-full"
-                                placeholder="Northeast Longitude"
-                                value="{{ old('ne_longitude') ?? $data->ne_longitude }}">
-                        </div>
-                    </div>
-                </div>
-                <div class="flex flex-col md:flex-row justify-end pt-3 gap-4">
-                    <button class="btn bg-green-500 w-full md:w-24 text-white font-semibold">
-                        UPDATE
-                    </button>
-                    <!-- BEGIN: Modal Toggle -->
-                    <div class="text-center"> <a href="javascript:;" data-toggle="modal"
-                            data-target="#delete-modal-preview" class="btn btn-danger">DELETE</a> </div>
-                    <!-- END: Modal Toggle -->
-                </div>
-            </form>
+    <div class="mt-4 box p-4">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">Title</th>
+                    <th class="border-b-2 dark:border-dark-5 whitespace-nowrap">{{ $data->name }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="border-b dark:border-dark-5">Creator</td>
+                    <td class="border-b dark:border-dark-5">{{ $data->creator->name }}</td>
+                </tr>
+                <tr>
+                    <td class="border-b dark:border-dark-5">Created At</td>
+                    <td class="border-b dark:border-dark-5">{{ date('d M Y, H:i:s', strtotime($data->created_at)) }}<span class="ml-3 text-theme-13">{{ $data->created_at->diffForHumans() }}</span></td>
+                </tr>
+                <tr>
+                    <td class="border-b dark:border-dark-5">Updated At</td>
+                    <td class="border-b dark:border-dark-5">{{ date('d M Y, H:i:s', strtotime($data->updated_at)) }}<span class="ml-3 text-theme-13">{{ $data->updated_at->diffForHumans() }}</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="flex mt-6 gap-3">
+            <a href="{{ route('map.edit', [
+                'lahan' => $data->id
+            ]) }}" class="btn btn-primary w-32"><i data-feather="edit-2" class="h-4 w-4 mr-3"></i>EDIT</a>
+            <a href="#" class="btn w-32 bg-theme-20 text-white"><i data-feather="clipboard"
+                    class="h-4 w-4 mr-3"></i>PROGRES</a>
 
+            <!-- BEGIN: Modal Toggle -->
+            @if (auth()->user()->role_id == 1)
+            <div class="text-center"> <a href="javascript:;" data-toggle="modal" data-target="#delete-modal-preview"
+                    class="btn btn-danger"><i data-feather="trash-2" class="w-4 h-4 mr-3"></i>DELETE</a> </div>
+            @endif
+            <!-- END: Modal Toggle -->
             <!-- BEGIN: Modal Content -->
             <div id="delete-modal-preview" class="modal" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog">
@@ -97,8 +66,8 @@
                                 <button type="button" data-dismiss="modal"
                                     class="btn btn-outline-secondary w-24 dark:border-dark-5 dark:text-gray-300 mr-1">Cancel</button>
                                 <form action="{{ route('map.delete', [
-                                                'lahan' => $data->id
-                                            ]) }}" method="POST">
+                                            'lahan' => $data->id
+                                        ]) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger w-24">Delete</button>
@@ -110,7 +79,6 @@
             </div> <!-- END: Modal Content -->
         </div>
     </div>
-
     <script>
         var urlTaksasi = "{!! $data->gambar_taksasi !!}";
         var urlNdvi = "{!! $data->gambar_ndvi !!}";
@@ -140,12 +108,13 @@
                 tileSize: 512,
                 zoomOffset: -1,
                 accessToken: accessToken,
+                drawControl: true,
             }
         ).addTo(map);
         var overlay = L.tileLayer(weatherMap)
 
-        var taksasi = L.imageOverlay("http://localhost:8000/storage/"+urlTaksasi, [ne, sw]).addTo(map);
-        var ndvi = L.imageOverlay("http://localhost:8000/storage/"+urlNdvi, [ne, sw]);
+        var taksasi = L.imageOverlay("/storage/"+urlTaksasi, [ne, sw]).addTo(map);
+        var ndvi = L.imageOverlay("/storage/"+urlNdvi, [ne, sw]);
         var baseMaps = {
             "Taksasi Overlay":taksasi,
             "NDVI Overlay" : ndvi,
@@ -156,6 +125,26 @@
         }
 
         L.control.layers(baseMaps, overlaysMaps).addTo(map);
+        map.scrollWheelZoom.disable();
+
+        var drawnItems = new L.FeatureGroup();
+        map.addLayer(drawnItems);
+        var drawControl = new L.Control.Draw({
+            edit: {
+                featureGroup: drawnItems
+            }
+        });
+        map.addControl(drawControl);
+
+        map.on('draw:created', function(e){
+            var layer = e.layer,
+            feature = layer.feature = layer.feature || {};
+
+            feature.type = feature.type || "Feature";
+            var props = feature.properties = feature.properties || {};
+
+            drawnItems.addLayer(layer);
+        })
 
 
     </script>

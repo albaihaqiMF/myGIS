@@ -2,7 +2,7 @@
 <nav class="side-nav">
     <a href="" class="intro-x flex items-center pl-5 pt-4 mt-3">
         <img alt="MyGIS Tailwind HTML Admin Template" class="w-6" src="/images/logo.svg">
-        <span class="hidden xl:block text-white text-lg ml-3"> Tink<span class="font-medium">er</span> </span>
+        <span class="hidden xl:block text-white text-lg ml-3"> {{ auth()->user()->area->name }} </span>
     </a>
     <div class="side-nav__devider my-6"></div>
     <ul>

@@ -26,12 +26,14 @@ License: You must have a valid license purchased only from themeforest(the above
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw-src.css" />
     <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
     <!-- END: CSS Assets-->
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
 </head>
 <!-- END: Head -->
 
@@ -44,9 +46,11 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- BEGIN: Top Bar -->
             <div class="top-bar -mx-4 px-4 md:mx-0 md:px-0">
                 <!-- BEGIN: Breadcrumb -->
-                <div class="-intro-x breadcrumb mr-auto hidden sm:flex"> <a href="">Application</a> <i
-                        data-feather="chevron-right" class="breadcrumb__icon"></i> <a href=""
-                        class="breadcrumb--active">Dashboard</a> </div>
+                <div class="-intro-x breadcrumb mr-auto hidden sm:flex">
+                    <a href="{{ route('dashboard') }}">Application</a>
+                    <i data-feather="chevron-right" class="breadcrumb__icon"></i>
+                    <a href="" class="breadcrumb--active">Dashboard</a>
+                </div>
                 <!-- END: Breadcrumb -->
                 @livewire('search')
                 <!-- BEGIN: Notifications -->
