@@ -30,6 +30,11 @@ Route::middleware('auth')->group(function () {
         Route::get('/{lahan}/edit', [LahanController::class, 'edit'])->name('map.edit');
         Route::put('/update/{lahan}', [LahanController::class, 'update'])->name('map.update');
         Route::delete('/delete/{lahan}', [LahanController::class, 'delete'])->name('map.delete');
+
+        Route::get('/{lahan}/progres', [LahanController::class, 'progres'])->name('map.progres');
+        Route::post('/{lahan}/upload-progres', [LahanController::class, 'progresUpload'])->name('map.progres.upload');
+
+        Route::post('/progres/{progres}', [LahanController::class, 'deleteProgres'])->name('progres.delete');
     });
 
     Route::prefix('user')->group(function () {
@@ -44,6 +49,7 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('data')->group(function () {
     Route::get('map-list', [LahanController::class, 'list']);
+    Route::get('geojson/{lahan}', [LahanController::class, 'geojson'])->name('geojson');
 });
 
 Route::get('test', function () {

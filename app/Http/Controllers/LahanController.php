@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Lahan;
+use App\Models\Progres;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -20,7 +21,13 @@ class LahanController extends Controller
             return redirect(route('map.list'))->with('error', 'You don\'t have permission');
         }
         $data = $lahan;
-        return view('map.show', compact('data'));
+        $progres = $lahan->progress;
+        return view('map.show', [
+            'data' => $data,
+            'geojson' => $progres->map(function ($value) {
+                return Progres::mapData($value);
+            }),
+        ]);
     }
     public function create()
     {
@@ -99,6 +106,46 @@ class LahanController extends Controller
         return redirect(route('map.list'))->with('success', 'Berhasil Menghapus data ' . $lahan->name);
     }
 
+    public function progres(Lahan $lahan)
+    {
+        $data = $lahan;
+        $progres = $lahan->progress;
+        return view('map.progres', [
+            'data' => $data,
+            'geojson' => $progres->map(function ($value) {
+                return Progres::mapData($value);
+            }),
+        ]);
+    }
+
+    public function deleteProgres(Progres $progres)
+    {
+        $progres->delete();
+
+        return back();
+    }
+
+    public function progresUpload(Request $request, Lahan $lahan)
+    {
+        $this->validate($request, [
+            'data' => 'required'
+        ]);
+        Progres::create([
+            'progres_by' => auth()->user()->id,
+            'lahan_id' => $lahan->id,
+            'geometry' => $request->data,
+            'catatan' => $request->catatan
+        ]);
+
+        return redirect(route(
+            'map.show',
+            [
+                'lahan' => $lahan->id
+            ]
+        ))
+            ->with('success', 'Berhasil membuat progres baru');
+    }
+
 
     // DATA URL FOR //
     public function list()
@@ -131,5 +178,17 @@ class LahanController extends Controller
         ];
 
         return $format;
+    }
+
+    public function geojson(Lahan $lahan)
+    {
+        $data = $lahan->progress;
+        $data = $data->map(function ($value) {
+            return Progres::mapData($value);
+        });
+        return [
+            "type" => "FeatureCollection",
+            "features" => $data,
+        ];
     }
 }

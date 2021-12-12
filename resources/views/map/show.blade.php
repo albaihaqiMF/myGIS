@@ -29,11 +29,13 @@
                 </tr>
                 <tr>
                     <td class="border-b dark:border-dark-5">Created At</td>
-                    <td class="border-b dark:border-dark-5">{{ date('d M Y, H:i:s', strtotime($data->created_at)) }}<span class="ml-3 text-theme-13">{{ $data->created_at->diffForHumans() }}</span></td>
+                    <td class="border-b dark:border-dark-5">{{ date('d M Y, H:i:s', strtotime($data->created_at))
+                        }}<span class="ml-3 text-theme-13">{{ $data->created_at->diffForHumans() }}</span></td>
                 </tr>
                 <tr>
                     <td class="border-b dark:border-dark-5">Updated At</td>
-                    <td class="border-b dark:border-dark-5">{{ date('d M Y, H:i:s', strtotime($data->updated_at)) }}<span class="ml-3 text-theme-13">{{ $data->updated_at->diffForHumans() }}</span></td>
+                    <td class="border-b dark:border-dark-5">{{ date('d M Y, H:i:s', strtotime($data->updated_at))
+                        }}<span class="ml-3 text-theme-13">{{ $data->updated_at->diffForHumans() }}</span></td>
                 </tr>
             </tbody>
         </table>
@@ -41,8 +43,8 @@
             <a href="{{ route('map.edit', [
                 'lahan' => $data->id
             ]) }}" class="btn btn-primary w-32"><i data-feather="edit-2" class="h-4 w-4 mr-3"></i>EDIT</a>
-            <a href="#" class="btn w-32 bg-theme-20 text-white"><i data-feather="clipboard"
-                    class="h-4 w-4 mr-3"></i>PROGRES</a>
+            <a href="{{ route('map.progres', ['lahan'=> $data->id]) }}" class="btn w-32 bg-theme-20 text-white"><i
+                    data-feather="clipboard" class="h-4 w-4 mr-3"></i>PROGRES</a>
 
             <!-- BEGIN: Modal Toggle -->
             @if (auth()->user()->role_id == 1)
@@ -89,6 +91,13 @@
         const sw = [sw_lat, sw_long];
         const ne = [ne_lat, ne_long];
 
+        const geometry = {!! $geojson !!};
+
+        const myGeoJSON = {
+            "type":"FeatureCollection",
+            "features":geometry,
+        }
+
         var map = L.map('map').fitBounds([
             sw, ne
         ]);
@@ -115,6 +124,29 @@
 
         var taksasi = L.imageOverlay("/storage/"+urlTaksasi, [ne, sw]).addTo(map);
         var ndvi = L.imageOverlay("/storage/"+urlNdvi, [ne, sw]);
+
+        var progres = L.geoJSON(myGeoJSON,{
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup(
+                    `<div>
+                        <table class='table table-hover'>
+                            <tr>
+                                <td>ID</td>
+                                <td>: ${feature.properties.id}</td>
+                            </tr>
+                            <tr>
+                                <td>Catatan</td>
+                                <td>: ${feature.properties.catatan}</td>
+                            </tr>
+                            <tr>
+                                <td>Created At</td>
+                                <td class="whitespace-nowrap">: ${feature.properties.created_at}</td>
+                            </tr>
+                        </table>
+                    </div>`
+                )
+            },
+        }).addTo(map);
         var baseMaps = {
             "Taksasi Overlay":taksasi,
             "NDVI Overlay" : ndvi,
@@ -122,30 +154,10 @@
 
         var overlaysMaps = {
             "Weather" : overlay,
+            "Progres" : progres,
         }
 
         L.control.layers(baseMaps, overlaysMaps).addTo(map);
         map.scrollWheelZoom.disable();
-
-        var drawnItems = new L.FeatureGroup();
-        map.addLayer(drawnItems);
-        var drawControl = new L.Control.Draw({
-            edit: {
-                featureGroup: drawnItems
-            }
-        });
-        map.addControl(drawControl);
-
-        map.on('draw:created', function(e){
-            var layer = e.layer,
-            feature = layer.feature = layer.feature || {};
-
-            feature.type = feature.type || "Feature";
-            var props = feature.properties = feature.properties || {};
-
-            drawnItems.addLayer(layer);
-        })
-
-
     </script>
 </x-app-layout>

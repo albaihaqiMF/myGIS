@@ -66,4 +66,18 @@ class Lahan extends Model
     {
         return $this->belongsTo(Area::class);
     }
+
+    public function progress()
+    {
+         return $this->hasMany(Progres::class);
+    }
+
+    public function getGeoJSON()
+    {
+        $data = $this->progress;
+
+        return $data->map(function($value){
+            return Progres::mapData($value);
+        });
+    }
 }
