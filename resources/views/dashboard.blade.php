@@ -1,6 +1,6 @@
 <x-app-layout>
     @if (session()->has('success'))
-    <div class="alert alert-dismissible show box bg-theme-25 text-white flex items-center mb-6" role="alert">
+    <div class="alert alert-dismissible show box bg-primary-1 text-white flex items-center mb-6" role="alert">
         <span>
             {{ session()->get('success') }} <span class="underline ml-1">Hai, {{ auth()->user()->name }}</span>.
         </span>
