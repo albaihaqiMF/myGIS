@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [Controller::class, 'dashboard']);
+Route::view('/', 'auth.login');
 
 Route::middleware('auth')->group(function () {
     Route::get('dashboard', [Controller::class, 'dashboard'])->name('dashboard');
