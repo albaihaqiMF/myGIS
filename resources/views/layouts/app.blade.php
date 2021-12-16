@@ -27,7 +27,7 @@ License: You must have a valid license purchased only from themeforest(the above
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw-src.css" />
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}" />
     <!-- END: CSS Assets-->
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
@@ -172,7 +172,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 <a href=""
                                     class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-gray-200 dark:hover:bg-dark-3 rounded-md">
                                     <i data-feather="user" class="w-4 h-4 mr-2"></i> Profile </a>
-                                @if (auth()->user()->id == 1)
+                                @if (auth()->user()->role_id == 1)
                                 <a href="{{ route('user.create') }}"
                                     class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-gray-200 dark:hover:bg-dark-3 rounded-md">
                                     <i data-feather="edit" class="w-4 h-4 mr-2"></i> Add User </a>
@@ -208,7 +208,8 @@ License: You must have a valid license purchased only from themeforest(the above
     <script
         src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
     </script>
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.7.0/cdn.js"></script>
+    <script src="{{ mix('js/app.js') }}"></script>
     <!-- END: JS Assets-->
 </body>
 

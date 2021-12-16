@@ -1,7 +1,8 @@
 <x-app-layout>
     <div class="intro-y box p-5 mt-5">
         @if (session()->has('success') || session()->has('error'))
-        <div class="alert alert-dismissible show box text-white flex items-center mb-6{{ session()->has('success') ? ' bg-theme-20' : ' bg-theme-21' }}" role="alert">
+        <div class="alert alert-dismissible show box text-white flex items-center mb-6{{ session()->has('success') ? ' bg-theme-20' : ' bg-theme-21' }}"
+            role="alert">
             <span>
                 {{ session()->get('success') ?? session()->get('error') }}.
             </span>
@@ -16,7 +17,7 @@
         @endif
         <div class="flex flex-col sm:flex-row sm:items-end xl:items-start mb-4">
             <div class="xl:flex sm:mr-auto">
-                <a href="{{ route('map.create') }}" class="btn bg-theme-11 text-white w-full sm:w-auto mr-2"> <i
+                <a href="{{ route('map.create') }}" class="btn bg-primary-1 text-white w-full sm:w-auto mr-2"> <i
                         data-feather="edit-3" class="w-4 h-4 mr-2"></i> Input </a>
             </div>
         </div>

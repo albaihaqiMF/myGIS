@@ -1,7 +1,7 @@
 <!-- BEGIN: Search -->
 <div class="intro-x relative mr-3 sm:mr-6">
     <div class="search hidden sm:block">
-        <input wire:model="query" type="text" class="search__input form-control border-transparent placeholder-theme-13"
+        <input wire:model="query" type="text" class="search__input form-control border-transparent placeholder-theme-33"
             placeholder="Search...">
         <i data-feather="search" class="search__icon dark:text-gray-300"></i>
     </div>

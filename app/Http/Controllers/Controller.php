@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Lahan;
+use App\Models\Progres;
+use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -13,7 +16,17 @@ class Controller extends BaseController
 
     public function dashboard()
     {
-        return view('dashboard');
+        $user = User::where('area_id', auth()->user()->area_id)->get()->count();
+
+        $progres = Progres::where('progres_by', auth()->user()->id)->get()->count();
+
+        $lahan = Lahan::where('area_id', auth()->user()->area_id)->get()->count();
+
+        return view('dashboard', [
+            'user' => $user,
+            'progres' => $progres,
+            'lahan' => $lahan,
+        ]);
     }
 
     public function formatJSON($message = null, $data = null, $status = false)

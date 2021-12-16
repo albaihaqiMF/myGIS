@@ -30,11 +30,19 @@ class UserController extends Controller
             'username' => 'required|max:64|unique:users,username',
             'role_id' => 'between:1,2',
         ]);
+
+        $user = User::whereDate('created_at', today())->get()->count();
+        $id = date('ymd') . "1" . $this->intTo3Digits($user+1);
         $defaultPassword = "password";
+        $attr['id'] = $id;
         $attr['password'] = bcrypt($defaultPassword);
+
+        $attr['area_id'] = auth()->user()->area_id;
+
+        $attr['name'] = ucwords(strtolower($request->name));
 
         User::create($attr);
 
-        return back();
+        return back()->with('success', 'User Created Succesfully');
     }
 }

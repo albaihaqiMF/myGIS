@@ -56,7 +56,7 @@
                     </div>
                 </div>
                 <div class="flex flex-col md:flex-row justify-end pt-3 gap-4">
-                    <button class="btn bg-green-500 w-full md:w-24 text-white font-semibold">
+                    <button class="btn bg-theme-20 w-full md:w-24 text-white font-semibold">
                         UPDATE
                     </button>
                 </div>

@@ -30,12 +30,12 @@
                 <tr>
                     <td class="border-b dark:border-dark-5">Created At</td>
                     <td class="border-b dark:border-dark-5">{{ date('d M Y, H:i:s', strtotime($data->created_at))
-                        }}<span class="ml-3 text-theme-13">{{ $data->created_at->diffForHumans() }}</span></td>
+                        }}<span class="ml-3 text-gray-500">{{ $data->created_at->diffForHumans() }}</span></td>
                 </tr>
                 <tr>
                     <td class="border-b dark:border-dark-5">Updated At</td>
                     <td class="border-b dark:border-dark-5">{{ date('d M Y, H:i:s', strtotime($data->updated_at))
-                        }}<span class="ml-3 text-theme-13">{{ $data->updated_at->diffForHumans() }}</span></td>
+                        }}<span class="ml-3 text-gray-500">{{ $data->updated_at->diffForHumans() }}</span></td>
                 </tr>
             </tbody>
         </table>

@@ -79,7 +79,7 @@
                     </div>
                 </div>
                 <div class="flex flex-col md:flex-row justify-end pt-3 gap-4">
-                    <button class="btn bg-theme-11 w-full md:w-24 text-white font-semibold">
+                    <button class="btn bg-primary-1 w-full md:w-24 text-white font-semibold">
                         SAVE
                     </button>
                     <a href="{{ route('map.list') }}"
