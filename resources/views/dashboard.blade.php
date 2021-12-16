@@ -39,34 +39,39 @@
                     </div>
                 </div>
             </div>
-            <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
-                <div class="report-box zoom-in">
+            <a href="{{ route('map.list') }}" class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+                <div href class="report-box zoom-in">
                     <div class="box p-5">
                         <div class="flex">
-                            <i data-feather="credit-card" class="report-box__icon text-theme-29"></i>
+                            <i data-feather="map" class="report-box__icon text-theme-29"></i>
                             <div class="ml-auto">
-                                <div class="report-box__indicator bg-theme-21 tooltip cursor-pointer"
-                                    title="2% Lower than last month"> 2% <i data-feather="chevron-down"
-                                        class="w-4 h-4 ml-0.5"></i> </div>
+                                <div class="report-box__indicator tooltip cursor-pointer {{ $lahan['rate'] != 0 ? 'bg-theme-20' : 'bg-theme-16' }}"
+                                    title="{{ $lahan['rate'] != 0 ? 'Registered fields increase by '. $lahan['rate'].' field' : 'Fields are not increasing' }}">
+                                    {{ $lahan['rate'] }} <i data-feather="{{ $lahan['rate'] != 0 ? 'plus' : 'minus' }}"
+                                        class="w-4 h-4 ml-0.5"></i>
+                                </div>
                             </div>
                         </div>
-                        <div class="text-3xl font-medium leading-8 mt-6">{{ $lahan }}</div>
+                        <div class="text-3xl font-medium leading-8 mt-6">{{ $lahan['data'] }}</div>
                         <div class="text-base text-gray-600 mt-1">Lahan</div>
                     </div>
                 </div>
-            </div>
+            </a>
             <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
                 <div class="report-box zoom-in">
                     <div class="box p-5">
                         <div class="flex">
                             <i data-feather="monitor" class="report-box__icon text-theme-15"></i>
                             <div class="ml-auto">
-                                <div class="report-box__indicator bg-theme-20 tooltip cursor-pointer"
-                                    title="12% Higher than last month"> 12% <i data-feather="chevron-up"
-                                        class="w-4 h-4 ml-0.5"></i> </div>
+                                <div class="report-box__indicator tooltip cursor-pointer {{ $progres['rate'] != 0 ? 'bg-theme-20' : 'bg-theme-16' }}"
+                                    title="{{ $progres['rate'] != 0 ? 'Registered progress increase by '. $progres['rate'].' progres' : 'Progress are not increasing' }}">
+                                    {{ $progres['rate'] }} <i
+                                        data-feather="{{ $progres['rate'] != 0 ? 'plus' : 'minus' }}"
+                                        class="w-4 h-4 ml-0.5"></i>
+                                </div>
                             </div>
                         </div>
-                        <div class="text-3xl font-medium leading-8 mt-6">{{ $progres }}</div>
+                        <div class="text-3xl font-medium leading-8 mt-6">{{ $progres['data'] }}</div>
                         <div class="text-base text-gray-600 mt-1">My Progress</div>
                     </div>
                 </div>
@@ -77,13 +82,15 @@
                     <div class="box p-5">
                         <div class="flex">
                             <i data-feather="user" class="report-box__icon text-theme-20"></i>
-                            {{-- <div class="ml-auto">
-                                <div class="report-box__indicator bg-theme-20 tooltip cursor-pointer"
-                                    title="22% Higher than last month"> 22% <i data-feather="chevron-up"
-                                        class="w-4 h-4 ml-0.5"></i> </div>
-                            </div> --}}
+                            <div class="ml-auto">
+                                <div class="report-box__indicator tooltip cursor-pointer {{ $user['rate'] != 0 ? 'bg-theme-20' : 'bg-theme-16' }}"
+                                    title="{{ $user['rate'] != 0 ? 'Registered users increase by '. $user['rate'].' user' : 'Users are not increasing' }}">
+                                    {{ $user['rate'] }} <i data-feather="{{ $user['rate'] != 0 ? 'plus' : 'minus' }}"
+                                        class="w-4 h-4 ml-0.5"></i>
+                                </div>
+                            </div>
                         </div>
-                        <div class="text-3xl font-medium leading-8 mt-6">{{ $user }}</div>
+                        <div class="text-3xl font-medium leading-8 mt-6">{{ $user['data'] }}</div>
                         <div class="text-base text-gray-600 mt-1">User</div>
                     </div>
                 </div>

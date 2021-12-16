@@ -3870,6 +3870,10 @@ video {
 	--tw-bg-opacity: 1;
 	background-color: rgba(139, 92, 246, var(--tw-bg-opacity));
 }
+.bg-theme-16{
+	--tw-bg-opacity: 1;
+	background-color: rgba(244, 63, 94, var(--tw-bg-opacity));
+}
 .fill-current{
 	fill: currentColor;
 }

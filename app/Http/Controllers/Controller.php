@@ -16,11 +16,20 @@ class Controller extends BaseController
 
     public function dashboard()
     {
-        $user = User::where('area_id', auth()->user()->area_id)->get()->count();
+        $user = [
+            'data' => User::where('area_id', auth()->user()->area_id)->get()->count(),
+            'rate' => User::where('area_id', auth()->user()->area_id)->whereDate('created_at', today())->get()->count()
+        ];
 
-        $progres = Progres::where('progres_by', auth()->user()->id)->get()->count();
+        $progres = [
+            'data' => Progres::where('progres_by', auth()->user()->id)->get()->count(),
+            'rate' => Progres::where('progres_by', auth()->user()->id)->whereDate('created_at', today())->get()->count()
+        ];
 
-        $lahan = Lahan::where('area_id', auth()->user()->area_id)->get()->count();
+        $lahan = [
+            'data' => Lahan::where('area_id', auth()->user()->area_id)->get()->count(),
+            'rate' => Lahan::where('area_id', auth()->user()->area_id)->whereDate('created_at', today())->get()->count(),
+        ];
 
         return view('dashboard', [
             'user' => $user,

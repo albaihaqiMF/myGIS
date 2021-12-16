@@ -20,60 +20,20 @@
                     <div class="side-menu__sub-icon "> <i data-feather="chevron-down"></i> </div>
                 </div>
             </a>
-            <ul class="">
+            <ul>
                 <li>
                     <a href="{{ route('map.list') }}" class="side-menu">
-                        <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
+                        <div class="side-menu__icon"> <i data-feather="list"></i> </div>
                         <div class="side-menu__title"> List Data </div>
                     </a>
                 </li>
-                <li>
-                    <a href="simple-menu-light-dashboard-overview-1.html" class="side-menu">
-                        <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
-                        <div class="side-menu__title"> Simple Menu </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="top-menu-light-dashboard-overview-1.html" class="side-menu">
-                        <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
-                        <div class="side-menu__title"> Top Menu </div>
-                    </a>
-                </li>
             </ul>
         </li>
         <li>
-            <a href="javascript:;" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="box"></i> </div>
-                <div class="side-menu__title">
-                    Menu Layout
-                    <div class="side-menu__sub-icon "> <i data-feather="chevron-down"></i> </div>
-                </div>
-            </a>
-            <ul class="">
-                <li>
-                    <a href="index.html" class="side-menu">
-                        <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
-                        <div class="side-menu__title"> Side Menu </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="simple-menu-light-dashboard-overview-1.html" class="side-menu">
-                        <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
-                        <div class="side-menu__title"> Simple Menu </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="top-menu-light-dashboard-overview-1.html" class="side-menu">
-                        <div class="side-menu__icon"> <i data-feather="activity"></i> </div>
-                        <div class="side-menu__title"> Top Menu </div>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a href="side-menu-light-inbox.html" class="side-menu">
-                <div class="side-menu__icon"> <i data-feather="inbox"></i> </div>
-                <div class="side-menu__title"> Inbox </div>
+            <a href="{{ route('user.list') }}"
+                class="side-menu{{ request()->is('user.*') ? ' side-menu--active' : '' }}">
+                <div class="side-menu__icon"> <i data-feather="users"></i> </div>
+                <div class="side-menu__title"> Users </div>
             </a>
         </li>
     </ul>

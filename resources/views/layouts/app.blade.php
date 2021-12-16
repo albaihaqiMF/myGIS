@@ -175,7 +175,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 @if (auth()->user()->role_id == 1)
                                 <a href="{{ route('user.create') }}"
                                     class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-gray-200 dark:hover:bg-dark-3 rounded-md">
-                                    <i data-feather="edit" class="w-4 h-4 mr-2"></i> Add User </a>
+                                    <i data-feather="user-plus" class="w-4 h-4 mr-2"></i> Add User </a>
                                 @endif
                                 <a href=""
                                     class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-gray-200 dark:hover:bg-dark-3 rounded-md">

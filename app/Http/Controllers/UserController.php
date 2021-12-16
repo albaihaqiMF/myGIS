@@ -13,7 +13,7 @@ class UserController extends Controller
     }
     public function index()
     {
-        $data = User::paginate(8);
+        $data = User::where('area_id',auth()->user()->area_id)->paginate(8);
         return view('admin.user.index', compact('data'));
     }
 

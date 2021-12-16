@@ -4,7 +4,7 @@
     </h2>
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-12 flex flex-wrap sm:flex-nowrap items-center mt-2">
-            <button class="btn btn-primary shadow-md mr-2">Add New User</button>
+            <button class="btn btn-primary shadow-md mr-2"><i data-feather="user-plus" class="w-5 h-5 mr-3"></i>Add User</button>
         </div>
         <!-- BEGIN: Users Layout -->
         @foreach ($data as $item)
