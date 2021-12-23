@@ -45,16 +45,20 @@
         "zoom-vanilla.js": "^2.0.6"
     },
     "devDependencies": {
-        "autoprefixer": "^10.3.1",
+        "@tailwindcss/aspect-ratio": "^0.4.0",
+        "@tailwindcss/forms": "^0.4.0",
+        "@tailwindcss/line-clamp": "^0.3.0",
+        "@tailwindcss/typography": "^0.5.0",
+        "autoprefixer": "^10.4.0",
         "axios": "^0.21.1",
         "browser-sync": "^2.27.5",
         "browser-sync-webpack-plugin": "^2.3.0",
         "laravel-mix": "^6.0.27",
         "lodash": "^4.17.19",
-        "postcss": "^8.3.6",
+        "postcss": "^8.4.5",
         "resolve-url-loader": "^4.0.0",
         "sass": "^1.37.5",
         "sass-loader": "^12.1.0",
-        "tailwindcss": "^2.2.7"
+        "tailwindcss": "^3.0.7"
     }
 }

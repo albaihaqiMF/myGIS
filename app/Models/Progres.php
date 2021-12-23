@@ -24,7 +24,7 @@ class Progres extends Model
             'id'            => $value->id,
             'pj'            => $value->userProgres->name,
             'catatan'       => $value->catatan ?? "Tidak Ada Catatan",
-            'created_at'    => date('D, d F Y', strtotime($value->created_at)) ." - ". $value->created_at->diffForHumans(),
+            'created_at'    => date('d F Y H:i', strtotime($value->created_at)),
             'updated_at'    => date('D, d F Y', strtotime($value->updated_at)),
         ];
 
