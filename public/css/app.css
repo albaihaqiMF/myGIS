@@ -13108,6 +13108,122 @@ html body {
   border-color: rgb(211 41 41 / var(--tw-border-opacity));
 }
 
+.file\:rounded-full::-webkit-file-upload-button{
+  border-radius: 9999px;
+}
+
+.file\:rounded-full::file-selector-button{
+  border-radius: 9999px;
+}
+
+.file\:border-none::-webkit-file-upload-button{
+  border-style: none;
+}
+
+.file\:border-none::file-selector-button{
+  border-style: none;
+}
+
+.file\:bg-indigo-500::-webkit-file-upload-button{
+  --tw-bg-opacity: 1;
+  background-color: rgb(99 102 241 / var(--tw-bg-opacity));
+}
+
+.file\:bg-indigo-500::file-selector-button{
+  --tw-bg-opacity: 1;
+  background-color: rgb(99 102 241 / var(--tw-bg-opacity));
+}
+
+.file\:bg-indigo-300::-webkit-file-upload-button{
+  --tw-bg-opacity: 1;
+  background-color: rgb(165 180 252 / var(--tw-bg-opacity));
+}
+
+.file\:bg-indigo-300::file-selector-button{
+  --tw-bg-opacity: 1;
+  background-color: rgb(165 180 252 / var(--tw-bg-opacity));
+}
+
+.file\:bg-indigo-50::-webkit-file-upload-button{
+  --tw-bg-opacity: 1;
+  background-color: rgb(238 242 255 / var(--tw-bg-opacity));
+}
+
+.file\:bg-indigo-50::file-selector-button{
+  --tw-bg-opacity: 1;
+  background-color: rgb(238 242 255 / var(--tw-bg-opacity));
+}
+
+.file\:px-3::-webkit-file-upload-button{
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.file\:px-3::file-selector-button{
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.file\:py-1::-webkit-file-upload-button{
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.file\:py-1::file-selector-button{
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.file\:text-white::-webkit-file-upload-button{
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.file\:text-white::file-selector-button{
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.file\:text-indigo-800::-webkit-file-upload-button{
+  --tw-text-opacity: 1;
+  color: rgb(55 48 163 / var(--tw-text-opacity));
+}
+
+.file\:text-indigo-800::file-selector-button{
+  --tw-text-opacity: 1;
+  color: rgb(55 48 163 / var(--tw-text-opacity));
+}
+
+.file\:shadow-md::-webkit-file-upload-button{
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.file\:shadow-md::file-selector-button{
+  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.file\:shadow-indigo-500::-webkit-file-upload-button{
+  --tw-shadow-color: #6366f1;
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
+.file\:shadow-indigo-500::file-selector-button{
+  --tw-shadow-color: #6366f1;
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
+.file\:duration-300::-webkit-file-upload-button{
+  transition-duration: 300ms;
+}
+
+.file\:duration-300::file-selector-button{
+  transition-duration: 300ms;
+}
+
 .hover\:border-gray-300:hover{
   --tw-border-opacity: 1;
   border-color: rgb(226 232 240 / var(--tw-border-opacity));
@@ -13151,6 +13267,36 @@ html body {
 .hover\:text-gray-500:hover{
   --tw-text-opacity: 1;
   color: rgb(160 174 192 / var(--tw-text-opacity));
+}
+
+.file\:hover\:bg-indigo-300:hover::-webkit-file-upload-button{
+  --tw-bg-opacity: 1;
+  background-color: rgb(165 180 252 / var(--tw-bg-opacity));
+}
+
+.file\:hover\:bg-indigo-300:hover::file-selector-button{
+  --tw-bg-opacity: 1;
+  background-color: rgb(165 180 252 / var(--tw-bg-opacity));
+}
+
+.file\:hover\:bg-indigo-100:hover::-webkit-file-upload-button{
+  --tw-bg-opacity: 1;
+  background-color: rgb(224 231 255 / var(--tw-bg-opacity));
+}
+
+.file\:hover\:bg-indigo-100:hover::file-selector-button{
+  --tw-bg-opacity: 1;
+  background-color: rgb(224 231 255 / var(--tw-bg-opacity));
+}
+
+.file\:hover\:text-indigo-800:hover::-webkit-file-upload-button{
+  --tw-text-opacity: 1;
+  color: rgb(55 48 163 / var(--tw-text-opacity));
+}
+
+.file\:hover\:text-indigo-800:hover::file-selector-button{
+  --tw-text-opacity: 1;
+  color: rgb(55 48 163 / var(--tw-text-opacity));
 }
 
 .focus\:border-gray-900:focus{
