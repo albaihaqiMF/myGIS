@@ -20,6 +20,10 @@ module.exports = {
                     ...primaryColors.primary,
                     1: "#8b5cf6",
                 },
+                dark:{
+                    ...primaryColors.dark,
+                    8:"#312e81"
+                },
                 white: "white",
                 black: "black",
                 current: "current",
