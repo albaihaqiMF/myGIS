@@ -63,7 +63,7 @@
         @apply mx-5;
     }
     .fc-h-event {
-        @apply bg-theme-25 border-theme-25 rounded-md;
+        @apply bg-theme-1 border-theme-1 rounded-md;
     }
     .fc-event-title-container {
         @apply py-1 px-2 text-xs;
@@ -72,7 +72,7 @@
         @apply text-xs;
     }
     .fc-daygrid-event-dot {
-        @apply border-theme-25 mr-2;
+        @apply border-theme-1 mr-2;
     }
     .fc-daygrid-dot-event .fc-event-title {
         @apply font-medium;
@@ -129,8 +129,8 @@
     .fc-button-primary:not(:disabled):active,
     .fc-button-primary:not(:disabled).fc-button-active {
         color: #ffffff !important;
-        border-color: rgba(47, 90, 216, var(--tw-bg-opacity)) !important;
-        background-color: rgba(47, 90, 216, var(--tw-bg-opacity)) !important;
+        border-color: rgba(20, 46, 113, var(--tw-bg-opacity)) !important;
+        background-color: rgba(20, 46, 113, var(--tw-bg-opacity)) !important;
     }
     .fc-list-day-cushion {
         --tw-bg-opacity: 1;
@@ -148,7 +148,7 @@
         border-color: rgba(28, 63, 170, var(--tw-border-opacity)) !important;
     }
     .fc-v-event {
-        @apply border-theme-25 bg-theme-25 dark:shadow-none dark:border-dark-1 dark:bg-dark-1;
+        @apply border-theme-1 bg-theme-1 dark:shadow-none dark:border-dark-1 dark:bg-dark-1;
     }
     .fc-event-time {
         font-size: 0.75rem !important;
@@ -168,7 +168,7 @@
         }
         .fc-button-primary:not(:disabled):active,
         .fc-button-primary:not(:disabled).fc-button-active {
-            border-color: rgba(47, 90, 216, var(--tw-bg-opacity)) !important;
+            border-color: rgba(20, 46, 113, var(--tw-bg-opacity)) !important;
             background-color: rgba(
                 28,
                 63,

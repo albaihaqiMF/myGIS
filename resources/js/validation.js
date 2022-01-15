@@ -39,7 +39,7 @@ import Toastify from "toastify-js";
             classTo: "input-form",
             errorClass: "has-error",
             errorTextParent: "input-form",
-            errorTextClass: "text-primary-3 mt-2",
+            errorTextClass: "text-theme-24 mt-2",
         });
 
         pristine.addValidator(

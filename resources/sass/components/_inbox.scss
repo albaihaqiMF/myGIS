@@ -21,7 +21,7 @@
     .form-check-input {
         @apply border-gray-500;
         &:checked {
-            @apply border-primary-1;
+            @apply border-theme-1;
         }
     }
 }

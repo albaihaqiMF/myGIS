@@ -16,8 +16,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->char('id', 10)->primary();
             $table->string('name');
-            $table->unsignedInteger('role_id')->default(2);
-            $table->foreign('role_id')->references('id')->on('roles');
+            $table->foreignId('role_id')->constrained('roles');
             $table->char('area_id', 10);
             $table->string('username')->unique();
             $table->string('email')->unique();

@@ -1,13 +1,7 @@
 .breadcrumb {
-    @apply flex items-center text-theme-30 dark:text-white;
-    &.breadcrumb--light {
-        @apply h-full ml-10 pl-10 border-l text-gray-300 border-theme-3 dark:border-dark-3;
-        @include media-breakpoint-down(md) {
-            @apply ml-0 pl-0 border-l-0;
-        }
-        .breadcrumb--active {
-            @apply text-theme-12 dark:text-gray-600;
-        }
+    @apply h-full ml-10 pl-10 border-l border-theme-2 text-theme-4 dark:border-dark-3 dark:text-theme-33 flex items-center;
+    @include media-breakpoint-down(md) {
+        @apply ml-0 pl-0 border-l-0;
     }
     .breadcrumb__icon {
         width: 14px;
@@ -15,12 +9,6 @@
         @apply mx-1;
     }
     .breadcrumb--active {
-        @apply text-gray-800 cursor-text dark:text-gray-600;
-    }
-}
-.content--dashboard .breadcrumb {
-    @apply text-gray-300;
-    .breadcrumb--active {
-        @apply text-theme-12;
+        @apply text-theme-3 cursor-text dark:text-gray-600;
     }
 }

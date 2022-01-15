@@ -9,7 +9,7 @@ import Tabulator from "tabulator-tables";
     if (cash("#tabulator").length) {
         // Setup Tabulator
         let table = new Tabulator("#tabulator", {
-            ajaxURL: "/data/map-list",
+            ajaxURL: "https://dummy-data.left4code.com",
             ajaxFiltering: true,
             ajaxSorting: true,
             printAsHtml: true,
@@ -32,7 +32,7 @@ import Tabulator from "tabulator-tables";
 
                 // For HTML table
                 {
-                    title: "NAME",
+                    title: "PRODUCT NAME",
                     minWidth: 200,
                     responsive: 0,
                     field: "name",
@@ -45,15 +45,15 @@ import Tabulator from "tabulator-tables";
                                 cell.getData().name
                             }</div>
                             <div class="text-gray-600 text-xs whitespace-nowrap">${
-                                cell.getData().created_by
+                                cell.getData().category
                             }</div>
                         </div>`;
                     },
                 },
                 {
-                    title: "TAKSASI",
+                    title: "IMAGES",
                     minWidth: 200,
-                    field: "taksasi",
+                    field: "images",
                     hozAlign: "center",
                     vertAlign: "middle",
                     print: false,
@@ -61,43 +61,48 @@ import Tabulator from "tabulator-tables";
                     formatter(cell, formatterParams) {
                         return `<div class="flex lg:justify-center">
                             <div class="intro-x w-10 h-10 image-fit">
-                                <img data-action="zoom" alt="MyGIS Tailwind HTML Admin Template" class="rounded-full zoom-in" src="${
-                                    cell.getData().taksasi
+                                <img alt="Icewall Tailwind HTML Admin Template" class="rounded-full" src="/dist/images/${
+                                    cell.getData().images[0]
+                                }">
+                            </div>
+                            <div class="intro-x w-10 h-10 image-fit -ml-5">
+                                <img alt="Icewall Tailwind HTML Admin Template" class="rounded-full" src="/dist/images/${
+                                    cell.getData().images[1]
+                                }">
+                            </div>
+                            <div class="intro-x w-10 h-10 image-fit -ml-5">
+                                <img alt="Icewall Tailwind HTML Admin Template" class="rounded-full" src="/dist/images/${
+                                    cell.getData().images[2]
                                 }">
                             </div>
                         </div>`;
                     },
                 },
                 {
-                    title: "N D V I",
+                    title: "REMAINING STOCK",
                     minWidth: 200,
-                    field: "ndvi",
+                    field: "remaining_stock",
                     hozAlign: "center",
                     vertAlign: "middle",
                     print: false,
                     download: false,
-                    formatter(cell, formatterParams) {
-                        return `<div class="flex lg:justify-center">
-                            <div class="intro-x w-10 h-10 image-fit">
-                                <img data-action="zoom" alt="MyGIS Tailwind HTML Admin Template" class="rounded-full zoom-in" src="${
-                                    cell.getData().ndvi
-                                }">
-                            </div>
-                        </div>`;
-                    },
                 },
                 {
-                    title: "DATE",
+                    title: "STATUS",
                     minWidth: 200,
-                    field: "date",
+                    field: "status",
                     hozAlign: "center",
                     vertAlign: "middle",
                     print: false,
                     download: false,
                     formatter(cell, formatterParams) {
-                        return `<div class="flex items-center lg:justify-center text-theme-20"">
+                        return `<div class="flex items-center lg:justify-center ${
+                            cell.getData().status
+                                ? "text-theme-10"
+                                : "text-theme-24"
+                        }">
                             <i data-feather="check-square" class="w-4 h-4 mr-2"></i> ${
-                                cell.getData().date
+                                cell.getData().status ? "Active" : "Inactive"
                             }
                         </div>`;
                     },
@@ -112,56 +117,90 @@ import Tabulator from "tabulator-tables";
                     print: false,
                     download: false,
                     formatter(cell, formatterParams) {
-                        return `<div class="flex lg:justify-center items-center">
-                            <a class="edit flex items-center text-theme-20 mr-3" href="${
-                                cell.getData().url
-                            }">
-                                <i data-feather="eye" class="w-4 h-4 mr-1"></i> Lihat
+                        let a = cash(`<div class="flex lg:justify-center items-center">
+                            <a class="edit flex items-center mr-3" href="javascript:;">
+                                <i data-feather="check-square" class="w-4 h-4 mr-1"></i> Edit
                             </a>
-                        </div>`;
+                            <a class="delete flex items-center text-theme-24" href="javascript:;">
+                                <i data-feather="trash-2" class="w-4 h-4 mr-1"></i> Delete
+                            </a>
+                        </div>`);
+                        cash(a)
+                            .find(".edit")
+                            .on("click", function () {
+                                alert("EDIT");
+                            });
+
+                        cash(a)
+                            .find(".delete")
+                            .on("click", function () {
+                                alert("DELETE");
+                            });
+
+                        return a[0];
                     },
                 },
 
                 // For print format
                 {
-                    title: "NAME",
+                    title: "PRODUCT NAME",
                     field: "name",
                     visible: false,
                     print: true,
                     download: true,
                 },
                 {
-                    title: "CREATOR",
-                    field: "created_by",
+                    title: "CATEGORY",
+                    field: "category",
                     visible: false,
                     print: true,
                     download: true,
                 },
                 {
-                    title: "NDVI",
-                    field: "ndvi",
+                    title: "REMAINING STOCK",
+                    field: "remaining_stock",
+                    visible: false,
+                    print: true,
+                    download: true,
+                },
+                {
+                    title: "STATUS",
+                    field: "status",
                     visible: false,
                     print: true,
                     download: true,
                     formatterPrint(cell) {
-                        return cell.getValue();
+                        return cell.getValue() ? "Active" : "Inactive";
                     },
                 },
                 {
-                    title: "DATE",
-                    field: "date",
-                    visible: false,
-                    print: true,
-                    download: true,
-                },
-                {
-                    title: "TAKSASI",
-                    field: "taksasi",
+                    title: "IMAGE 1",
+                    field: "images",
                     visible: false,
                     print: true,
                     download: true,
                     formatterPrint(cell) {
-                        return cell.getValue();
+                        return cell.getValue()[0];
+                    },
+                },
+                {
+                    title: "IMAGE 2",
+                    field: "images",
+                    visible: false,
+                    print: true,
+                    download: true,
+                    formatterPrint(cell) {
+                        return cell.getValue()[1];
+                    },
+                },
+                {
+                    title: "IMAGE 3",
+                    field: "images",
+                    visible: false,
+                    print: true,
+                    download: true,
+                    formatterPrint(cell) {
+                        return cell.getValue()[2];
                     },
                 },
             ],

@@ -13,7 +13,7 @@
             @apply absolute inset-y-0 my-auto rounded-full dark:bg-dark-1;
         }
         &.dark-mode-switcher__toggle--active {
-            @apply bg-theme-5 border-theme-5 dark:bg-theme-26;
+            @apply bg-theme-1 border-theme-1 dark:bg-theme-26;
             &::before {
                 margin-left: 13px;
                 @apply bg-white;

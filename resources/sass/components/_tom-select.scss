@@ -49,10 +49,10 @@
         .option {
             padding: 9px 13px;
             .highlight {
-                @apply bg-theme-21 text-white;
+                @apply bg-theme-24 text-white;
             }
             &.active {
-                @apply bg-theme-25 text-white;
+                @apply bg-theme-17 text-white;
             }
             &:hover:not(.active) {
                 @apply bg-gray-300 text-gray-800;

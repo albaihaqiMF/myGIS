@@ -42,7 +42,7 @@ import chart, { helpers } from "chart.js";
                             1200,
                         ],
                         borderWidth: 2,
-                        borderColor: "#2F5AD8",
+                        borderColor: "#203f90",
                         backgroundColor: "transparent",
                         pointBorderColor: "transparent",
                     },
@@ -64,7 +64,7 @@ import chart, { helpers } from "chart.js";
                         ],
                         borderWidth: 2,
                         borderDash: [2, 2],
-                        borderColor: "#8d9eb1",
+                        borderColor: "#a0afbf",
                         backgroundColor: "transparent",
                         pointBorderColor: "transparent",
                     },
@@ -126,8 +126,8 @@ import chart, { helpers } from "chart.js";
                 datasets: [
                     {
                         data: [15, 10, 65],
-                        backgroundColor: ["#1BA8E6", "#DD4A4A", "#2F5AD8"],
-                        hoverBackgroundColor: ["#1BA8E6", "#DD4A4A", "#2F5AD8"],
+                        backgroundColor: ["#2BB6D0", "#E63b1f", "#203f90"],
+                        hoverBackgroundColor: ["#2BB6D0", "#E63b1f", "#203f90"],
                         borderWidth: 5,
                         borderColor: cash("html").hasClass("dark")
                             ? "#303953"
@@ -152,8 +152,8 @@ import chart, { helpers } from "chart.js";
                 datasets: [
                     {
                         data: [15, 10, 65],
-                        backgroundColor: ["#1BA8E6", "#DD4A4A", "#2F5AD8"],
-                        hoverBackgroundColor: ["#1BA8E6", "#DD4A4A", "#2F5AD8"],
+                        backgroundColor: ["#2BB6D0", "#E63b1f", "#203f90"],
+                        hoverBackgroundColor: ["#2BB6D0", "#E63b1f", "#203f90"],
                         borderWidth: 5,
                         borderColor: cash("html").hasClass("dark")
                             ? "#303953"
@@ -165,7 +165,7 @@ import chart, { helpers } from "chart.js";
                 legend: {
                     display: false,
                 },
-                cutoutPercentage: 81,
+                cutoutPercentage: 80,
             },
         });
     }
@@ -183,12 +183,12 @@ import chart, { helpers } from "chart.js";
         // Fake visitor bar color
         let reportBarChartColor = reportBarChartData.map((data) => {
             if (data >= 8 && data <= 14) {
-                return "#2F5AD8a6";
+                return "#1c3faaa6";
             } else if (data >= 15) {
-                return "#2F5AD8";
+                return "#1C3FAA";
             }
 
-            return "#2F5AD859";
+            return "#1c3faa59";
         });
 
         let ctx = cash("#report-bar-chart")[0].getContext("2d");
@@ -294,7 +294,7 @@ import chart, { helpers } from "chart.js";
                             250,
                             270,
                         ],
-                        backgroundColor: "#446BE2",
+                        backgroundColor: "#1c3faa",
                     },
                     {
                         label: "VueJs Template",
@@ -320,7 +320,7 @@ import chart, { helpers } from "chart.js";
                         ],
                         backgroundColor: cash("html").hasClass("dark")
                             ? "#303a53"
-                            : "#112E88",
+                            : "#ccd7e2",
                     },
                 ],
             },
@@ -333,7 +333,7 @@ import chart, { helpers } from "chart.js";
                         {
                             ticks: {
                                 fontSize: 11,
-                                fontColor: "#cbd5e0",
+                                fontColor: "#718096",
                             },
                             gridLines: {
                                 display: false,
@@ -346,8 +346,8 @@ import chart, { helpers } from "chart.js";
                                 display: false,
                             },
                             gridLines: {
-                                color: "#4665C3",
-                                zeroLineColor: "#4665C3",
+                                color: "#D8D8D8",
+                                zeroLineColor: "#D8D8D8",
                                 borderDash: [2, 2],
                                 zeroLineBorderDash: [2, 2],
                                 drawBorder: false,
@@ -368,8 +368,8 @@ import chart, { helpers } from "chart.js";
                 datasets: [
                     {
                         data: [15, 10, 65],
-                        backgroundColor: ["#1BA8E6", "#DD4A4A", "#2F5AD8"],
-                        hoverBackgroundColor: ["#1BA8E6", "#DD4A4A", "#2F5AD8"],
+                        backgroundColor: ["#2BB6D0", "#E63b1f", "#203f90"],
+                        hoverBackgroundColor: ["#2BB6D0", "#E63b1f", "#203f90"],
                         borderWidth: 2,
                         borderColor: cash("html").hasClass("dark")
                             ? "#303953"
@@ -395,8 +395,8 @@ import chart, { helpers } from "chart.js";
                 datasets: [
                     {
                         data: [15, 10, 65],
-                        backgroundColor: ["#1BA8E6", "#DD4A4A", "#2F5AD8"],
-                        hoverBackgroundColor: ["#1BA8E6", "#DD4A4A", "#2F5AD8"],
+                        backgroundColor: ["#2BB6D0", "#E63b1f", "#203f90"],
+                        hoverBackgroundColor: ["#2BB6D0", "#E63b1f", "#203f90"],
                         borderWidth: 2,
                         borderColor: cash("html").hasClass("dark")
                             ? "#303953"
@@ -422,12 +422,12 @@ import chart, { helpers } from "chart.js";
                 datasets: [
                     {
                         data: [15, 10, 65],
-                        backgroundColor: ["#1BA8E6", "#DD4A4A", "#2F5AD8"],
-                        hoverBackgroundColor: ["#1BA8E6", "#DD4A4A", "#2F5AD8"],
+                        backgroundColor: ["#2BB6D0", "#E63b1f", "#203f90"],
+                        hoverBackgroundColor: ["#2BB6D0", "#E63b1f", "#203f90"],
                         borderWidth: 5,
                         borderColor: cash("html").hasClass("dark")
                             ? "#303953"
-                            : "#16379B",
+                            : "#e3eaf2",
                     },
                 ],
             },
@@ -484,7 +484,7 @@ import chart, { helpers } from "chart.js";
                             borderColor:
                                 cash(this).data("line-color") !== undefined
                                     ? cash(this).data("line-color")
-                                    : "#2F5AD8",
+                                    : "#203f90",
                             backgroundColor: "transparent",
                             pointBorderColor: "transparent",
                         },
@@ -640,8 +640,8 @@ import chart, { helpers } from "chart.js";
                             900,
                             1200,
                         ],
-                        borderWidth: 2.5,
-                        borderColor: "#4D70D9",
+                        borderWidth: 2,
+                        borderColor: "#1c3faa",
                         backgroundColor: "transparent",
                         pointBorderColor: "transparent",
                     },
@@ -661,9 +661,9 @@ import chart, { helpers } from "chart.js";
                             1200,
                             1010,
                         ],
-                        borderWidth: 2.5,
+                        borderWidth: 2,
                         borderDash: [2, 2],
-                        borderColor: "#2D53C4",
+                        borderColor: "#98a8b9",
                         backgroundColor: "transparent",
                         pointBorderColor: "transparent",
                     },
@@ -735,8 +735,8 @@ import chart, { helpers } from "chart.js";
                             900,
                             1200,
                         ],
-                        borderWidth: 2.5,
-                        borderColor: "#4D70D9",
+                        borderWidth: 2,
+                        borderColor: "#1c3faa",
                         backgroundColor: "transparent",
                         pointBorderColor: "transparent",
                     },
@@ -756,9 +756,9 @@ import chart, { helpers } from "chart.js";
                             1200,
                             1010,
                         ],
-                        borderWidth: 2.5,
+                        borderWidth: 2,
                         borderDash: [2, 2],
-                        borderColor: "#2D53C4",
+                        borderColor: "#98a8b9",
                         backgroundColor: "transparent",
                         pointBorderColor: "transparent",
                     },
@@ -818,7 +818,7 @@ import chart, { helpers } from "chart.js";
                         maxBarThickness: 8,
                         minBarLength: 2,
                         data: [0, 200, 250, 200, 500, 450, 850, 1050],
-                        backgroundColor: "#2F5AD8",
+                        backgroundColor: "#203f90",
                     },
                     {
                         label: "VueJs Template",
@@ -890,7 +890,7 @@ import chart, { helpers } from "chart.js";
                         maxBarThickness: 8,
                         minBarLength: 2,
                         data: [0, 200, 250, 200, 500, 450, 850, 1050],
-                        backgroundColor: "#2F5AD8",
+                        backgroundColor: "#203f90",
                     },
                     {
                         label: "VueJs Template",
@@ -965,7 +965,7 @@ import chart, { helpers } from "chart.js";
                         barThickness: 6,
                         maxBarThickness: 8,
                         minBarLength: 2,
-                        backgroundColor: "#2F5AD8",
+                        backgroundColor: "#203f90",
                         data: helper.randomNumbers(-100, 100, 12),
                     },
                     {
@@ -1030,7 +1030,7 @@ import chart, { helpers } from "chart.js";
                         barThickness: 6,
                         maxBarThickness: 8,
                         minBarLength: 2,
-                        backgroundColor: "#2F5AD8",
+                        backgroundColor: "#203f90",
                         data: helper.randomNumbers(-100, 100, 16),
                     },
                     {
@@ -1122,7 +1122,7 @@ import chart, { helpers } from "chart.js";
                             1200,
                         ],
                         borderWidth: 2,
-                        borderColor: "#2F5AD8",
+                        borderColor: "#203f90",
                         backgroundColor: "transparent",
                         pointBorderColor: "transparent",
                     },
@@ -1195,8 +1195,8 @@ import chart, { helpers } from "chart.js";
                 datasets: [
                     {
                         data: [15, 10, 65],
-                        backgroundColor: ["#1BA8E6", "#DD4A4A", "#2F5AD8"],
-                        hoverBackgroundColor: ["#1BA8E6", "#DD4A4A", "#2F5AD8"],
+                        backgroundColor: ["#2BB6D0", "#E63b1f", "#203f90"],
+                        hoverBackgroundColor: ["#2BB6D0", "#E63b1f", "#203f90"],
                         borderWidth: 5,
                         borderColor: cash("html").hasClass("dark")
                             ? "#303953"
@@ -1219,8 +1219,8 @@ import chart, { helpers } from "chart.js";
                 datasets: [
                     {
                         data: [15, 10, 65],
-                        backgroundColor: ["#1BA8E6", "#DD4A4A", "#2F5AD8"],
-                        hoverBackgroundColor: ["#1BA8E6", "#DD4A4A", "#2F5AD8"],
+                        backgroundColor: ["#2BB6D0", "#E63b1f", "#203f90"],
+                        hoverBackgroundColor: ["#2BB6D0", "#E63b1f", "#203f90"],
                         borderWidth: 5,
                         borderColor: cash("html").hasClass("dark")
                             ? "#303953"

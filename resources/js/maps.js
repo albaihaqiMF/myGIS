@@ -7,7 +7,7 @@ import axios from "axios";
     if (cash(".report-maps").length) {
         function initMap(el) {
             var iconBase = {
-                url: "/images/map-marker.png",
+                url: "/dist/images/map-marker.png",
             };
             var lightStyle = [
                 {
@@ -626,7 +626,7 @@ import axios from "axios";
                                 width: 51,
                                 height: 50,
                                 textColor: "white",
-                                url: "/images/map-marker-region.png",
+                                url: "/dist/images/map-marker-region.png",
                                 anchor: [0, 0],
                             },
                         ],
