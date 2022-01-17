@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'auth.login');
+Route::get('/', function () {
+    return redirect(route('login'));
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('dashboard', [Controller::class, 'dashboard'])->name('dashboard');
