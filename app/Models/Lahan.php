@@ -72,6 +72,19 @@ class Lahan extends Model
          return $this->hasMany(Progres::class);
     }
 
+    public function getTaksasi()
+    {
+        $url = $this->gambar_taksasi;
+
+        return "./storage/" . $url;
+    }
+    public function getNdvi()
+    {
+        $url = $this->gambar_ndvi;
+
+        return "./storage/" . $url;
+    }
+
     public function getGeoJSON()
     {
         $data = $this->progress;

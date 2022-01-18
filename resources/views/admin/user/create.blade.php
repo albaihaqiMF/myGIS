@@ -44,7 +44,7 @@
                             class="form-control" placeholder="Username">
                     </div>
                     <div class="intro-y col-span-12 sm:col-span-6">
-                        <label for="role_id" class="w-full flex flex-col sm:flex-row from-label">Size @error('role_id')
+                        <label for="role_id" class="w-full flex flex-col sm:flex-row from-label">Role @error('role_id')
                             <span class="sm:ml-auto mt-1 sm:mt-0 text-xs text-theme-16">{{ $message }}</span>
                             @enderror</label>
                         <select id="role_id" name="role_id" class="form-select">

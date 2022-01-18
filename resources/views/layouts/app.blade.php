@@ -52,7 +52,7 @@ License: You must have a valid license purchased only from themeforest(the above
                     <a href="" class="breadcrumb--active">Dashboard</a>
                 </div>
                 <!-- END: Breadcrumb -->
-                @livewire('search')
+                {{-- @livewire('search') --}}
                 <!-- BEGIN: Notifications -->
                 <div class="intro-x dropdown mr-auto sm:mr-6">
                     <div class="dropdown-toggle notification notification--bullet cursor-pointer" role="button"

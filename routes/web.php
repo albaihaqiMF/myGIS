@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\LahanController;
 use App\Http\Controllers\UserController;
+use App\Http\Livewire\Map\MapList;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,7 +24,7 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
     Route::get('dashboard', [Controller::class, 'dashboard'])->name('dashboard');
     Route::group(['prefix' => 'map'], function () {
-        Route::get('/', [LahanController::class, 'index'])->name('map.list');
+        Route::get('/', MapList::class)->name('map.list');
         Route::get('/create', [LahanController::class, 'create'])->name('map.create');
         Route::post('/store', [LahanController::class, 'store'])->name('map.store');
         Route::get('/{lahan}', [LahanController::class, 'show'])->name('map.show');

@@ -3215,6 +3215,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   position: -webkit-sticky;
   position: sticky;
 }
+.inset-y-0{
+  top: 0px;
+  bottom: 0px;
+}
 .top-0{
   top: 0px;
 }
@@ -3358,6 +3362,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .-ml-2{
   margin-left: -0.5rem;
 }
+.-mt-2{
+  margin-top: -0.5rem;
+}
 .block{
   display: block;
 }
@@ -3432,6 +3439,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .h-24{
   height: 6rem;
+}
+.h-56{
+  height: 14rem;
 }
 .min-h-screen{
   min-height: 100vh;
@@ -3599,6 +3609,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
 }
+.overflow-auto{
+  overflow: auto;
+}
 .overflow-hidden{
   overflow: hidden;
 }
@@ -3727,6 +3740,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .fill-current{
   fill: current;
 }
+.object-cover{
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 .p-5{
   padding: 1.25rem;
 }
@@ -3832,6 +3849,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .pt-10{
   padding-top: 2.5rem;
 }
+.pr-10{
+  padding-right: 2.5rem;
+}
 .text-center{
   text-align: center;
 }
@@ -3905,7 +3925,7 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .text-theme-10{
   --tw-text-opacity: 1;
-  color: rgb(253 244 255 / var(--tw-text-opacity));
+  color: rgb(250 245 255 / var(--tw-text-opacity));
 }
 .text-theme-24{
   --tw-text-opacity: 1;
@@ -4009,6 +4029,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 .placeholder-theme-33::placeholder{
   --tw-placeholder-opacity: 1;
   color: rgb(240 171 252 / var(--tw-placeholder-opacity));
+}
+.placeholder-theme-23::-moz-placeholder{
+  --tw-placeholder-opacity: 1;
+  color: rgb(214 225 245 / var(--tw-placeholder-opacity));
+}
+.placeholder-theme-23:-ms-input-placeholder{
+  --tw-placeholder-opacity: 1;
+  color: rgb(214 225 245 / var(--tw-placeholder-opacity));
+}
+.placeholder-theme-23::placeholder{
+  --tw-placeholder-opacity: 1;
+  color: rgb(214 225 245 / var(--tw-placeholder-opacity));
 }
 .opacity-0{
   opacity: 0;
@@ -7147,7 +7179,7 @@ html body {
   align-items: center;
   border-bottom-width: 1px;
   --tw-border-opacity: 1;
-  border-color: rgb(250 245 255 / var(--tw-border-opacity));
+  border-color: rgb(253 244 255 / var(--tw-border-opacity));
 }
 
 .content--dashboard .top-bar{
@@ -7374,7 +7406,7 @@ html body {
 
 .content--light .search .search__input{
   --tw-bg-opacity: 1;
-  background-color: rgb(253 244 255 / var(--tw-bg-opacity));
+  background-color: rgb(250 245 255 / var(--tw-bg-opacity));
 }
 .content--light .search .search__icon{
   --tw-text-opacity: 1;
@@ -7550,7 +7582,7 @@ html body {
   height: 100%;
   width: 100%;
   --tw-bg-opacity: 1;
-  background-color: rgb(253 244 255 / var(--tw-bg-opacity));
+  background-color: rgb(250 245 255 / var(--tw-bg-opacity));
   opacity: 0;
 }
 .dark .report-box-3.report-box-3--content:before{
@@ -7621,7 +7653,7 @@ html body {
   display: none;
   height: 100%;
   --tw-bg-opacity: 1;
-  background-color: rgb(253 244 255 / var(--tw-bg-opacity));
+  background-color: rgb(250 245 255 / var(--tw-bg-opacity));
   opacity: 0;
 }
 .dark .report-box-4:before{
@@ -7675,7 +7707,7 @@ html body {
   min-width: 0px;
   flex: 1 1 0%;
   --tw-bg-opacity: 1;
-  background-color: rgb(253 244 255 / var(--tw-bg-opacity));
+  background-color: rgb(250 245 255 / var(--tw-bg-opacity));
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   padding-bottom: 2.5rem;
@@ -10846,9 +10878,9 @@ html body {
   margin-bottom: 1.5rem;
   border-bottom-width: 1px;
   --tw-border-opacity: 1;
-  border-color: rgb(250 245 255 / var(--tw-border-opacity));
+  border-color: rgb(253 244 255 / var(--tw-border-opacity));
   --tw-bg-opacity: 1;
-  background-color: rgb(253 244 255 / var(--tw-bg-opacity));
+  background-color: rgb(250 245 255 / var(--tw-bg-opacity));
 }
 
 .dark .mobile-menu{
@@ -10976,7 +11008,7 @@ html body {
 .mobile-menu .mobile-menu-box{
   border-top-width: 1px;
   --tw-border-opacity: 1;
-  border-color: rgb(250 245 255 / var(--tw-border-opacity));
+  border-color: rgb(253 244 255 / var(--tw-border-opacity));
 }
 .dark .mobile-menu .mobile-menu-box{
   --tw-border-opacity: 1;
@@ -11031,7 +11063,7 @@ html body {
   height: 1px;
   width: 100%;
   --tw-bg-opacity: 1;
-  background-color: rgb(250 245 255 / var(--tw-bg-opacity));
+  background-color: rgb(253 244 255 / var(--tw-bg-opacity));
 }
 .dark .mobile-menu .menu__devider{
   --tw-bg-opacity: 1;
@@ -13562,6 +13594,9 @@ html body {
     margin-left: 0px;
     margin-right: 0px;
   }
+  .md\:ml-0{
+    margin-left: 0px;
+  }
   .md\:hidden{
     display: none;
   }
@@ -13628,6 +13663,9 @@ html body {
   }
   .lg\:justify-center{
     justify-content: center;
+  }
+  .lg\:overflow-visible{
+    overflow: visible;
   }
   .lg\:px-8{
     padding-left: 2rem;
