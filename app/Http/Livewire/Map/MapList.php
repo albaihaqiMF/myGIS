@@ -11,7 +11,7 @@ class MapList extends Component
     public function render()
     {
         $data = Lahan::where('area_id', auth()->user()->area_id)
-            ->where('name', 'ilike', '%' . $this->search . '%')
+            ->where('name', 'like', '%' . $this->search . '%')
             ->paginate(10);
         return view('livewire.map.map-list', [
             'data' => $data,
