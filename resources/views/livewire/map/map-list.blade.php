@@ -30,33 +30,37 @@ MyGIS | List Data
             </thead>
             <tbody>
                 @foreach ($data as $item)
-                <tr class="intro-x">
-                    <td>
-                        <a href="" class="font-medium whitespace-nowrap">{{ $item->name }}</a>
-                        <div class="text-gray-600 text-xs whitespace-nowrap mt-0.5">Created by {{ $item->creator->name
-                            }}</div>
-                    </td>
-                    <td>
-                        <div class="w-20 flex justify-center">
-                            <img src="{{ $item->getTaksasi() }}" class="w-12 h-12 rounded-full zoom-in object-cover"
-                                alt="{{ $item->getTaksasi() }}">
-                        </div>
-                    </td>
-                    <td>
-                        <div class="w-20 flex justify-center">
-                            <img src="{{ $item->getNdvi() }}" class="w-12 h-12 rounded-full zoom-in object-cover"
-                                alt="{{ $item->getNdvi() }}">
-                        </div>
-                    </td>
-                    <td class="table-report__action w-56">
-                        <div class="flex justify-center items-center">
-                            <a class="flex items-center mr-3 text-theme-1" href="{{ route('map.show', [
-                                'lahan' => $item->id
-                            ]) }}"> <i data-feather="eye"
-                                    class="w-4 h-4 mr-1"></i> Detail </a>
-                        </div>
-                    </td>
-                </tr>
+                <a href="{{ route('map.show', [
+                    'lahan' => $item->id
+                ]) }}">
+                    <tr class="intro-x">
+                        <td>
+                            <a href="" class="font-medium whitespace-nowrap">{{ $item->name }}</a>
+                            <div class="text-gray-600 text-xs whitespace-nowrap mt-0.5">Created by {{ $item->creator->name
+                                }}</div>
+                        </td>
+                        <td>
+                            <div class="w-20 flex justify-center">
+                                <img src="{{ $item->getTaksasi() }}" class="w-12 h-12 rounded-full zoom-in object-cover"
+                                    alt="{{ $item->getTaksasi() }}">
+                            </div>
+                        </td>
+                        <td>
+                            <div class="w-20 flex justify-center">
+                                <img src="{{ $item->getNdvi() }}" class="w-12 h-12 rounded-full zoom-in object-cover"
+                                    alt="{{ $item->getNdvi() }}">
+                            </div>
+                        </td>
+                        <td class="table-report__action w-56">
+                            <div class="flex justify-center items-center">
+                                <a class="flex items-center mr-3 text-theme-1" href="{{ route('map.show', [
+                                    'lahan' => $item->id
+                                ]) }}"> <i data-feather="eye"
+                                        class="w-4 h-4 mr-1"></i> Detail </a>
+                            </div>
+                        </td>
+                    </tr>
+                </a>
                 @endforeach
             </tbody>
         </table>
