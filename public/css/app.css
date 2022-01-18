@@ -3440,6 +3440,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-24{
   height: 6rem;
 }
+.h-96{
+  height: 24rem;
+}
 .min-h-screen{
   min-height: 100vh;
 }
@@ -13646,6 +13649,9 @@ html body {
   }
   .lg\:h-12{
     height: 3rem;
+  }
+  .lg\:h-80vh{
+    height: 80vh;
   }
   .lg\:w-2\/4{
     width: 50%;

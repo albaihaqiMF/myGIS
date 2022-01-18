@@ -13,7 +13,7 @@
             </svg> </button>
     </div>
     @endif
-    <div class="h-80vh rounded relative z-0" id="map"></div>
+    <div class="h-96 lg:h-80vh rounded relative z-0" id="map"></div>
     <div class="mt-4 box p-4">
         <table class="table">
             <thead>
