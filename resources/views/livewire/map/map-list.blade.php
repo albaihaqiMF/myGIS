@@ -35,7 +35,9 @@ MyGIS | List Data
                 ]) }}">
                     <tr class="intro-x">
                         <td>
-                            <a href="" class="font-medium whitespace-nowrap">{{ $item->name }}</a>
+                            <a href="{{ route('map.show', [
+                                'lahan' => $item->id
+                            ]) }}" class="font-medium whitespace-nowrap">{{ $item->name }}</a>
                             <div class="text-gray-600 text-xs whitespace-nowrap mt-0.5">Created by {{ $item->creator->name
                                 }}</div>
                         </td>
