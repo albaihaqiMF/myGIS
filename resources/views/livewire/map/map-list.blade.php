@@ -18,7 +18,7 @@ MyGIS | List Data
             </div>
         </div>
     </div>
-    <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
+    <div class="intro-y col-span-12 overflow-x-scroll lg:overflow-visible">
         <table class="table table-report">
             <thead>
                 <tr>

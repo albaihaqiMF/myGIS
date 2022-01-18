@@ -3621,6 +3621,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .overflow-y-hidden{
   overflow-y: hidden;
 }
+.overflow-x-scroll{
+  overflow-x: scroll;
+}
 .truncate{
   overflow: hidden;
   text-overflow: ellipsis;
