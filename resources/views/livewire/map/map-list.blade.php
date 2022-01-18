@@ -53,7 +53,7 @@ MyGIS | List Data
                             <a class="flex items-center mr-3 text-theme-1" href="{{ route('map.show', [
                                 'lahan' => $item->id
                             ]) }}"> <i data-feather="eye"
-                                    class="w-4 h-4 mr-1"></i> Lihat </a>
+                                    class="w-4 h-4 mr-1"></i> Detail </a>
                         </div>
                     </td>
                 </tr>
