@@ -48,12 +48,13 @@
                     </h2>
                     <form action="{{ route('login') }}" method="POST">
                         @csrf
-                        <div class="intro-x mt-2 text-gray-500 xl:hidden text-center">A few more clicks to sign in
-                            to your account. Manage all your e-commerce accounts in one place</div>
+                        <div class="intro-x mt-2 text-gray-500 xl:hidden text-center">
+                            Please Sign In to access the site
+                        </div>
                         <div class="intro-x mt-8">
                             <input type="text" id="email" name="email" value="{{ old('email') }}"
                                 class="intro-x login__input form-control py-3 px-4 border-gray-300 block"
-                                placeholder="Email">
+                                placeholder="Email" autocomplete="off">
                             <input type="password" id="password" name="password"
                                 class="intro-x login__input form-control py-3 px-4 border-gray-300 block mt-4"
                                 placeholder="Password">

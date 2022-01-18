@@ -8,62 +8,32 @@
     </div>
     <ul class="mobile-menu-box py-5 hidden">
         <li>
-            <a href="javascript:;" class="menu menu--active">
+            <a href="{{ route('dashboard') }}" class="menu">
                 <div class="menu__icon"> <i data-feather="home"></i> </div>
-                <div class="menu__title"> Dashboard <i data-feather="chevron-down" class="menu__sub-icon"></i> </div>
+                <div class="menu__title"> Dashboard </div>
             </a>
-            <ul class="">
-                <li>
-                    <a href="index.html" class="menu menu--active">
-                        <div class="menu__icon"> <i data-feather="activity"></i> </div>
-                        <div class="menu__title"> Overview 1 </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="side-menu-light-dashboard-overview-2.html" class="menu">
-                        <div class="menu__icon"> <i data-feather="activity"></i> </div>
-                        <div class="menu__title"> Overview 2 </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="side-menu-light-dashboard-overview-3.html" class="menu">
-                        <div class="menu__icon"> <i data-feather="activity"></i> </div>
-                        <div class="menu__title"> Overview 3 </div>
-                    </a>
-                </li>
-            </ul>
         </li>
         <li>
             <a href="javascript:;" class="menu">
-                <div class="menu__icon"> <i data-feather="box"></i> </div>
-                <div class="menu__title"> Menu Layout <i data-feather="chevron-down" class="menu__sub-icon "></i> </div>
+                <div class="menu__icon"> <i data-feather="map"></i> </div>
+                <div class="menu__title"> Map <i data-feather="chevron-down" class="menu__sub-icon "></i> </div>
             </a>
             <ul class="">
                 <li>
-                    <a href="index.html" class="menu menu--active">
-                        <div class="menu__icon"> <i data-feather="activity"></i> </div>
-                        <div class="menu__title"> Side Menu </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="simple-menu-light-dashboard-overview-1.html" class="menu menu--active">
-                        <div class="menu__icon"> <i data-feather="activity"></i> </div>
-                        <div class="menu__title"> Simple Menu </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="top-menu-light-dashboard-overview-1.html" class="menu menu--active">
-                        <div class="menu__icon"> <i data-feather="activity"></i> </div>
-                        <div class="menu__title"> Top Menu </div>
+                    <a href="{{ route('map.list') }}" class="menu menu--active">
+                        <div class="menu__icon"> <i data-feather="list"></i> </div>
+                        <div class="menu__title"> Data List </div>
                     </a>
                 </li>
             </ul>
         </li>
+        @if (auth()->user()->role_id == 1)
         <li>
-            <a href="side-menu-light-inbox.html" class="menu">
-                <div class="menu__icon"> <i data-feather="inbox"></i> </div>
-                <div class="menu__title"> Inbox </div>
+            <a href="{{ route('user.list') }}" class="menu">
+                <div class="menu__icon"> <i data-feather="users"></i> </div>
+                <div class="menu__title"> Users </div>
             </a>
         </li>
+        @endif
     </ul>
 </div>

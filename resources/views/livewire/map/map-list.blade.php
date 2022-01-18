@@ -19,7 +19,7 @@ MyGIS | List Data
         </div>
     </div>
     <div class="intro-y col-span-12 overflow-auto lg:overflow-visible">
-        <table class="table table-report -mt-2">
+        <table class="table table-report">
             <thead>
                 <tr>
                     <th class="whitespace-nowrap">NAMA</th>
@@ -37,13 +37,13 @@ MyGIS | List Data
                             }}</div>
                     </td>
                     <td>
-                        <div class="w-full flex justify-center">
+                        <div class="w-20 flex justify-center">
                             <img src="{{ $item->getTaksasi() }}" class="w-12 h-12 rounded-full zoom-in object-cover"
                                 alt="{{ $item->getTaksasi() }}">
                         </div>
                     </td>
                     <td>
-                        <div class="w-full flex justify-center">
+                        <div class="w-20 flex justify-center">
                             <img src="{{ $item->getNdvi() }}" class="w-12 h-12 rounded-full zoom-in object-cover"
                                 alt="{{ $item->getNdvi() }}">
                         </div>
