@@ -34,6 +34,13 @@ class ApiController extends Controller
     public function areaList()
     {
         $data = Area::all();
+        
+        $data = $data->map(function($value){
+            return [
+                'name' => $value->name,
+                'id' => (int)$value->id
+            ]; 
+        });
 
         return $this->responseOK('Data Collected Successfully', $data);
     }
