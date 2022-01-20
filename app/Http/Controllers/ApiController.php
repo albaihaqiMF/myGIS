@@ -37,8 +37,10 @@ class ApiController extends Controller
         
         $data = $data->map(function($value){
             return [
+                'id' => (int)$value->id,
                 'name' => $value->name,
-                'id' => (int)$value->id
+                'created_at' => $value->created_at,
+                'updated_at' => $value->updated_at,
             ]; 
         });
 
