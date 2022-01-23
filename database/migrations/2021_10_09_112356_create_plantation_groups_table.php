@@ -14,7 +14,10 @@ class CreatePlantationGroupsTable extends Migration
     public function up()
     {
         Schema::create('plantation_groups', function (Blueprint $table) {
-            $table->id();
+            $table->char('id', 4)->primary();
+            $table->string('name', 128);
+            $table->char('chief', 10);
+            $table->foreign('chief')->references('id')->on('users');
             $table->timestamps();
         });
     }

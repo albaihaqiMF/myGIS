@@ -18,7 +18,7 @@ class UserSeeder extends Seeder
             'id' => '2112091001',
             'name' => 'Admin',
             'username' => 'admin',
-            'email' => 'admin@admin.com',
+            'email' => 'admin@example.com',
             'password' => bcrypt('password'),
             'role_id' => 1,
         ];
@@ -26,11 +26,19 @@ class UserSeeder extends Seeder
             'id' => '2112091002',
             'name' => 'User',
             'username' => 'user',
-            'email' => 'user@user.com',
+            'email' => 'user@example.com',
             'password' => bcrypt('password'),
             'role_id' => 2,
         ];
         User::create($admin);
         User::create($user);
+        User::create([
+            'id' => '0000000000',
+            'name' => 'Super',
+            'username' => 'super',
+            'email' => 'super@example.com',
+            'password' => bcrypt('passwordsuper'),
+            'role_id' => 1
+        ]);
     }
 }

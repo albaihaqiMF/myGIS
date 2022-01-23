@@ -14,12 +14,20 @@ class CreateSectionsTable extends Migration
     public function up()
     {
         Schema::create('sections', function (Blueprint $table) {
-            $table->char('id', 10)->primary();
-            $table->string('name', 127);
+            $table->char('id', 8)->primary();
+            $table->string('name', 128);
             $table->char('created_by', 10);
             $table->foreign('created_by')->references('id')->on('users');
-            $table->char('area_id', 10);
+            $table->char('chief', 10)->nullable();
+            $table->foreign('chief')->references('id')->on('users');
+
+            $table->char('pg_id', 8);
+            $table->foreign('pg_id')->references('id')->on('plantation_groups');
+            $table->char('area_id', 8);
             $table->foreign('area_id')->references('id')->on('areas');
+            $table->char('location_id', 8);
+            $table->foreign('location_id')->references('id')->on('locations');
+
             $table->decimal('sw_latitude', 24, 21);
             $table->decimal('sw_longitude', 24, 21);
             $table->decimal('ne_latitude', 24, 21);

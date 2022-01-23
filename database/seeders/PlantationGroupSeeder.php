@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Area;
+use App\Models\PlantationGroup;
 use Illuminate\Database\Seeder;
 
-class AreaSeeder extends Seeder
+class PlantationGroupSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,10 +14,9 @@ class AreaSeeder extends Seeder
      */
     public function run()
     {
-        Area::create([
-            'id' => '00000001', // the 3 first digit is belongs to id of PlantationGroup
-            'pg_id' => '0000',
-            'name' => 'W-Test',
+        PlantationGroup::create([
+            'id' => '0000',
+            'name' => 'PG-Test',
             'chief' => '0000000000'
         ]);
     }

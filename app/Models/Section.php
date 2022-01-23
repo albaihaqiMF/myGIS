@@ -11,9 +11,11 @@ class Section extends Model
 
     protected $fillable = [
         'id',
-        'name',
-        'created_by',
+        'chief',
+        'pg_id',
         'area_id',
+        'location_id',
+        'name',
         'sw_latitude',
         'sw_longitude',
         'ne_latitude',

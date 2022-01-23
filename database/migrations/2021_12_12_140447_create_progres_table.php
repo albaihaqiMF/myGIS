@@ -17,7 +17,7 @@ class CreateProgresTable extends Migration
             $table->id();
             $table->string('catatan')->nullable();
             $table->char('progres_by', 10);
-            $table->char('section_id', 10);
+            $table->char('section_id', 4);
             $table->foreign('progres_by')->references('id')->on('users');
             $table->foreign('section_id')->references('id')->on('sections');
             $table->json('geometry');

@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\Section;
 use Illuminate\Database\Seeder;
 
-class LahanSeeder extends Seeder
+class SectionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,10 +15,13 @@ class LahanSeeder extends Seeder
     public function run()
     {
         $data = [
-            'id'                => '2112092001',
+            'id'                => '00020003',
+            'location_id'       => '00010002',
+            'area_id'           => '00000001', // the 3 first digit is belongs to id of PlantationGroup
+            'pg_id'             => '0000',
             'name'              => 'Jakarta',
-            'created_by'        => '2112091001',
-            'area_id'           => '2112093001',
+            'chief'             => '0000000000',
+            'created_by'             => '0000000000',
             'sw_latitude'       => -6.3914220000000,
             'sw_longitude'      => 106.7028170000000,
             'ne_latitude'       => -6.0926120000000,

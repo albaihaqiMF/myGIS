@@ -9,7 +9,9 @@ class Area extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name'];
+    protected $fillable = [
+        'id', 'name', 'chief','pg_id',
+    ];
 
 
     public function getLahans()
