@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Lahan;
+use App\Models\Section;
 use App\Models\Progres;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -11,17 +11,17 @@ class LahanController extends Controller
 {
     public function index()
     {
-        $data = Lahan::all();
+        $data = Section::all();
 
         return view('map.index', compact('data'));
     }
-    public function show(Lahan $lahan)
+    public function show(Section $section)
     {
-        if ($lahan->area_id !== auth()->user()->area_id) {
+        if ($section->area_id !== auth()->user()->area_id) {
             return redirect(route('map.list'))->with('error', 'You don\'t have permission');
         }
-        $data = $lahan;
-        $progres = $lahan->progress;
+        $data = $section;
+        $progres = $section->progress;
         return view('map.show', [
             'data' => $data,
             'geojson' => $progres->map(function ($value) {
@@ -45,7 +45,7 @@ class LahanController extends Controller
             'ne_longitude' => 'required',
         ]);
 
-        $countData = Lahan::whereDate('created_at', date('Y-m-d'))->get()->count();
+        $countData = Section::whereDate('created_at', date('Y-m-d'))->get()->count();
         $id = $this->todayString() . "2" . $this->intTo3Digits($countData + 1);
 
         $attr['id'] = $id;
@@ -54,19 +54,19 @@ class LahanController extends Controller
         $attr['gambar_taksasi'] = $this->storeImage($request->file('gambar_taksasi'), 'taksasi');
         $attr['gambar_ndvi'] = $this->storeImage($request->file('gambar_ndvi'), 'ndvi');
 
-        Lahan::create($attr);
+        Section::create($attr);
 
         return redirect(
             route('map.list')
         )->with('success', 'Created Map Data Successfully');
     }
-    public function edit(Lahan $lahan)
+    public function edit(Section $section)
     {
         return view('map.edit', [
-            'data' => $lahan
+            'data' => $section
         ]);
     }
-    public function update(Lahan $lahan, Request $request)
+    public function update(Section $section, Request $request)
     {
         $attr = $this->validate($request, [
             'name' => 'required',
@@ -77,39 +77,39 @@ class LahanController extends Controller
         ]);
         //Replace old pict for taksasi
         if ($request->file('gambar_taksasi')) {
-            Storage::delete($lahan->gambar_taksasi);
+            Storage::delete($section->gambar_taksasi);
             $attr['gambar_taksasi'] = $this->storeImage($request->file('gambar_taksasi'), 'taksasi');
         } else {
-            $attr['gambar_taksasi'] = $lahan->gambar_taksasi;
+            $attr['gambar_taksasi'] = $section->gambar_taksasi;
         }
         //Replace old pict for taksasi
         if ($request->file('gambar_ndvi')) {
-            Storage::delete($lahan->gambar_ndvi);
+            Storage::delete($section->gambar_ndvi);
             $attr['gambar_ndvi'] = $request->file('gambar_ndvi') ?
                 $this->storeImage($request->file('gambar_ndvi'), 'ndvi')
                 : null;
         } else {
-            $attr['gambar_ndvi'] = $lahan->gambar_taksasi;
+            $attr['gambar_ndvi'] = $section->gambar_taksasi;
         }
 
-        $lahan->update($attr);
+        $section->update($attr);
 
-        return redirect(route('map.show', ['lahan' => $lahan->id]))->with('success', 'Berhasil memperbarui data');
+        return redirect(route('map.show', ['section' => $section->id]))->with('success', 'Berhasil memperbarui data');
     }
 
-    public function delete(Lahan $lahan)
+    public function delete(Section $section)
     {
-        $lahan->update([
+        $section->update([
             'deleted_at' => now()
         ]);
 
-        return redirect(route('map.list'))->with('success', 'Berhasil Menghapus data ' . $lahan->name);
+        return redirect(route('map.list'))->with('success', 'Berhasil Menghapus data ' . $section->name);
     }
 
-    public function progres(Lahan $lahan)
+    public function progres(Section $section)
     {
-        $data = $lahan;
-        $progres = $lahan->progress;
+        $data = $section;
+        $progres = $section->progress;
         return view('map.progres', [
             'data' => $data,
             'geojson' => $progres->map(function ($value) {
@@ -125,14 +125,14 @@ class LahanController extends Controller
         return back();
     }
 
-    public function progresUpload(Request $request, Lahan $lahan)
+    public function progresUpload(Request $request, Section $section)
     {
         $this->validate($request, [
             'data' => 'required'
         ]);
         Progres::create([
             'progres_by' => auth()->user()->id,
-            'lahan_id' => $lahan->id,
+            'section_id' => $section->id,
             'geometry' => $request->data,
             'catatan' => $request->catatan
         ]);
@@ -140,7 +140,7 @@ class LahanController extends Controller
         return redirect(route(
             'map.show',
             [
-                'lahan' => $lahan->id
+                'section' => $section->id
             ]
         ))
             ->with('success', 'Berhasil membuat progres baru');
@@ -150,7 +150,7 @@ class LahanController extends Controller
     // DATA URL FOR //
     public function list()
     {
-        $data = Lahan::where('deleted_at', null)->where('area_id', auth()->user()->area_id)->get();
+        $data = Section::where('deleted_at', null)->where('area_id', auth()->user()->area_id)->get();
 
         $mapData = $data->map(function ($map) {
             return [
@@ -167,7 +167,7 @@ class LahanController extends Controller
 
                 'date' => date('d-m-y H:i:s', strtotime($map->updated_at)),
                 'url' => route('map.show', [
-                    'lahan' => $map->id,
+                    'section' => $map->id,
                 ]),
 
             ];
@@ -180,9 +180,9 @@ class LahanController extends Controller
         return $format;
     }
 
-    public function geojson(Lahan $lahan)
+    public function geojson(Section $section)
     {
-        $data = $lahan->progress;
+        $data = $section->progress;
         $data = $data->map(function ($value) {
             return Progres::mapData($value);
         });

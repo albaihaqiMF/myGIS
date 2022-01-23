@@ -17,7 +17,6 @@ class CreateUsersTable extends Migration
             $table->char('id', 10)->primary();
             $table->string('name');
             $table->foreignId('role_id')->constrained('roles');
-            $table->char('area_id', 10);
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

@@ -11,7 +11,7 @@ class Progres extends Model
 
     protected $fillable = [
         'geometry',
-        'lahan_id',
+        'section_id',
         'progres_by',
         'catatan'
     ];

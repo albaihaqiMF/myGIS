@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Lahan;
+use App\Models\Section;
 use App\Models\Progres;
 use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -17,24 +17,24 @@ class Controller extends BaseController
     public function dashboard()
     {
         $user = [
-            'data' => User::where('area_id', auth()->user()->area_id)->get()->count(),
-            'rate' => User::where('area_id', auth()->user()->area_id)->whereDate('created_at', today())->get()->count()
+            'data' => User::get()->count(),
+            'rate' => User::whereDate('created_at', today())->get()->count()
         ];
 
         $progres = [
-            'data' => Progres::where('progres_by', auth()->user()->id)->get()->count(),
-            'rate' => Progres::where('progres_by', auth()->user()->id)->whereDate('created_at', today())->get()->count()
+            'data' => Progres::get()->count(),
+            'rate' => Progres::whereDate('created_at', today())->get()->count()
         ];
 
-        $lahan = [
-            'data' => Lahan::where('area_id', auth()->user()->area_id)->get()->count(),
-            'rate' => Lahan::where('area_id', auth()->user()->area_id)->whereDate('created_at', today())->get()->count(),
+        $section = [
+            'data' => Section::get()->count(),
+            'rate' => Section::whereDate('created_at', today())->get()->count(),
         ];
 
         return view('dashboard', [
             'user' => $user,
             'progres' => $progres,
-            'lahan' => $lahan,
+            'section' => $section,
         ]);
     }
 

@@ -1,10 +1,10 @@
 <!-- BEGIN: Side Menu -->
 <nav class="side-nav">
-    <a href="" class="intro-x flex items-center pl-5 pt-4 mt-3">
+    <a href="" class="flex items-center pt-4 pl-5 mt-3 intro-x">
         <img alt="MyGIS Tailwind HTML Admin Template" class="w-6" src="/images/logo.svg">
-        <span class="hidden xl:block text-white text-lg ml-3"> {{ auth()->user()->area->name }} </span>
+        <span class="hidden ml-3 text-lg text-white xl:block"> {{ __('GGF') }} </span>
     </a>
-    <div class="side-nav__devider my-6"></div>
+    <div class="my-6 side-nav__devider"></div>
     <ul>
         <li>
             <a href="{{ route('dashboard') }}"

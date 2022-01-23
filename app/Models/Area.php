@@ -14,6 +14,6 @@ class Area extends Model
 
     public function getLahans()
     {
-        return $this->hasMany(Lahan::class, 'area_id', 'id');
+        return $this->hasMany(Section::class, 'area_id', 'id');
     }
 }

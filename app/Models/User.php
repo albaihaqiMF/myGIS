@@ -23,7 +23,8 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
-        'area_id'
+        'area_id',
+        'role_id'
     ];
 
     /**
@@ -50,9 +51,9 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class, 'role_id', 'id');
     }
 
-    public function lahan()
+    public function section()
     {
-        return $this->hasMany(Lahan::class, 'created_by', 'id');
+        return $this->hasMany(Section::class, 'created_by', 'id');
     }
 
     public function area()

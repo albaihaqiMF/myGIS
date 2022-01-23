@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLahansTable extends Migration
+class CreateSectionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateLahansTable extends Migration
      */
     public function up()
     {
-        Schema::create('lahans', function (Blueprint $table) {
+        Schema::create('sections', function (Blueprint $table) {
             $table->char('id', 10)->primary();
             $table->string('name', 127);
             $table->char('created_by', 10);
@@ -38,6 +38,6 @@ class CreateLahansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lahans');
+        Schema::dropIfExists('sections');
     }
 }

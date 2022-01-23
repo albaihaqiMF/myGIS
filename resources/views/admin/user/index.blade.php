@@ -35,8 +35,8 @@
                 <div class="flex flex-wrap lg:flex-nowrap items-center justify-center p-5">
                     <div class="w-full lg:w-1/2 mb-4 lg:mb-0 mr-auto">
                         <div class="flex text-gray-600 text-xs">
-                            <div class="mr-auto">Lahan</div>
-                            <div>{{ count($item->lahan) }}</div>
+                            <div class="mr-auto">section</div>
+                            <div>{{ count($item->section) }}</div>
                         </div>
                     </div>
                     <button class="btn btn-primary py-1 px-2 mr-2">Message</button>

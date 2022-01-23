@@ -2,7 +2,7 @@
     <div class="grid grid-col-12 gap-4 py-4">
         <div class="col-span-full md:col-span-8">
             <form action="{{ route('map.update', [
-                'lahan' => $data->id,
+                'section' => $data->id,
             ]) }}" enctype="multipart/form-data" method="POST" class="box px-4 py-6">
                 @csrf
                 @method('PUT')

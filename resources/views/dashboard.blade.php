@@ -45,15 +45,15 @@
                         <div class="flex">
                             <i data-feather="map" class="report-box__icon text-theme-29"></i>
                             <div class="ml-auto">
-                                <div class="report-box__indicator tooltip cursor-pointer {{ $lahan['rate'] != 0 ? 'bg-theme-20' : 'bg-theme-16' }}"
-                                    title="{{ $lahan['rate'] != 0 ? 'Registered fields increase by '. $lahan['rate'].' field' : 'Fields are not increasing' }}">
-                                    {{ $lahan['rate'] }} <i data-feather="{{ $lahan['rate'] != 0 ? 'plus' : 'minus' }}"
+                                <div class="report-box__indicator tooltip cursor-pointer {{ $section['rate'] != 0 ? 'bg-theme-20' : 'bg-theme-16' }}"
+                                    title="{{ $section['rate'] != 0 ? 'Registered fields increase by '. $section['rate'].' field' : 'Fields are not increasing' }}">
+                                    {{ $section['rate'] }} <i data-feather="{{ $section['rate'] != 0 ? 'plus' : 'minus' }}"
                                         class="w-4 h-4 ml-0.5"></i>
                                 </div>
                             </div>
                         </div>
-                        <div class="text-3xl font-medium leading-8 mt-6">{{ $lahan['data'] }}</div>
-                        <div class="text-base text-gray-600 mt-1">Lahan</div>
+                        <div class="text-3xl font-medium leading-8 mt-6">{{ $section['data'] }}</div>
+                        <div class="text-base text-gray-600 mt-1">Section</div>
                     </div>
                 </div>
             </a>

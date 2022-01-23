@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Lahan;
+use App\Models\Section;
 use Illuminate\Database\Seeder;
 
 class LahanSeeder extends Seeder
@@ -18,7 +18,7 @@ class LahanSeeder extends Seeder
             'id'                => '2112092001',
             'name'              => 'Jakarta',
             'created_by'        => '2112091001',
-            'area_id'        => '2112093001',
+            'area_id'           => '2112093001',
             'sw_latitude'       => -6.3914220000000,
             'sw_longitude'      => 106.7028170000000,
             'ne_latitude'       => -6.0926120000000,
@@ -27,6 +27,6 @@ class LahanSeeder extends Seeder
             'gambar_ndvi'       => "images/dummy/ndvi.png",
         ];
 
-        Lahan::create($data);
+        Section::create($data);
     }
 }

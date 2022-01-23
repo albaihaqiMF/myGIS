@@ -25,7 +25,7 @@
             <tbody>
                 <tr>
                     <td class="border-b dark:border-dark-5">Creator</td>
-                    <td class="border-b dark:border-dark-5">{{ $data->creator->name }}</td>
+                    <td class="border-b dark:border-dark-5">{{ $data->isMe() ? 'Saya' : $data->creator->name }}</td>
                 </tr>
                 <tr>
                     <td class="border-b dark:border-dark-5">Created At</td>
@@ -41,13 +41,13 @@
         </table>
         <div class="flex mt-6 gap-3">
             <a href="{{ route('map.edit', [
-                'lahan' => $data->id
+                'section' => $data->id
             ]) }}" class="btn btn-primary w-32"><i data-feather="edit-2" class="h-4 w-4 mr-3"></i>EDIT</a>
-            <a href="{{ route('map.progres', ['lahan'=> $data->id]) }}" class="btn w-32 bg-theme-20 text-white"><i
+            <a href="{{ route('map.progres', ['section'=> $data->id]) }}" class="btn w-32 bg-theme-20 text-white"><i
                     data-feather="clipboard" class="h-4 w-4 mr-3"></i>PROGRES</a>
 
             <!-- BEGIN: Modal Toggle -->
-            @if (auth()->user()->role_id == 1)
+            @if (auth()->user()->role_id == 1 || $data->isMe())
             <div class="text-center"> <a href="javascript:;" data-toggle="modal" data-target="#delete-modal-preview"
                     class="btn btn-danger"><i data-feather="trash-2" class="w-4 h-4 mr-3"></i>DELETE</a> </div>
             @endif
@@ -68,7 +68,7 @@
                                 <button type="button" data-dismiss="modal"
                                     class="btn btn-outline-secondary w-24 dark:border-dark-5 dark:text-gray-300 mr-1">Cancel</button>
                                 <form action="{{ route('map.delete', [
-                                            'lahan' => $data->id
+                                            'section' => $data->id
                                         ]) }}" method="POST">
                                     @csrf
                                     @method('DELETE')

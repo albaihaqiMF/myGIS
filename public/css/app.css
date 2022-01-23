@@ -3434,14 +3434,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-80vh{
   height: 80vh;
 }
-.h-96{
-  height: 24rem;
+.h-30vh{
+  height: 30vh;
 }
 .h-24{
   height: 6rem;
-}
-.h-30vh{
-  height: 30vh;
 }
 .min-h-screen{
   min-height: 100vh;
@@ -3739,6 +3736,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-green-500{
   --tw-bg-opacity: 1;
   background-color: rgb(34 197 94 / var(--tw-bg-opacity));
+}
+.bg-rose-500{
+  --tw-bg-opacity: 1;
+  background-color: rgb(244 63 94 / var(--tw-bg-opacity));
 }
 .fill-current{
   fill: current;
