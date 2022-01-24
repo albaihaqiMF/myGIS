@@ -14,21 +14,21 @@ class CreateMasterGroupsTable extends Migration
     public function up()
     {
         Schema::create('master_groups', function (Blueprint $table) {
-            $table->char('id', 16)->primary();
+            $table->char('id', 10)->primary();
             $table->string('name', 32);
             $table->char('chief', 10);
             $table->foreign('chief')->references('id')->on('users');
 
             //ID
-            $table->string('code');
+            $table->string('code')->nullable();
 
             $table->integer('pg');
-            $table->integer('area');
-            $table->integer('location');
-            $table->integer('section');
-            $table->integer('plot');
+            $table->integer('area')->default(0);
+            $table->integer('location')->default(0);
+            $table->integer('section')->default(0);
+            $table->integer('plot')->default(0);
             $table->enum('type', [
-                'PG', 'AREA', 'LOC', 'SECT', 'PLOT'
+                'PG', 'AREA', 'LOC', 'SEC', 'PLOT'
             ]);
             $table->timestamps();
         });

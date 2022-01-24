@@ -15,9 +15,7 @@ class PlantationGroupSeeder extends Seeder
     public function run()
     {
         PlantationGroup::create([
-            'id' => '0000',
-            'name' => 'PG-Test',
-            'chief' => '0000000000'
+            'master_id' => '2201010001',
         ]);
     }
 }

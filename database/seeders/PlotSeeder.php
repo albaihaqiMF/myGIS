@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Plot;
 use Illuminate\Database\Seeder;
 
 class PlotSeeder extends Seeder
@@ -13,6 +14,6 @@ class PlotSeeder extends Seeder
      */
     public function run()
     {
-        //
+        Plot::create(['master_id' => '2201010004',]);
     }
 }

@@ -15,9 +15,11 @@ class CreatePlantationGroupsTable extends Migration
     {
         Schema::create('plantation_groups', function (Blueprint $table) {
             $table->id();
-            $table->char('master_id', 16)->unique();
+            $table->char('master_id', 10)->unique();
             $table->foreign('master_id')->references('id')->on('master_groups')->cascadeOnDelete();
-            $table->longText('detail');
+            $table->longText('detail')->nullable();
+
+            $table->timestamps();
         });
     }
 

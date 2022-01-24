@@ -17,10 +17,13 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UserSeeder::class,
 
+            MasterGroupSeeder::class,
+
             PlantationGroupSeeder::class,
             AreaSeeder::class,
             LocationSeeder::class,
             SectionSeeder::class,
+            PlotSeeder::class,
         ]);
     }
 }

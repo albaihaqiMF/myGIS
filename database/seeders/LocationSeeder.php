@@ -15,11 +15,7 @@ class LocationSeeder extends Seeder
     public function run()
     {
         Location::create([
-            'id' => '00010002',
-            'area_id' => '00000001', // the 3 first digit is belongs to id of PlantationGroup
-            'pg_id' => '0000',
-            'name' => 'W-Test',
-            'chief' => '0000000000'
+            'master_id' => '2201010003',
         ]);
     }
 }

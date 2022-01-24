@@ -15,11 +15,9 @@ class CreateSectionsTable extends Migration
     {
         Schema::create('sections', function (Blueprint $table) {
             $table->id();
-            $table->char('created_by', 10);
-            $table->foreign('created_by')->references('id')->on('users');
-            $table->char('master_id', 16)->unique();
+            $table->char('master_id', 10)->unique();
             $table->foreign('master_id')->references('id')->on('master_groups')->cascadeOnDelete();
-            $table->longText('detail');
+            $table->longText('detail')->nullable();
 
             $table->decimal('sw_latitude', 24, 21);
             $table->decimal('sw_longitude', 24, 21);
