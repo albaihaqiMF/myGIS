@@ -14,14 +14,10 @@ class CreateAreasTable extends Migration
     public function up()
     {
         Schema::create('areas', function (Blueprint $table) {
-            $table->char('id',8)->primary();
-            $table->string('name', 128);
-            $table->char('chief', 10);
-            $table->foreign('chief')->references('id')->on('users');
-
-            $table->char('pg_id', 8);
-            $table->foreign('pg_id')->references('id')->on('plantation_groups');
-            $table->timestamps();
+            $table->id();
+            $table->char('master_id', 16)->unique();
+            $table->foreign('master_id')->references('id')->on('master_groups')->cascadeOnDelete();
+            $table->longText('detail');
         });
     }
 
