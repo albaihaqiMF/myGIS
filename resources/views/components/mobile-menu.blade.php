@@ -20,7 +20,7 @@
             </a>
             <ul class="">
                 <li>
-                    <a href="{{ route('map.list') }}" class="menu menu--active">
+                    <a href="{{ route('map.section.list') }}" class="menu menu--active">
                         <div class="menu__icon"> <i data-feather="list"></i> </div>
                         <div class="menu__title"> Data List </div>
                     </a>

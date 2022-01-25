@@ -24,31 +24,31 @@ class MasterGroup extends Model
 
     public function plantationGroup()
     {
-        return $this->hasOne(PlantationGroup::class);
+        return $this->hasOne(PlantationGroup::class, 'master_id');
     }
 
-    public function area()
+    public function getArea()
     {
-        return $this->hasOne(Area::class);
+        return $this->hasOne(Area::class, 'master_id');
     }
 
-    public function location()
+    public function getLocation()
     {
-        return $this->hasOne(Location::class);
+        return $this->hasOne(Location::class, 'master_id');
     }
 
-    public function section()
+    public function getSection()
     {
-        return $this->hasOne(Section::class);
+        return $this->hasOne(Section::class, 'master_id');
     }
 
-    public function plot()
+    public function getPlot()
     {
-        return $this->hasOne(Plot::class);
+        return $this->hasOne(Plot::class, 'master_id');
     }
 
-    public function chief()
+    public function getChief()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'chief');
     }
 }

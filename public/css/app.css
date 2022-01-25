@@ -3744,10 +3744,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .fill-current{
   fill: current;
 }
-.object-cover{
-  -o-object-fit: cover;
-     object-fit: cover;
-}
 .p-5{
   padding: 1.25rem;
 }
@@ -3829,11 +3825,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .pr-4{
   padding-right: 1rem;
 }
-.pl-5{
-  padding-left: 1.25rem;
-}
 .pt-4{
   padding-top: 1rem;
+}
+.pl-5{
+  padding-left: 1.25rem;
 }
 .pt-2{
   padding-top: 0.5rem;

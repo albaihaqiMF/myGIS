@@ -64,9 +64,9 @@ class Section extends Model
         return $this->belongsTo(User::class, 'created_by', 'id');
     }
 
-    public function area()
+    public function masterGroup()
     {
-        return $this->belongsTo(Area::class);
+        return $this->belongsTo(MasterGroup::class, 'master_id');
     }
 
     public function progress()

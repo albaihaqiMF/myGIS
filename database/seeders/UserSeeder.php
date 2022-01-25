@@ -38,7 +38,7 @@ class UserSeeder extends Seeder
             'username' => 'super',
             'email' => 'super@example.com',
             'password' => bcrypt('passwordsuper'),
-            'role_id' => 1
+            'role_id' => 0
         ]);
     }
 }

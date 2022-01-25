@@ -1,7 +1,7 @@
 <x-app-layout title="Edit">
     <div class="grid grid-col-12 gap-4 py-4">
         <div class="col-span-full md:col-span-8">
-            <form action="{{ route('map.update', [
+            <form action="{{ route('map.section.update', [
                 'section' => $data->id,
             ]) }}" enctype="multipart/form-data" method="POST" class="box px-4 py-6">
                 @csrf
@@ -9,7 +9,7 @@
                 <div class="mb-3">
                     <label for="name" class="form-label">Name</label>
                     <input id="name" name="name" type="text" class="form-control w-full" placeholder="Name"
-                        value="{{ old('name') ?? $data->name }}">
+                        value="{{ old('name') ?? $data->masterGroup->name }}">
                 </div>
                 <div class="mb-3">
                     <label for="gambar_taksasi" class="form-label">Taksasi</label>

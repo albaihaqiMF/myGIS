@@ -22,9 +22,27 @@
             </a>
             <ul>
                 <li>
-                    <a href="{{ route('map.list') }}" class="side-menu">
+                    <a href="{{ route('map.pg.list') }}" class="side-menu">
                         <div class="side-menu__icon"> <i data-feather="list"></i> </div>
-                        <div class="side-menu__title"> Data List </div>
+                        <div class="side-menu__title"> Plantation Group </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('map.area.list') }}" class="side-menu">
+                        <div class="side-menu__icon"> <i data-feather="list"></i> </div>
+                        <div class="side-menu__title"> Area </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('map.location.list') }}" class="side-menu">
+                        <div class="side-menu__icon"> <i data-feather="list"></i> </div>
+                        <div class="side-menu__title"> Location </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ route('map.section.list') }}" class="side-menu">
+                        <div class="side-menu__icon"> <i data-feather="list"></i> </div>
+                        <div class="side-menu__title"> Section </div>
                     </a>
                 </li>
             </ul>

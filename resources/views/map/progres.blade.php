@@ -1,7 +1,7 @@
 <x-app-layout title="Progres {{ $data->name }}">
     <div class="h-80vh rounded relative z-0" id="map"></div>
     <div class="box mt-4 p-4">
-        <form action="{{ route('map.progres.upload', ['section'=> $data->id]) }}" method="POST">
+        <form action="{{ route('section.progres.upload', ['section'=> $data->id]) }}" method="POST">
             @csrf
             <div class="mb-3">
                 <label for="catatan" class="form-label">Catatan</label>

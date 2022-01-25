@@ -1,5 +1,5 @@
 @slot('title')
-MyGIS | List Data
+MyGIS | Area
 @endslot
 <div class="grid w-full grid-cols-12 gap-3">
     @if (session()->has('error'))

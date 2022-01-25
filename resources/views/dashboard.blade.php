@@ -39,7 +39,7 @@
                     </div>
                 </div>
             </div>
-            <a href="{{ route('map.list') }}" class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+            <a href="{{ route('map.section.list') }}" class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
                 <div href class="report-box zoom-in">
                     <div class="box p-5">
                         <div class="flex">

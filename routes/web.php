@@ -3,7 +3,10 @@
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\LahanController;
 use App\Http\Controllers\UserController;
+use App\Http\Livewire\Area\AreaList;
+use App\Http\Livewire\Location\LocationList;
 use App\Http\Livewire\Map\MapList;
+use App\Http\Livewire\PlantationGroup\PGList;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,19 +26,28 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('dashboard', [Controller::class, 'dashboard'])->name('dashboard');
-    Route::group(['prefix' => 'map'], function () {
-        Route::get('/', MapList::class)->name('map.list');
-        Route::get('/create', [LahanController::class, 'create'])->name('map.create');
-        Route::post('/store', [LahanController::class, 'store'])->name('map.store');
-        Route::get('/{section}', [LahanController::class, 'show'])->name('map.show');
-        Route::get('/{section}/edit', [LahanController::class, 'edit'])->name('map.edit');
-        Route::put('/update/{section}', [LahanController::class, 'update'])->name('map.update');
-        Route::delete('/delete/{section}', [LahanController::class, 'delete'])->name('map.delete');
 
-        Route::get('/{section}/progres', [LahanController::class, 'progres'])->name('map.progres');
-        Route::post('/{section}/upload-progres', [LahanController::class, 'progresUpload'])->name('map.progres.upload');
+    Route::group(['as' => 'map.'], function () {
+        Route::get('/plantation-group', PGList::class)->name('pg.list');
 
-        Route::post('/progres/{progres}', [LahanController::class, 'deleteProgres'])->name('progres.delete');
+        Route::get('area', AreaList::class)->name('area.list');
+
+        Route::get('location', LocationList::class)->name('location.list');
+
+        Route::group(['prefix' => 'section'], function () {
+            Route::get('/', MapList::class)->name('section.list');
+            Route::get('/create', [LahanController::class, 'create'])->name('section.create');
+            Route::post('/store', [LahanController::class, 'store'])->name('section.store');
+            Route::get('/{section:master_id}', [LahanController::class, 'show'])->name('section.show');
+            Route::get('/{section}/edit', [LahanController::class, 'edit'])->name('section.edit');
+            Route::put('/update/{section}', [LahanController::class, 'update'])->name('section.update');
+            Route::delete('/delete/{section}', [LahanController::class, 'delete'])->name('section.delete');
+
+            Route::get('/{section}/progres', [LahanController::class, 'progres'])->name('section.progres');
+            Route::post('/{section}/upload-progres', [LahanController::class, 'progresUpload'])->name('section.progres.upload');
+
+            Route::post('/progres/{progres}', [LahanController::class, 'deleteProgres'])->name('progres.delete');
+        });
     });
 
     Route::prefix('user')->group(function () {

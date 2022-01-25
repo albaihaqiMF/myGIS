@@ -1,7 +1,7 @@
 <x-app-layout title="Input Map Data">
     <div class="grid w-full grid-cols-12 gap-4 pt-4">
         <div class="gap-4 col-span-full 2xl:col-span-8 intro-y">
-            <form action="{{ route('map.store') }}" enctype="multipart/form-data" method="POST" class="px-4 py-6 box">
+            <form action="{{ route('section.store') }}" enctype="multipart/form-data" method="POST" class="px-4 py-6 box">
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="flex flex-col w-full form-label sm:flex-row">Name
@@ -82,7 +82,7 @@
                     <button class="w-full font-semibold text-white btn bg-primary-1 md:w-24">
                         SAVE
                     </button>
-                    <a href="{{ route('map.list') }}"
+                    <a href="{{ route('section.list') }}"
                         class="w-full font-semibold btn btn-outline-secondary md:w-24">CANCEL</a>
                 </div>
             </form>

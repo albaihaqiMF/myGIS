@@ -17,13 +17,13 @@ class LahanController extends Controller
     }
     public function show(Section $section)
     {
-        if ($section->area_id !== auth()->user()->area_id) {
-            return redirect(route('map.list'))->with('error', 'You don\'t have permission');
-        }
+
+        // return $section;
         $data = $section;
         $progres = $section->progress;
         return view('map.show', [
             'data' => $data,
+            'detail' => $section->masterGroup,
             'geojson' => $progres->map(function ($value) {
                 return Progres::mapData($value);
             }),
@@ -57,7 +57,7 @@ class LahanController extends Controller
         Section::create($attr);
 
         return redirect(
-            route('map.list')
+            route('section.list')
         )->with('success', 'Created Map Data Successfully');
     }
     public function edit(Section $section)
@@ -91,10 +91,19 @@ class LahanController extends Controller
         } else {
             $attr['gambar_ndvi'] = $section->gambar_taksasi;
         }
+        $section->masterGroup->update([
+            'name' => $attr['name'],
+        ]);
+        $section->update([
+            'sw_latitude' => $attr['sw_latitude'],
+            'sw_longitude' => $attr['sw_longitude'],
+            'ne_latitude' => $attr['ne_latitude'],
+            'ne_longitude' => $attr['ne_longitude'],
+            'gambar_taksasi' => $attr['gambar_taksasi'],
+            'gambar_ndvi' => $attr['gambar_ndvi'],
+        ]);
 
-        $section->update($attr);
-
-        return redirect(route('map.show', ['section' => $section->id]))->with('success', 'Berhasil memperbarui data');
+        return redirect(route('map.section.show', ['section' => $section->master_id]))->with('success', 'Berhasil memperbarui data');
     }
 
     public function delete(Section $section)
@@ -103,7 +112,7 @@ class LahanController extends Controller
             'deleted_at' => now()
         ]);
 
-        return redirect(route('map.list'))->with('success', 'Berhasil Menghapus data ' . $section->name);
+        return redirect(route('section.list'))->with('success', 'Berhasil Menghapus data ' . $section->name);
     }
 
     public function progres(Section $section)
@@ -166,7 +175,7 @@ class LahanController extends Controller
                     env('APP_URL') . "/" . $map->gambar_ndvi,
 
                 'date' => date('d-m-y H:i:s', strtotime($map->updated_at)),
-                'url' => route('map.show', [
+                'url' => route('section.show', [
                     'section' => $map->id,
                 ]),
 
