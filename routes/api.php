@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\MasterGroupController;
 use App\Http\Controllers\ApiController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -16,10 +17,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('map')->group(function () {
-    Route::get('/', [ApiController::class, 'listMap']);
-    Route::get('{id}', [ApiController::class, 'showMap']);
-});
+    Route::get('/', [MasterGroupController::class, 'index']);
 
-Route::prefix('area')->group(function () {
-    Route::get('/', [ApiController::class, 'areaList']);
+    Route::get('/plantation-group', [MasterGroupController::class, 'plantationGroup']);
+
+    Route::get('/area', [MasterGroupController::class, 'area']);
+
+    Route::get('/location', [MasterGroupController::class, 'location']);
 });
