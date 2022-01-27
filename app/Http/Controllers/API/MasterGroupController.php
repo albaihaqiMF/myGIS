@@ -40,12 +40,27 @@ class MasterGroupController extends Controller
             return [
                 'id' => $item->id,
                 'name' => $item->name,
+                'pg' => $item->pg,
+                'area' => $item->area,
+                'location' => $item->location,
+                'section' => $item->section,
                 'chief' => $item->getChief->name,
                 'url' => env('APP_URL') . "/api/map/area?pg=" . $item->pg,
             ];
         });
 
         return $this->responseOK('Plantation Group Data', $data);
+    }
+    public function plantationGroupShow($id)
+    {
+        $data = MasterGroup::where('type', 'PG')->where('id', $id)->first();
+
+        $data['chief'] = $data->getChief->name;
+
+        if ($data === null) {
+            return $this->responseError('Data doesn\'t exist');
+        }
+        return $this->responseOK('Data Plantation Group by id ' . $id . ' collected succesfully', $data);
     }
 
     public function area(Request $request)
@@ -58,12 +73,27 @@ class MasterGroupController extends Controller
             return [
                 'id' => $item->id,
                 'name' => $item->name,
+                'pg' => $item->pg,
+                'area' => $item->area,
+                'location' => $item->location,
+                'section' => $item->section,
                 'chief' => $item->getChief->name,
                 'url' => env('APP_URL') . "/api/map/location?pg=" . $item->pg . "&area=" . $item->area,
             ];
         });
 
         return $this->responseOK('Area Data', $data);
+    }
+    public function areaShow($id)
+    {
+        $data = MasterGroup::where('type', 'AREA')->where('id', $id)->first();
+
+        $data['chief'] = $data->getChief->name;
+
+        if ($data === null) {
+            return $this->responseError('Data doesn\'t exist');
+        }
+        return $this->responseOK('Data Area by id ' . $id . ' collected succesfully', $data);
     }
 
     public function location(Request $request)
@@ -73,16 +103,67 @@ class MasterGroupController extends Controller
         }
         $data = $request ? MasterGroup::where('type', 'LOC')->get()
             :
-            MasterGroup::where('type', 'AREA')->where('pg', $request->pg)->where('area', $request->area)->get();
+            MasterGroup::where('type', 'LOC')->where('pg', $request->pg)->where('area', $request->area)->get();
 
         $data = $data->map(function ($item) {
             return [
                 'id' => $item->id,
                 'name' => $item->name,
+                'pg' => $item->pg,
+                'area' => $item->area,
+                'location' => $item->location,
+                'section' => $item->section,
                 'chief' => $item->getChief->name,
-                'url' => env('APP_URL') . "/api/map/section?pg=" . $item->pg . "&area=" . $item->area. "&location=" . $item->location,
+                'url' => env('APP_URL') . "/api/map/section?pg=" . $item->pg . "&area=" . $item->area . "&location=" . $item->location,
             ];
         });
         return $this->responseOK('Location Data', $data);
+    }
+    public function locationShow($id)
+    {
+        $data = MasterGroup::where('type', 'LOC')->where('id', $id)->first();
+
+        $data['chief'] = $data->getChief->name;
+
+        if ($data === null) {
+            return $this->responseError('Data doesn\'t exist');
+        }
+        return $this->responseOK('Data Location by id ' . $id . ' collected succesfully', $data);
+    }
+
+    public function section(Request $request)
+    {
+        if ($request->pg === null || $request->area === null || $request->location === null) {
+            return $this->responseError('PG id and Area id are required');
+        }
+        $data = $request ? MasterGroup::where('type', 'SEC')->get()
+            :
+            MasterGroup::where('type', 'SEC')->where('pg', $request->pg)->where('area', $request->area)->where('location', $request->area)->get();
+
+        $data = $data->map(function ($item) {
+            return [
+                'id' => $item->id,
+                'name' => $item->name,
+                'pg' => $item->pg,
+                'area' => $item->area,
+                'location' => $item->location,
+                'section' => $item->section,
+                'chief' => $item->getChief->name,
+                'url' => env('APP_URL') . "/api/map/section?pg=" . $item->pg . "&area=" . $item->area . "&location=" . $item->location,
+            ];
+        });
+        return $this->responseOK('Location Data', $data);
+    }
+
+    public function sectionShow($id)
+    {
+        $data = MasterGroup::where('type', 'SEC')->where('id', $id)->first();
+
+        $data['chief'] = $data->getChief->name;
+
+        if ($data === null) {
+            return $this->responseError('Data doesn\'t exist');
+        }
+        return $this->responseOK('Data Section by id ' . $id . ' collected succesfully', $data);
     }
 }

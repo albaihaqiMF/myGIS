@@ -20,8 +20,14 @@ Route::prefix('map')->group(function () {
     Route::get('/', [MasterGroupController::class, 'index']);
 
     Route::get('/plantation-group', [MasterGroupController::class, 'plantationGroup']);
+    Route::get('/plantation-group/{id}', [MasterGroupController::class, 'plantationGroupShow']);
 
     Route::get('/area', [MasterGroupController::class, 'area']);
+    Route::get('/area/{id}', [MasterGroupController::class, 'areaShow']);
 
     Route::get('/location', [MasterGroupController::class, 'location']);
+    Route::get('/location/{id}', [MasterGroupController::class, 'locationShow']);
+
+    Route::get('/section', [MasterGroupController::class, 'section']);
+    Route::get('/section/{id}', [MasterGroupController::class, 'sectionShow']);
 });
