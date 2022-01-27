@@ -65,9 +65,7 @@ class MasterGroupController extends Controller
 
     public function area(Request $request)
     {
-        $data = $request ? MasterGroup::where('type', 'AREA')->get()
-            :
-            MasterGroup::where('type', 'AREA')->where('pg', $request->pg)->get();
+        $data = MasterGroup::where('type', 'AREA')->where('pg', $request->pg)->get();
 
         $data = $data->map(function ($item) {
             return [
@@ -136,6 +134,7 @@ class MasterGroupController extends Controller
         if ($request->pg === null || $request->area === null || $request->location === null) {
             return $this->responseError('PG id and Area id are required');
         }
+
         $data = $request ? MasterGroup::where('type', 'SEC')->get()
             :
             MasterGroup::where('type', 'SEC')->where('pg', $request->pg)->where('area', $request->area)->where('location', $request->area)->get();
@@ -158,6 +157,7 @@ class MasterGroupController extends Controller
     public function sectionShow($id)
     {
         $data = MasterGroup::where('type', 'SEC')->where('id', $id)->first();
+        $data->getSection;
 
         $data['chief'] = $data->getChief->name;
 
