@@ -45,16 +45,16 @@ class Section extends Model
     public static function mapData($value)
     {
         return [
-            'id' => $value->id,
-            'name' => $value->name,
-            'area' => $value->area->name,
-            'created_by' => $value->creator->name,
             'sw_latitude' => $value->sw_latitude,
             'sw_longitude' => $value->sw_longitude,
             'ne_latitude' => $value->ne_latitude,
             'ne_longitude' => $value->ne_longitude,
             'gambar_taksasi' => $value->gambar_taksasi,
             'gambar_ndvi' => $value->gambar_ndvi,
+            'age' => $value->age,
+            'variaty' => $value->variaty,
+            'crop' => $value->crop,
+            'forcing_time' => $value->forcing_time,
             'created_at' => date('H:i:s, d M Y', strtotime($value->created_at)),
             'updated_at' => date('H:i:s, d M Y', strtotime($value->updated_at)),
         ];

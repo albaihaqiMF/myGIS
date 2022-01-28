@@ -22,6 +22,21 @@ class MasterGroup extends Model
         'type',
     ];
 
+    public static function mapSection($value)
+    {
+        $geografi = $value->getSection;
+        return [
+            'id'        => $value->id,
+            'chief'     => $value->getChief->name,
+            'name'      => $value->name,
+            'pg'        => $value->pg,
+            'area'      => $value->area,
+            'location'  => $value->location,
+            'section'   => $value->section,
+            'geografi'  => Section::mapData($geografi)
+        ];
+    }
+
     public function plantationGroup()
     {
         return $this->hasOne(PlantationGroup::class, 'master_id');

@@ -20,6 +20,10 @@ class SectionSeeder extends Seeder
             'sw_longitude'      => 106.7028170000000,
             'ne_latitude'       => -6.0926120000000,
             'ne_longitude'      => 106.9670920000000,
+            'age'               => '2021-12-05',
+            'variaty'           => 'Variaty 1',
+            'crop'              => 'second',
+            'forcing_time'      => 2,
             'gambar_taksasi'    => "images/dummy/taksasi.png",
             'gambar_ndvi'       => "images/dummy/ndvi.png",
         ];

@@ -159,11 +159,11 @@ class MasterGroupController extends Controller
         $data = MasterGroup::where('type', 'SEC')->where('id', $id)->first();
         $data->getSection;
 
-        $data['chief'] = $data->getChief->name;
+
 
         if ($data === null) {
             return $this->responseError('Data doesn\'t exist');
         }
-        return $this->responseOK('Data Section by id ' . $id . ' collected succesfully', $data);
+        return $this->responseOK('Data Section by id ' . $id . ' collected succesfully', MasterGroup::mapSection($data));
     }
 }

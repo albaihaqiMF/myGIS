@@ -25,6 +25,15 @@ class CreateSectionsTable extends Migration
             $table->decimal('ne_longitude', 24, 21);
             $table->string('gambar_taksasi');
             $table->string('gambar_ndvi');
+
+            //Attributes
+            $table->date('age');
+            $table->string('variaty');
+            $table->enum('crop', [
+                'first', 'second', 'third',
+            ]);
+            $table->tinyInteger('forcing_time');
+
             $table->timestamp('deleted_at')->nullable();
             $table->timestamps();
         });
