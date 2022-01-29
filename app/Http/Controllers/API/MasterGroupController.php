@@ -14,20 +14,24 @@ class MasterGroupController extends Controller
     {
         return [
             [
+                'title' => 'Plantation Group',
                 'total' => MasterGroup::where('type', 'PG')->get()->count(),
                 'url' => env('APP_URL') . "/api/map/plantation-group"
             ],
             [
+                'title' => 'Area',
                 'total' => MasterGroup::where('type', 'AREA')->get()->count(),
                 'url' => env('APP_URL') . "/api/map/area"
             ],
             [
+                'title' => 'Location',
                 'total' => MasterGroup::where('type', 'LOC')->get()->count(),
                 'url' => env('APP_URL') . "/api/map/location"
             ],
             [
+                'title' => 'Section',
                 'total' => MasterGroup::where('type', 'SEC')->get()->count(),
-                'url' => env('APP_URL') . "/api/map/seksi"
+                'url' => env('APP_URL') . "/api/map/section"
             ]
         ];
     }
