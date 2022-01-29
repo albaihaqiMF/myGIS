@@ -17,7 +17,7 @@ class RoleSeeder extends Seeder
         $roles = [
 
             [
-                'id' => 0,
+                'id' => 3,
                 'title' => 'SUPER'
             ],
             [
