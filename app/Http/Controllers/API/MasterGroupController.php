@@ -148,7 +148,7 @@ class MasterGroupController extends Controller
                 'location' => $item->location,
                 'section' => $item->section,
                 'chief' => $item->getChief->name,
-                'url' => env('APP_URL') . "/api/map/section/" . $item->master_id,
+                'url' => env('APP_URL') . "/api/map/section/" . $item->id,
             ];
         });
         return $this->responseOK('Location Data', $data);
