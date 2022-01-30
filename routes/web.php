@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Livewire\Area\AreaList;
 use App\Http\Livewire\Location\LocationList;
 use App\Http\Livewire\Map\MapList;
+use App\Http\Livewire\PlantationGroup\CreatePg;
 use App\Http\Livewire\PlantationGroup\PGList;
 use Illuminate\Support\Facades\Route;
 
