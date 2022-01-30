@@ -58,6 +58,7 @@ MyGIS | Area
                                         <label class="block mb-1 text-lg" for="pg">Plantation Group</label>
                                         <select class="tom-select" type="text" wire:model='pg' name="pg"
                                             data-placeholder="Plantation Group" id="pg">
+                                            <option value="">Pilih Plantation Group</option>
                                             @foreach ($pgOption as $item)
                                             <option value="{{ $item->pg }}">{{ $item->name }}</option>
                                             @endforeach

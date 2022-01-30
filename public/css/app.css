@@ -3245,6 +3245,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 .col-span-2{
   grid-column: span 2 / span 2;
 }
+.col-span-8{
+  grid-column: span 8 / span 8;
+}
+.float-right{
+  float: right;
+}
 .mx-auto{
   margin-left: auto;
   margin-right: auto;
@@ -3690,6 +3696,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 .border-gray-100{
   --tw-border-opacity: 1;
   border-color: rgb(247 250 252 / var(--tw-border-opacity));
+}
+.border-yellow-50{
+  --tw-border-opacity: 1;
+  border-color: rgb(254 252 232 / var(--tw-border-opacity));
+}
+.border-gray-500{
+  --tw-border-opacity: 1;
+  border-color: rgb(160 174 192 / var(--tw-border-opacity));
 }
 .border-opacity-5{
   --tw-border-opacity: 0.05;

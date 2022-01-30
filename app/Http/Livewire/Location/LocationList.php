@@ -7,6 +7,10 @@ use Livewire\Component;
 
 class LocationList extends Component
 {
+
+    public $search;
+
+
     public function render()
     {
         $data = MasterGroup::where('type', 'LOC')->get();

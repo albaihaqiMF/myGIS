@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\LahanController;
 use App\Http\Controllers\UserController;
 use App\Http\Livewire\Area\AreaList;
+use App\Http\Livewire\Location\CreateLocation;
 use App\Http\Livewire\Location\LocationList;
 use App\Http\Livewire\Map\MapList;
 use App\Http\Livewire\PlantationGroup\CreatePg;
@@ -34,6 +35,7 @@ Route::middleware('auth')->group(function () {
         Route::get('area', AreaList::class)->name('area.list');
 
         Route::get('location', LocationList::class)->name('location.list');
+        Route::get('location/create', CreateLocation::class)->name('location.create');
 
         Route::group(['prefix' => 'section'], function () {
             Route::get('/', MapList::class)->name('section.list');

@@ -20,7 +20,7 @@ class PGList extends Component
         $attr = $this->validate();
 
 
-        $attr['id'] = date('ymd') . sprintf("%04d", $number);
+        $attr['id'] = date('ymd') . '1' . sprintf("%03d", $number);
         $attr['chief'] = auth()->user()->id;
         $attr['pg'] = 11 + $number;
         $attr['type'] = 'PG';

@@ -37,6 +37,7 @@ class AreaList extends Component
     }
     public function render()
     {
+        
         $data = MasterGroup::where('type', 'AREA')->where('name', 'like', '%' . $this->search . '%')->get();
         return view('livewire.area.area-list', [
             'data' => $data,
