@@ -51,10 +51,17 @@ MyGIS | Area
                                 <div class="box col-span-12">
                                     <div class="text-gray-700 p-2 mb-4">
                                         <label class="block mb-1 text-lg" for="name">Name</label>
-                                        <input
-                                            class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg outline-none focus:ring ring-blue-500"
-                                            type="text" name="name" wire:model='name' placeholder="Name" id="name"
-                                            value="" autocomplete="off" />
+                                        <input class="form-control" type="text" name="name" wire:model='name'
+                                            placeholder="Name" id="name" value="" autocomplete="off" />
+                                    </div>
+                                    <div class="text-gray-700 p-2 mb-4">
+                                        <label class="block mb-1 text-lg" for="pg">Plantation Group</label>
+                                        <select class="tom-select" type="text" wire:model='pg' name="pg"
+                                            data-placeholder="Plantation Group" id="pg">
+                                            @foreach ($pgOption as $item)
+                                            <option value="{{ $item->pg }}">{{ $item->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             </div> <!-- END: Modal Body -->
