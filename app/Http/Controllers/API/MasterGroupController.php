@@ -105,7 +105,7 @@ class MasterGroupController extends Controller
         }
         $data = $request ? MasterGroup::where('type', 'LOC')->get()
             :
-            MasterGroup::where('type', 'LOC')->where('pg', $request->pg)->where('area', $request->area)->get();
+            MasterGroup::where('type', 'LOC')->where('pg', $request->pg)->where('area', $request->area)->where('location', $request->location)->get();
 
         $data = $data->map(function ($item) {
             return [
