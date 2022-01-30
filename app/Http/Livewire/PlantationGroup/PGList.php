@@ -30,7 +30,7 @@ class PGList extends Component
 
     public function render()
     {
-        $data = MasterGroup::where('type', 'PG')->where('name', 'ilike', '%' . $this->search . '%')->get();
+        $data = MasterGroup::where('type', 'PG')->where('name', 'like', '%' . $this->search . '%')->get();
 
         return view('livewire.plantation-group.pg-list', [
             'data' => $data,
