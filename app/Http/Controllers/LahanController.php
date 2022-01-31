@@ -64,9 +64,9 @@ class LahanController extends Controller
         $attrMaster['location'] = $attr['location'];
         $attrMaster['section'] = $number;
 
-        $master = MasterGroup::create($attrMaster)->id;
+        MasterGroup::create($attrMaster);
 
-        $attrSection['master_id'] = $master;
+        $attrSection['master_id'] = $attrMaster['id'];
         $attrSection['sw_latitude'] = $attr['sw_latitude'];
         $attrSection['sw_longitude'] = $attr['sw_longitude'];
         $attrSection['ne_latitude'] = $attr['ne_latitude'];
