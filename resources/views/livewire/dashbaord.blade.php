@@ -64,7 +64,7 @@
                         <i data-feather="flag" class="report-box__icon text-theme-15"></i>
                         <div class="ml-auto">
                             <div class="report-box__indicator tooltip cursor-pointer {{ $location['rate'] != 0 ? 'bg-theme-20' : 'bg-theme-16' }}"
-                                title="{{ $location['rate'] != 0 ? 'Registered progress increase by '. $location['rate'].' progres' : 'Progress are not increasing' }}">
+                                title="{{ $location['rate'] != 0 ? 'Registered Locations increase by '. $location['rate'].' Location' : 'Locations are not increasing' }}">
                                 {{ $location['rate'] }} <i
                                     data-feather="{{ $location['rate'] != 0 ? 'plus' : 'minus' }}"
                                     class="w-4 h-4 ml-0.5"></i>
@@ -76,7 +76,6 @@
                 </div>
             </div>
         </div>
-        {{-- @if (auth()->user()->role_id == 1) --}}
         <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
             <div class="report-box zoom-in">
                 <div class="box p-5">
@@ -95,6 +94,23 @@
                 </div>
             </div>
         </div>
-        {{-- @endif --}}
+        <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+            <div class="report-box zoom-in">
+                <div class="box p-5">
+                    <div class="flex">
+                        <i data-feather="user" class="report-box__icon text-cyan-500"></i>
+                        <div class="ml-auto">
+                            <div class="report-box__indicator tooltip cursor-pointer {{ $user['rate'] != 0 ? 'bg-cyan-500' : 'bg-theme-16' }}"
+                                title="{{ $user['rate'] != 0 ? 'Registered Users increase by '. $user['rate'].' User' : 'Users are not increasing' }}">
+                                {{ $user['rate'] }} <i data-feather="{{ $user['rate'] != 0 ? 'plus' : 'minus' }}"
+                                    class="w-4 h-4 ml-0.5"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-3xl font-medium leading-8 mt-6">{{ $user['data'] }}</div>
+                    <div class="text-base text-gray-600 mt-1">USER</div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

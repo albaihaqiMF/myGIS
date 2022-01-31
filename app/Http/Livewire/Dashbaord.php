@@ -16,10 +16,6 @@ class Dashbaord extends Component
             'rate' => User::whereDate('created_at', today())->get()->count()
         ];
 
-        $this->section = [
-            'data' => Section::get()->count(),
-            'rate' => Section::whereDate('created_at', today())->get()->count(),
-        ];
         $this->pg = [
             'data' => MasterGroup::where('type', 'PG')->get()->count(),
             'rate' => MasterGroup::where('type', 'PG')->whereDate('created_at', today())->get()->count(),
