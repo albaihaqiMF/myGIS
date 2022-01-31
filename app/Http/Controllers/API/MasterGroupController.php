@@ -138,9 +138,7 @@ class MasterGroupController extends Controller
             return $this->responseError('PG id and Area id are required');
         }
 
-        $data = $request ? MasterGroup::where('type', 'SEC')->get()
-            :
-            MasterGroup::where('type', 'SEC')->where('pg', $request->pg)->where('area', $request->area)->where('location', $request->area)->get();
+        $data = MasterGroup::where('type', 'SEC')->where('pg', $request->pg)->where('area', $request->area)->where('location', $request->location)->get();
 
         $data = $data->map(function ($item) {
             return [
