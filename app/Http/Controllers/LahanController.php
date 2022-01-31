@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MasterGroup;
 use App\Models\Section;
 use App\Models\Progres;
 use Illuminate\Http\Request;
@@ -35,8 +36,17 @@ class LahanController extends Controller
     }
     public function store(Request $request)
     {
+        // return $request;
+
+        $counter = MasterGroup::where('type', 'SEC')->whereDate('created_at', today())->get()->count();
+
+        $number = $counter + 1;
         $attr = $this->validate($request, [
             'name' => 'required|min:4',
+            'pg' => 'required',
+            'area' => 'required',
+            'location' => 'required',
+            'variaty' => 'required',
             'gambar_taksasi' => 'required',
             'gambar_ndvi' => 'required',
             'sw_latitude' => 'required',
@@ -45,19 +55,33 @@ class LahanController extends Controller
             'ne_longitude' => 'required',
         ]);
 
-        $countData = Section::whereDate('created_at', date('Y-m-d'))->get()->count();
-        $id = $this->todayString() . "2" . $this->intTo3Digits($countData + 1);
+        $attrMaster['id'] = date('ymd') . '4' . sprintf('%03d', $number);
+        $attrMaster['name'] = $attr['name'];
+        $attrMaster['chief'] = auth()->user()->id;
+        $attrMaster['type'] = 'SEC';
+        $attrMaster['pg'] = $attr['pg'];
+        $attrMaster['area'] = $attr['area'];
+        $attrMaster['location'] = $attr['location'];
+        $attrMaster['section'] = $number;
 
-        $attr['id'] = $id;
-        $attr['area_id'] = auth()->user()->area_id;
-        $attr['created_by'] = auth()->user()->id;
-        $attr['gambar_taksasi'] = $this->storeImage($request->file('gambar_taksasi'), 'taksasi');
-        $attr['gambar_ndvi'] = $this->storeImage($request->file('gambar_ndvi'), 'ndvi');
+        $master = MasterGroup::create($attrMaster)->id;
 
-        Section::create($attr);
+        $attrSection['master_id'] = $master;
+        $attrSection['sw_latitude'] = $attr['sw_latitude'];
+        $attrSection['sw_longitude'] = $attr['sw_longitude'];
+        $attrSection['ne_latitude'] = $attr['ne_latitude'];
+        $attrSection['ne_longitude'] = $attr['ne_longitude'];
+        $attrSection['variaty'] = $attr['variaty'];
+        $attrSection['age'] = today();
+        $attrSection['crop'] = 'first';
+        $attrSection['forcing_time'] = 10;
+        $attrSection['gambar_taksasi'] = $this->storeImage($request->file('gambar_taksasi'), 'taksasi');
+        $attrSection['gambar_ndvi'] = $this->storeImage($request->file('gambar_ndvi'), 'ndvi');
+
+        Section::create($attrSection);
 
         return redirect(
-            route('section.list')
+            route('map.section.list')
         )->with('success', 'Created Map Data Successfully');
     }
     public function edit(Section $section)

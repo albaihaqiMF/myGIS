@@ -9,6 +9,7 @@ use App\Http\Livewire\Location\LocationList;
 use App\Http\Livewire\Map\MapList;
 use App\Http\Livewire\PlantationGroup\CreatePg;
 use App\Http\Livewire\PlantationGroup\PGList;
+use App\Http\Livewire\Section\CreateSection;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,7 +40,7 @@ Route::middleware('auth')->group(function () {
 
         Route::group(['prefix' => 'section'], function () {
             Route::get('/', MapList::class)->name('section.list');
-            Route::get('/create', [LahanController::class, 'create'])->name('section.create');
+            Route::get('/create', CreateSection::class)->name('section.create');
             Route::post('/store', [LahanController::class, 'store'])->name('section.store');
             Route::get('/{section:master_id}', [LahanController::class, 'show'])->name('section.show');
             Route::get('/{section}/edit', [LahanController::class, 'edit'])->name('section.edit');
