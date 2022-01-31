@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\LahanController;
 use App\Http\Controllers\UserController;
 use App\Http\Livewire\Area\AreaList;
+use App\Http\Livewire\Dashbaord;
 use App\Http\Livewire\Location\CreateLocation;
 use App\Http\Livewire\Location\LocationList;
 use App\Http\Livewire\Map\MapList;
@@ -28,7 +29,7 @@ Route::get('/', function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('dashboard', [Controller::class, 'dashboard'])->name('dashboard');
+    Route::get('dashboard', Dashbaord::class)->name('dashboard');
 
     Route::group(['as' => 'map.'], function () {
         Route::get('/plantation-group', PGList::class)->name('pg.list');
