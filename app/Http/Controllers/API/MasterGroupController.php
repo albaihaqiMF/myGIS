@@ -49,6 +49,8 @@ class MasterGroupController extends Controller
                 'location' => $item->location,
                 'section' => $item->section,
                 'chief' => $item->getChief->name,
+                'created_at' => date('l, d F Y', strtotime($item->created_at)),
+                'updated_at' => date('l, d F Y', strtotime($item->updated_at)),
                 'url' => env('APP_URL') . "/api/map/area?pg=" . $item->pg,
             ];
         });
@@ -80,6 +82,8 @@ class MasterGroupController extends Controller
                 'location' => $item->location,
                 'section' => $item->section,
                 'chief' => $item->getChief->name,
+                'created_at' => date('l, d F Y', strtotime($item->created_at)),
+                'updated_at' => date('l, d F Y', strtotime($item->updated_at)),
                 'url' => env('APP_URL') . "/api/map/location?pg=" . $item->pg . "&area=" . $item->area,
             ];
         });
@@ -115,6 +119,8 @@ class MasterGroupController extends Controller
                 'location' => $item->location,
                 'section' => $item->section,
                 'chief' => $item->getChief->name,
+                'created_at' => date('l, d F Y', strtotime($item->created_at)),
+                'updated_at' => date('l, d F Y', strtotime($item->updated_at)),
                 'url' => env('APP_URL') . "/api/map/section?pg=" . $item->pg . "&area=" . $item->area . "&location=" . $item->location,
             ];
         });
@@ -149,6 +155,8 @@ class MasterGroupController extends Controller
                 'location' => $item->location,
                 'section' => $item->section,
                 'chief' => $item->getChief->name,
+                'created_at' => date('l, d F Y', strtotime($item->created_at)),
+                'updated_at' => date('l, d F Y', strtotime($item->updated_at)),
                 'url' => env('APP_URL') . "/api/map/section/" . $item->id,
             ];
         });
