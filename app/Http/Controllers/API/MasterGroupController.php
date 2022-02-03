@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\MasterGroup;
+use App\Models\Progres;
 use Illuminate\Http\Request;
 
 use function PHPSTORM_META\map;
@@ -166,13 +167,24 @@ class MasterGroupController extends Controller
     public function sectionShow($id)
     {
         $data = MasterGroup::where('type', 'SEC')->where('id', $id)->first();
-        $data->getSection;
-
-
 
         if ($data === null) {
             return $this->responseError('Data doesn\'t exist');
         }
-        return $this->responseOK('Data Section by id ' . $id . ' collected succesfully', MasterGroup::mapSection($data));
+        
+        $data->getSection;
+
+        $geojsonValue = $data->getSection->progress;
+        $geojsonValue = $geojsonValue->map(function ($value) {
+            return Progres::mapData($value);
+        });
+        $geojson = $geojsonValue !== [] ? [
+            "type" => "FeatureCollection",
+            "features" => $geojsonValue,
+        ] : null;
+
+        $section = MasterGroup::mapSection($data);
+        $section['progres'] = $geojson;
+        return $this->responseOK('Data Section by id ' . $id . ' collected succesfully', $section);
     }
 }

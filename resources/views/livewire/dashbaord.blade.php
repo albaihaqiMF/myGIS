@@ -21,7 +21,7 @@
                 class="w-4 h-4 mr-3"></i> Reload Data </a>
     </div>
     <div class="grid grid-cols-12 gap-6 mt-5">
-        <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+        <a href="{{ route('map.pg.list') }}" class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
             <div class="report-box zoom-in">
                 <div class="box p-5">
                     <div class="flex">
@@ -38,8 +38,8 @@
                     <div class="text-base text-gray-600 mt-1">PLANTATION GROUP</div>
                 </div>
             </div>
-        </div>
-        <a href="{{ route('map.section.list') }}" class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+        </a>
+        <a href="{{ route('map.area.list') }}" class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
             <div href class="report-box zoom-in">
                 <div class="box p-5">
                     <div class="flex">
@@ -57,7 +57,7 @@
                 </div>
             </div>
         </a>
-        <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+        <a href="{{ route('map.location.list') }}" class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
             <div class="report-box zoom-in">
                 <div class="box p-5">
                     <div class="flex">
@@ -75,8 +75,8 @@
                     <div class="text-base text-gray-600 mt-1">LOKASI</div>
                 </div>
             </div>
-        </div>
-        <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+        </a>
+        <a href="{{ route('map.section.list') }}" class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
             <div class="report-box zoom-in">
                 <div class="box p-5">
                     <div class="flex">
@@ -93,7 +93,7 @@
                     <div class="text-base text-gray-600 mt-1">SEKSI</div>
                 </div>
             </div>
-        </div>
+        </a>
         <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
             <div class="report-box zoom-in">
                 <div class="box p-5">

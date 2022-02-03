@@ -171,9 +171,9 @@ class LahanController extends Controller
         ]);
 
         return redirect(route(
-            'map.show',
+            'map.section.show',
             [
-                'section' => $section->id
+                'section' => $section->master_id
             ]
         ))
             ->with('success', 'Berhasil membuat progres baru');
