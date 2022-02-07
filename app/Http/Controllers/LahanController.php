@@ -47,6 +47,7 @@ class LahanController extends Controller
             'area' => 'required',
             'location' => 'required',
             'variaty' => 'required',
+            'age' => 'required',
             'gambar_taksasi' => 'required',
             'gambar_ndvi' => 'required',
             'sw_latitude' => 'required',
@@ -72,7 +73,7 @@ class LahanController extends Controller
         $attrSection['ne_latitude'] = $attr['ne_latitude'];
         $attrSection['ne_longitude'] = $attr['ne_longitude'];
         $attrSection['variaty'] = $attr['variaty'];
-        $attrSection['age'] = today();
+        $attrSection['age'] = $attr['age'];
         $attrSection['crop'] = 'first';
         $attrSection['forcing_time'] = 10;
         $attrSection['gambar_taksasi'] = $this->storeImage($request->file('gambar_taksasi'), 'taksasi');

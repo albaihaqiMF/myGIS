@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helpers\Helper;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -52,7 +53,7 @@ class Section extends Model
             'ne_longitude' => $value->ne_longitude,
             'gambar_taksasi' => $value->gambar_taksasi,
             'gambar_ndvi' => $value->gambar_ndvi,
-            'age' => $value->age,
+            'age' => Helper::getAge($value->age),
             'variaty' => $value->variaty,
             'crop' => $value->crop,
             'forcing_time' => $value->forcing_time,

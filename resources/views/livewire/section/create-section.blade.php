@@ -22,6 +22,15 @@
                     value="{{ old('variaty') }}">
             </div>
             <div class="mb-3">
+                <label for="age" class="flex flex-col w-full form-label sm:flex-row">Planting Date
+                    @error('age')
+                    <span class="mt-1 text-xs text-gray-600 sm:ml-auto sm:mt-0">{{ $message }}</span>
+                    @enderror
+                </label>
+                <input id="age" name="age" type="date" class="w-full form-control" placeholder="Planting Date"
+                    value="{{ old('age') }}">
+            </div>
+            <div class="mb-3">
                 <label for="pg" class="form-label">Plantation Group</label>
                 <select id="pg" name="pg" type="text" wire:model='pg' class="w-full bg-white form-control"
                     placeholder="Plantation Group">

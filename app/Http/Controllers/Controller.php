@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Section;
 use App\Models\Progres;
 use App\Models\User;
+use DateTime;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -96,5 +97,19 @@ class Controller extends BaseController
         $date = date('ymd', strtotime(now()));
 
         return $date;
+    }
+
+    public function diffTime($time2, $time1 = null)
+    {
+        $fdate = $time1 ?? today();
+        $tdate = $time2;
+        $datetime1 = new DateTime($fdate);
+        $datetime2 = new DateTime($tdate);
+        $interval = $datetime1->diff($datetime2);
+        $formatedInterval = ($interval->format('%a') * 24 * 60)
+            + ($interval->format('%h') * 60)
+            + $interval->format('%i');
+
+        return $formatedInterval;
     }
 }
