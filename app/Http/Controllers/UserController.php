@@ -42,7 +42,7 @@ class UserController extends Controller
         $attr['name'] = ucwords(strtolower($request->name));
 
         User::create($attr);
-        Mail::to($attr['email'])->send(new RegisterMail($attr['email'], $defaultPassword));
+        Mail::to($attr['email'])->send(new RegisterMail($attr['username'], $defaultPassword));
         return back()->with('success', 'User Created Succesfully');
     }
 }
