@@ -112,4 +112,20 @@ class Controller extends BaseController
 
         return $formatedInterval;
     }
+
+    public function generatePassword($length)
+    {
+        $alphaCode = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $alphaCode .= "abcdefghijklmnopqrstuvwxyz";
+        $alphaCode .= "1234567890";
+
+        $max = strlen($alphaCode);
+        $token = "";
+
+        for ($i = 0; $i < $length; $i++) {
+            $token .= $alphaCode[rand(0, $max - 1)];
+        }
+
+        return $token;
+    }
 }

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\RegisterMail;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -13,7 +15,7 @@ class UserController extends Controller
     }
     public function index()
     {
-        $data = User::where('area_id',auth()->user()->area_id)->paginate(8);
+        $data = User::whereNotIn('role_id', ['0'])->paginate(8);
         return view('admin.user.index', compact('data'));
     }
 
@@ -32,17 +34,15 @@ class UserController extends Controller
         ]);
 
         $user = User::whereDate('created_at', today())->get()->count();
-        $id = date('ymd') . "1" . $this->intTo3Digits($user+1);
-        $defaultPassword = "password";
+        $id = date('ymd') . "1" . $this->intTo3Digits($user + 1);
+        $defaultPassword = $this->generatePassword(rand(8, 10));
         $attr['id'] = $id;
         $attr['password'] = bcrypt($defaultPassword);
-
-        $attr['area_id'] = auth()->user()->area_id;
 
         $attr['name'] = ucwords(strtolower($request->name));
 
         User::create($attr);
-
+        Mail::to($attr['email'])->send(new RegisterMail($attr['email'], $defaultPassword));
         return back()->with('success', 'User Created Succesfully');
     }
 }

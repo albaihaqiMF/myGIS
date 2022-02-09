@@ -11,6 +11,8 @@ use App\Http\Livewire\Map\MapList;
 use App\Http\Livewire\PlantationGroup\CreatePg;
 use App\Http\Livewire\PlantationGroup\PGList;
 use App\Http\Livewire\Section\CreateSection;
+use App\Mail\RegisterMail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -70,8 +72,15 @@ Route::prefix('data')->group(function () {
     Route::get('geojson/{section}', [LahanController::class, 'geojson'])->name('geojson');
 });
 
-Route::get('test', function () {
-    return App\Models\User::all()->count() + 1;
+Route::prefix('test')->group(function () {
+    // Route::get('mail', function () {
+    //     return new RegisterMail();
+    // });
+    // Route::get('mail/send/{email}', function ($email) {
+    //     Mail::to($email)->send(new RegisterMail());
+
+    //     return 'Berhasil';
+    // });
 });
 
 require __DIR__ . '/auth.php';

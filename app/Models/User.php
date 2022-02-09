@@ -53,7 +53,7 @@ class User extends Authenticatable
 
     public function section()
     {
-        return $this->hasMany(Section::class, 'created_by', 'id');
+        return $this->hasMany(MasterGroup::class, 'chief', 'id');
     }
 
     public function area()
