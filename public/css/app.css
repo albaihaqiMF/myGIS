@@ -3445,9 +3445,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-24{
   height: 6rem;
 }
-.h-\[40vh\]{
-  height: 40vh;
-}
 .h-\[50vh\]{
   height: 50vh;
 }
@@ -13621,6 +13618,12 @@ html body {
 }
 
 @media (min-width: 1024px){
+  .lg\:col-span-8{
+    grid-column: span 8 / span 8;
+  }
+  .lg\:col-span-4{
+    grid-column: span 4 / span 4;
+  }
   .lg\:mr-1{
     margin-right: 0.25rem;
   }
