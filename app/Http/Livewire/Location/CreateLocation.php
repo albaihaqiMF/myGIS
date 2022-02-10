@@ -19,7 +19,7 @@ class CreateLocation extends Component
 
     public function save()
     {
-        $number = MasterGroup::where('type', 'LOC')->get()->count();
+        $number = MasterGroup::where('type', 'LOC')->whereDate('created_at', today())->get()->count();
         $attr = $this->validate();
 
 

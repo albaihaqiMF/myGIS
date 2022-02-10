@@ -1,20 +1,20 @@
 <x-app-layout title="Progres {{ $data->name }}">
-    <div class="h-80vh rounded relative z-0" id="map"></div>
-    <div class="box mt-4 p-4">
+    <div class="relative z-0 rounded h-80vh" id="map"></div>
+    <div class="p-4 mt-4 box">
         <form action="{{ route('map.section.progres.upload', ['section'=> $data->id]) }}" method="POST">
             @csrf
             <div class="mb-3">
                 <label for="catatan" class="form-label">Catatan</label>
-                <input id="catatan" name="catatan" type="text" class="form-control w-full" value="{{ old('catatan') }}"
+                <input id="catatan" name="catatan" type="text" class="w-full form-control" value="{{ old('catatan') }}"
                     placeholder="Catatan">
             </div>
             <div class="mb-3">
                 <label for="data" class="form-label">Data</label>
-                <input id="data" name="data" type="text" class="form-control w-full hidden" value="{{ old('data') }}"
+                <input id="data" name="data" type="text" class="hidden w-full form-control" value="{{ old('data') }}"
                     placeholder="Data">
             </div>
             <div class="w-full">
-                <button type="submit" class="btn bg-theme-20 text-white w-24">UPLOAD</button>
+                <button type="submit" class="w-24 text-white btn bg-theme-20">UPLOAD</button>
             </div>
         </form>
     </div>

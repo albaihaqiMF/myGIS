@@ -11,8 +11,7 @@ class Section extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id',
-        'name',
+        'location_id',
         'master_id',
         'sw_latitude',
         'sw_longitude',
@@ -24,6 +23,8 @@ class Section extends Model
         'variaty',
         'crop',
         'forcing_time',
+        'geometry',
+        'detail',
         'deleted_at',
     ];
 

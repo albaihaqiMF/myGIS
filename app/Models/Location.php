@@ -10,6 +10,6 @@ class Location extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id', 'name', 'chief', 'pg_id', 'area_id'
+        'detail', 'geometry', 'master_id', 'area_id'
     ];
 }

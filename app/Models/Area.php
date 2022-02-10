@@ -10,7 +10,7 @@ class Area extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id', 'name', 'chief','pg_id',
+        'detail', 'geometry', 'master_id','plantation_group_id',
     ];
 
 

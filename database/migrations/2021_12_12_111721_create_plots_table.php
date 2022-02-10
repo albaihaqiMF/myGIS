@@ -15,9 +15,12 @@ class CreatePlotsTable extends Migration
     {
         Schema::create('plots', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('section_id')->constrained('sections');
             $table->char('master_id', 10)->unique();
             $table->foreign('master_id')->references('id')->on('master_groups')->cascadeOnDelete();
             $table->longText('detail')->nullable();
+
+            $table->json('geometry');
 
             $table->timestamps();
         });

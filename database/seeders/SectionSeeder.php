@@ -26,6 +26,10 @@ class SectionSeeder extends Seeder
             'forcing_time'      => 2,
             'gambar_taksasi'    => "images/dummy/taksasi.png",
             'gambar_ndvi'       => "images/dummy/ndvi.png",
+            'geometry'          => json_encode([
+                'type' => "FeatureCollection",
+                'features' => array(),
+            ]),
         ];
 
         Section::create($data);

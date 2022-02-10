@@ -8,11 +8,10 @@ use App\Http\Livewire\Dashbaord;
 use App\Http\Livewire\Location\CreateLocation;
 use App\Http\Livewire\Location\LocationList;
 use App\Http\Livewire\Map\MapList;
-use App\Http\Livewire\PlantationGroup\CreatePg;
+use App\Http\Livewire\PlantationGroup\PgCreate;
 use App\Http\Livewire\PlantationGroup\PGList;
+use App\Http\Livewire\PlantationGroup\PgShow;
 use App\Http\Livewire\Section\CreateSection;
-use App\Mail\RegisterMail;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +34,9 @@ Route::middleware('auth')->group(function () {
 
     Route::group(['as' => 'map.'], function () {
         Route::get('/plantation-group', PGList::class)->name('pg.list');
+        Route::get('/plantation-group/create', PgCreate::class)->name('pg.create');
+        Route::post('/plantation-group/store', [LahanController::class, 'pgCreate'])->name('pg.store');
+        Route::get('/plantation-group/{id}', PgShow::class)->name('pg.show');
 
         Route::get('area', AreaList::class)->name('area.list');
 

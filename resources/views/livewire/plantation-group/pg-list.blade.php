@@ -20,55 +20,12 @@ MyGIS | Plantation Group
     @endif
     <div class="col-span-12 overflow-auto intro-y lg:overflow-visible">
         <div wire:ignore class="flex flex-wrap items-center justify-between col-span-12 mt-2 intro-y sm:flex-nowrap">
-            <a href="javascript:;" data-toggle="modal" data-target="#create-pg"
-                class="btn btn-primary">
+            <a href="{{ route('map.pg.create') }}" class="btn btn-primary">
                 <span>
                     <i data-feather="plus" class="w-5 h-5 mr-3 font-bold"></i>
                 </span>
                 Add New Data
             </a>
-            <!-- BEGIN: Modal Content -->
-            <div id="create-pg" class="modal" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <form wire:submit.prevent='createPG'>
-                            <!-- BEGIN: Modal Header -->
-                            <div class="modal-header">
-                                <h2 class="font-medium text-base mr-auto">Create Plantation Group</h2>
-                                <div class="dropdown sm:hidden"> <a class="dropdown-toggle w-5 h-5 block"
-                                        href="javascript:;" aria-expanded="false"> <i data-feather="more-horizontal"
-                                            class="w-5 h-5 text-gray-600 dark:text-gray-600"></i> </a>
-                                    <div class="dropdown-menu w-40">
-                                        <div class="dropdown-menu__content box dark:bg-dark-1 p-2"> <a
-                                                href="javascript:;"
-                                                class="flex items-center p-2 transition duration-300 ease-in-out bg-white dark:bg-dark-1 hover:bg-gray-200 dark:hover:bg-dark-2 rounded-md">
-                                                <i data-feather="file" class="w-4 h-4 mr-2"></i> Download Docs </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> <!-- END: Modal Header -->
-                            <!-- BEGIN: Modal Body -->
-                            <div class="modal-body grid grid-cols-12 gap-4 gap-y-3">
-                                <div class="box col-span-12">
-                                    <div class="text-gray-700 p-2 mb-4">
-                                        <label class="block mb-1 text-lg" for="name">Name</label>
-                                        <input
-                                            class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg outline-none focus:ring ring-blue-500"
-                                            type="text" name="name" wire:model='name' placeholder="Name" id="name"
-                                            value="" autocomplete="off"/>
-                                    </div>
-                                </div>
-                            </div> <!-- END: Modal Body -->
-                            <!-- BEGIN: Modal Footer -->
-                            <div class="modal-footer text-right">
-                                <button type="button" data-dismiss="modal"
-                                    class="btn btn-outline-secondary w-20 mr-1">Cancel</button>
-                                <button type="submit" data-dismiss="modal" class="btn btn-primary w-20">Create</button>
-                            </div> <!-- END: Modal Footer -->
-                        </form>
-                    </div>
-                </div>
-            </div> <!-- END: Modal Content -->
             <div class="w-full mt-3 sm:w-auto sm:mt-0 sm:ml-auto md:ml-0">
                 <div class="relative w-56 text-gray-700 dark:text-gray-300">
                     <input type="text" wire:model='search' class="w-56 pr-10 form-control box placeholder-theme-23"
@@ -92,13 +49,13 @@ MyGIS | Plantation Group
             </thead>
             <tbody>
                 @foreach ($data as $item)
-                <a href="{{ route('map.section.show', [
-                    'section' => $item->id
+                <a href="{{ route('map.pg.show', [
+                    'id' => $item->id
                 ]) }}">
                     <tr class="intro-x">
                         <td>
-                            <a href="{{ route('map.section.show', [
-                                'section' => $item->id
+                            <a href="{{ route('map.pg.show', [
+                                'id' => $item->id
                             ]) }}" class="font-medium whitespace-nowrap">{{ $item->name }}</a>
                             <div class="text-gray-600 text-xs whitespace-nowrap mt-0.5">Created by {{
                                 $item->getChief->name
@@ -118,8 +75,8 @@ MyGIS | Plantation Group
                         </td>
                         <td class="w-56 table-report__action">
                             <div class="flex items-center justify-center">
-                                <a wire:ignore class="flex items-center mr-3 text-theme-1" href="{{ route('map.section.show', [
-                                    'section' => (string)$item->id
+                                <a wire:ignore class="flex items-center mr-3 text-theme-1" href="{{ route('map.pg.show', [
+                                    'id' => (string)$item->id
                                 ]) }}"> <i data-feather="eye" class="w-4 h-4 mr-1"></i> Detail </a>
                             </div>
                         </td>

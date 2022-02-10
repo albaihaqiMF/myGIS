@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Plot extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'detail', 'geometry', 'master_id', 'section_id'
+    ];
 }

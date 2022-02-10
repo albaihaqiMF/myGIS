@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\MasterGroup;
+use App\Models\PlantationGroup;
 use App\Models\Section;
 use App\Models\Progres;
 use Illuminate\Http\Request;
@@ -224,5 +225,31 @@ class LahanController extends Controller
             "type" => "FeatureCollection",
             "features" => $data,
         ];
+    }
+    public function pgCreate(Request $request)
+    {
+        $number = MasterGroup::where('type', 'PG')->whereDate('created_at', today())->get()->count();
+
+        $attr = $request->validate([
+            'name' => 'required',
+            'detail' => 'required',
+            'geometry' => 'required',
+        ]);
+
+        $attrMaster['id'] = date('ymd') . '1' . sprintf("%03d", $number + 1);
+        $attrMaster['name'] = $attr['name'];
+        $attrMaster['chief'] = auth()->user()->id;
+        $attrMaster['pg'] = 11 + $number;
+        $attrMaster['type'] = 'PG';
+
+        MasterGroup::create($attrMaster);
+
+        $attrPG['master_id'] = $attrMaster['id'];
+        $attrPG['detail'] = $attr['detail'];
+        $attrPG['geometry'] = $attr['geometry'];
+
+        PlantationGroup::create($attrPG);
+
+        return redirect(route('map.pg.list'))->with('success', 'Created Plantation Group successfully');
     }
 }

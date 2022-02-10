@@ -15,6 +15,7 @@ class CreateSectionsTable extends Migration
     {
         Schema::create('sections', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('location_id')->constrained('locations');
             $table->char('master_id', 10)->unique();
             $table->foreign('master_id')->references('id')->on('master_groups')->cascadeOnDelete();
             $table->longText('detail')->nullable();
@@ -25,6 +26,8 @@ class CreateSectionsTable extends Migration
             $table->decimal('ne_longitude', 24, 21);
             $table->string('gambar_taksasi');
             $table->string('gambar_ndvi');
+
+            $table->json('geometry');
 
             //Attributes
             $table->date('age');

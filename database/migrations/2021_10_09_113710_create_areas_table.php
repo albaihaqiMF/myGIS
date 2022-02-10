@@ -15,9 +15,12 @@ class CreateAreasTable extends Migration
     {
         Schema::create('areas', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('plantation_group_id')->constrained('plantation_groups');
             $table->char('master_id', 10)->unique();
             $table->foreign('master_id')->references('id')->on('master_groups')->cascadeOnDelete();
             $table->longText('detail')->nullable();
+
+            $table->json('geometry');
 
             $table->timestamps();
         });
