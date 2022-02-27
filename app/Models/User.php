@@ -60,4 +60,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Area::class, 'area_id', 'id');
     }
+
+    public function masters()
+    {
+        return $this->hasMany(MasterGroup::class, 'chief');
+    }
 }

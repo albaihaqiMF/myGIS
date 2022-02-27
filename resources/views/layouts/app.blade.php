@@ -169,7 +169,7 @@ License: You must have a valid license purchased only from themeforest(the above
                                 </div>
                             </div>
                             <div class="p-2">
-                                <a href=""
+                                <a href="{{ route('profile.show') }}"
                                     class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-gray-200 dark:hover:bg-dark-3 rounded-md">
                                     <i data-feather="user" class="w-4 h-4 mr-2"></i> Profile </a>
                                 @if (auth()->user()->role_id == 1)

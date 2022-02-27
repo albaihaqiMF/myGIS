@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Controller;
 use App\Http\Controllers\LahanController;
 use App\Http\Controllers\UserController;
 use App\Http\Livewire\Area\AreaList;
@@ -11,6 +10,7 @@ use App\Http\Livewire\Map\MapList;
 use App\Http\Livewire\PlantationGroup\PgCreate;
 use App\Http\Livewire\PlantationGroup\PGList;
 use App\Http\Livewire\PlantationGroup\PgShow;
+use App\Http\Livewire\Profile\ProfileShow;
 use App\Http\Livewire\Section\CreateSection;
 use Illuminate\Support\Facades\Route;
 
@@ -31,6 +31,12 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('dashboard', Dashbaord::class)->name('dashboard');
+
+    // -----------------------------------------------------------------------------------  //
+    // -------------------------------------PROFILE---------------------------------------  //
+    // -----------------------------------------------------------------------------------  //
+
+    Route::get('profile', ProfileShow::class)->name('profile.show');
 
     Route::group(['as' => 'map.'], function () {
         Route::get('/plantation-group', PGList::class)->name('pg.list');
