@@ -36,6 +36,9 @@ MyGIS | Location
         </div>
     </div>
     <div class="col-span-12 overflow-x-scroll intro-y lg:overflow-visible">
+        <div wire:loading>
+            <x-loading />
+        </div>
         <table class="table table-report">
             <thead>
                 <tr>
