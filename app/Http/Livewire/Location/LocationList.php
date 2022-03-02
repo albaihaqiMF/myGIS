@@ -14,7 +14,7 @@ class LocationList extends Component
     public function render()
     {
         $data = MasterGroup::where('type', 'LOC')
-            ->where('name', 'ilike', '%' . $this->search . '%')
+            ->where('name', 'like', '%' . $this->search . '%')
             ->paginate(10);
         return view('livewire.location.location-list', [
             'data' => $data,
