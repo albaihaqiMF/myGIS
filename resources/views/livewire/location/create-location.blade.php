@@ -1,5 +1,5 @@
 <form class="grid grid-cols-12 gap-4" wire:submit.prevent='save'>
-    <div class="box p-4 col-span-8">
+    <div class="box p-4 col-span-12 mt-3 lg:col-span-8">
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
             <input id="name" name="name" wire:model='name' type="text" class="form-control w-full" placeholder="Name">

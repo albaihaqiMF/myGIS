@@ -54,7 +54,7 @@
                         <div class="intro-x mt-8">
                             <input type="text" id="email" name="email" value="{{ old('email') }}"
                                 class="intro-x login__input form-control py-3 px-4 border-gray-300 block"
-                                placeholder="Email" autocomplete="off">
+                                placeholder="Username" autocomplete="off">
                             <input type="password" id="password" name="password"
                                 class="intro-x login__input form-control py-3 px-4 border-gray-300 block mt-4"
                                 placeholder="Password">

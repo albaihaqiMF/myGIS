@@ -12,6 +12,8 @@ use App\Http\Livewire\PlantationGroup\PGList;
 use App\Http\Livewire\PlantationGroup\PgShow;
 use App\Http\Livewire\Profile\ProfileShow;
 use App\Http\Livewire\Section\CreateSection;
+use App\Mail\RegisterMail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -84,11 +86,11 @@ Route::prefix('test')->group(function () {
     // Route::get('mail', function () {
     //     return new RegisterMail();
     // });
-    // Route::get('mail/send/{email}', function ($email) {
-    //     Mail::to($email)->send(new RegisterMail());
+    Route::get('mail/send/{email}', function ($email) {
+        Mail::to($email)->send(new RegisterMail('username', 'password'));
 
-    //     return 'Berhasil';
-    // });
+        return 'Berhasil';
+    });
 });
 
 require __DIR__ . '/auth.php';

@@ -47,7 +47,6 @@ MyGIS | Location
                     <th class="text-center whitespace-nowrap">LOKASI</th>
                     <th class="text-center whitespace-nowrap">SEKSI</th>
                     <th class="text-center whitespace-nowrap">TYPE</th>
-                    <th class="text-center whitespace-nowrap">ACTIONS</th>
                 </tr>
             </thead>
             <tbody>
@@ -75,13 +74,6 @@ MyGIS | Location
                         </td>
                         <td class="w-32 text-center">
                             {{ $item->type }}
-                        </td>
-                        <td class="w-56 table-report__action">
-                            <div class="flex items-center justify-center">
-                                <a class="flex items-center mr-3 text-theme-1" href="{{ route('map.section.show', [
-                                    'section' => (string)$item->id
-                                ]) }}"> <i data-feather="eye" class="w-4 h-4 mr-1"></i> Detail </a>
-                            </div>
                         </td>
                     </tr>
                 </a>
