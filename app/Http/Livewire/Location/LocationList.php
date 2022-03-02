@@ -13,7 +13,7 @@ class LocationList extends Component
 
     public function render()
     {
-        $data = MasterGroup::where('type', 'LOC')->get();
+        $data = MasterGroup::where('type', 'LOC')->paginate(10);
         return view('livewire.location.location-list', [
             'data' => $data,
         ]);

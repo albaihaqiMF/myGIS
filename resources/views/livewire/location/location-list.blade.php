@@ -86,4 +86,7 @@ MyGIS | Location
             </tbody>
         </table>
     </div>
+    <div class="col-span-12 intro-y">
+        {{$data->links()}}
+    </div>
 </div>
