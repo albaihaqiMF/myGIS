@@ -20,12 +20,13 @@ class CreateLocation extends Component
     public function save()
     {
         $number = MasterGroup::where('type', 'LOC')->whereDate('created_at', today())->get()->count();
+        $loc = MasterGroup::where('type', 'LOC')->get()->count();
         $attr = $this->validate();
 
 
         $attr['id'] = date('ymd') . '3' . sprintf("%03d", $number);
         $attr['chief'] = auth()->user()->id;
-        $attr['location'] = 1 + $number;
+        $attr['location'] = 1 + $loc;
         $attr['type'] = 'LOC';
 
         MasterGroup::create($attr);
