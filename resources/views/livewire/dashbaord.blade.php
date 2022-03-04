@@ -94,7 +94,8 @@
                 </div>
             </div>
         </a>
-        <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
+        @if (auth()->user()->role_id !== 2)
+        <a href="{{route('user.list')}}" class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
             <div class="report-box zoom-in">
                 <div class="box p-5">
                     <div class="flex">
@@ -111,6 +112,7 @@
                     <div class="text-base text-gray-600 mt-1">USER</div>
                 </div>
             </div>
-        </div>
+        </a>
+        @endif
     </div>
 </div>
