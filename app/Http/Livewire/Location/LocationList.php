@@ -4,12 +4,13 @@ namespace App\Http\Livewire\Location;
 
 use App\Models\MasterGroup;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class LocationList extends Component
 {
+    use WithPagination;
 
     public $search;
-
 
     public function render()
     {

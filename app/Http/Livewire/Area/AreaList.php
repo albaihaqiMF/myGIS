@@ -4,9 +4,11 @@ namespace App\Http\Livewire\Area;
 
 use App\Models\MasterGroup;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class AreaList extends Component
 {
+    use WithPagination;
     public $name;
     public $pg;
 
@@ -37,8 +39,8 @@ class AreaList extends Component
     }
     public function render()
     {
-        
-        $data = MasterGroup::where('type', 'AREA')->where('name', 'like', '%' . $this->search . '%')->get();
+
+        $data = MasterGroup::where('type', 'AREA')->where('name', 'like', '%' . $this->search . '%')->paginate(10);
         return view('livewire.area.area-list', [
             'data' => $data,
         ]);

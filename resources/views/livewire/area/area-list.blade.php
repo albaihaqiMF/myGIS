@@ -136,4 +136,9 @@ MyGIS | Area
             </tbody>
         </table>
     </div>
+    <div class="col-span-12">
+        <div class="pagination">
+            {{$data->links()}}
+        </div>
+    </div>
 </div>
