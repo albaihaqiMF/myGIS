@@ -7,7 +7,7 @@ Temporary password: {{ $password ?? 'xxxPASSWORDxxx' }}
 <br><br>
 Here's what to do next:
 <ul>
-    <li>Don't give this access to anyone.</li>
+    <li style="color: red; font-weight: 500;">Don't give this access to anyone.</li>
     <li>
         Please sign in with email and password which already given
     </li>

@@ -39,7 +39,7 @@ class UserController extends Controller
         $attr['id'] = $id;
         $attr['password'] = bcrypt($defaultPassword);
 
-        $attr['name'] = ucwords(strtolower($request->name));
+        $attr['name'] = \Str::title($request->name);
 
         User::create($attr);
         Mail::to($attr['email'])->send(new RegisterMail($attr['username'], $defaultPassword));
