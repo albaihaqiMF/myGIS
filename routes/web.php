@@ -12,6 +12,7 @@ use App\Http\Livewire\PlantationGroup\PGList;
 use App\Http\Livewire\PlantationGroup\PgShow;
 use App\Http\Livewire\Profile\ProfileShow;
 use App\Http\Livewire\Section\CreateSection;
+use App\Http\Livewire\Section\SelectSection;
 use App\Mail\RegisterMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
@@ -53,8 +54,9 @@ Route::middleware('auth')->group(function () {
 
         Route::group(['prefix' => 'section'], function () {
             Route::get('/', MapList::class)->name('section.list');
-            Route::get('/create', CreateSection::class)->name('section.create');
-            Route::post('/store', [LahanController::class, 'store'])->name('section.store');
+            Route::get('/selection', SelectSection::class)->name('section.selection');
+            Route::get('/create/{pg}/{area}/{location}', CreateSection::class)->name('section.create');
+            Route::post('/store/{pg}/{area}/{location}', [LahanController::class, 'store'])->name('section.store');
             Route::get('/{section:master_id}', [LahanController::class, 'show'])->name('section.show');
             Route::get('/{section}/edit', [LahanController::class, 'edit'])->name('section.edit');
             Route::put('/update/{section}', [LahanController::class, 'update'])->name('section.update');

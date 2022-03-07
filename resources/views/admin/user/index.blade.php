@@ -14,7 +14,7 @@
                 <div class="flex flex-col lg:flex-row items-center p-5 border-b border-gray-200 dark:border-dark-5">
                     <div class="w-24 h-24 lg:w-12 lg:h-12 image-fit lg:mr-1">
                         <img alt="Tinker Tailwind HTML Admin Template" class="rounded-full"
-                            src="/images/profile-10.jpg">
+                            src="https://ui-avatars.com/api/?name={{$item->name}}">
                     </div>
                     <div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
                         <a href="" class="font-medium">{{ $item->name }}</a>

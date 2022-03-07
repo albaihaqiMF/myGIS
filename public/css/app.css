@@ -586,6 +586,32 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-border-opacity: 1;
   border-color: rgb(47 90 216 / var(--tw-border-opacity));
 }
+.btn-secondary{
+  --tw-border-opacity: 1;
+  border-color: rgb(237 242 247 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(237 242 247 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(113 128 150 / var(--tw-text-opacity));
+}
+.dark .btn-secondary{
+  --tw-border-opacity: 1;
+  border-color: rgb(63 72 101 / var(--tw-border-opacity));
+  --tw-bg-opacity: 1;
+  background-color: rgb(63 72 101 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(203 213 224 / var(--tw-text-opacity));
+}
+.btn-secondary:hover{
+  --tw-bg-opacity: 1;
+  background-color: rgb(226 232 240 / var(--tw-bg-opacity));
+}
+.dark .btn-secondary:hover{
+  border-color: rgb(63 72 101 / var(--tw-border-opacity));
+  --tw-border-opacity: 0.8;
+  background-color: rgb(63 72 101 / var(--tw-bg-opacity));
+  --tw-bg-opacity: 0.8;
+}
 .btn-danger{
   --tw-border-opacity: 1;
   border-color: rgb(211 41 41 / var(--tw-border-opacity));
@@ -3239,6 +3265,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .z-0{
   z-index: 0;
 }
+.z-10{
+  z-index: 10;
+}
 .col-span-12{
   grid-column: span 12 / span 12;
 }
@@ -3471,6 +3500,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-40{
   height: 10rem;
 }
+.h-\[60vh\]{
+  height: 60vh;
+}
 .min-h-screen{
   min-height: 100vh;
 }
@@ -3527,6 +3559,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .w-40{
   width: 10rem;
+}
+.w-2\/3{
+  width: 66.666667%;
+}
+.w-1\/3{
+  width: 33.333333%;
 }
 .max-w-6xl{
   max-width: 72rem;
@@ -3617,6 +3655,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .justify-between{
   justify-content: space-between;
+}
+.justify-around{
+  justify-content: space-around;
 }
 .gap-4{
   gap: 1rem;
@@ -3782,6 +3823,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 1;
   background-color: rgb(47 90 216 / var(--tw-bg-opacity));
 }
+.bg-gray-200{
+  --tw-bg-opacity: 1;
+  background-color: rgb(237 242 247 / var(--tw-bg-opacity));
+}
 .fill-current{
   fill: current;
 }
@@ -3850,6 +3895,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .px-2{
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+}
+.py-10{
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 }
 .pt-8{
   padding-top: 2rem;
@@ -13664,6 +13713,10 @@ html body {
     padding-left: 5rem;
     padding-right: 5rem;
   }
+  .sm\:py-20{
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
   .sm\:pt-0{
     padding-top: 0px;
   }
@@ -13730,6 +13783,10 @@ html body {
   .lg\:col-span-6{
     grid-column: span 6 / span 6;
   }
+  .lg\:mx-auto{
+    margin-left: auto;
+    margin-right: auto;
+  }
   .lg\:mr-1{
     margin-right: 0.25rem;
   }
@@ -13750,6 +13807,9 @@ html body {
   }
   .lg\:mt-3{
     margin-top: 0.75rem;
+  }
+  .lg\:block{
+    display: block;
   }
   .lg\:h-80vh{
     height: 80vh;
@@ -13809,11 +13869,17 @@ html body {
   .lg\:text-left{
     text-align: left;
   }
+  .lg\:text-center{
+    text-align: center;
+  }
 }
 
 @media (min-width: 1280px){
   .xl\:col-span-3{
     grid-column: span 3 / span 3;
+  }
+  .xl\:col-span-4{
+    grid-column: span 4 / span 4;
   }
   .xl\:my-0{
     margin-top: 0px;
@@ -13845,6 +13911,9 @@ html body {
   }
   .xl\:h-auto{
     height: auto;
+  }
+  .xl\:h-\[75vh\]{
+    height: 75vh;
   }
   .xl\:w-auto{
     width: auto;
@@ -13879,5 +13948,11 @@ html body {
 @media (min-width: 1536px){
   .\32xl\:col-span-8{
     grid-column: span 8 / span 8;
+  }
+  .\32xl\:col-span-7{
+    grid-column: span 7 / span 7;
+  }
+  .\32xl\:col-span-5{
+    grid-column: span 5 / span 5;
   }
 }

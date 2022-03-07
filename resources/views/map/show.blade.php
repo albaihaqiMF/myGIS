@@ -43,8 +43,8 @@
             <a href="{{ route('map.section.edit', [
                 'section' => $data->id
             ]) }}" class="w-32 btn btn-primary"><i data-feather="edit-2" class="w-4 h-4 mr-3"></i>EDIT</a>
-            <a href="{{ route('map.section.progres', ['section'=> $data->id]) }}" class="w-32 text-white btn bg-theme-20"><i
-                    data-feather="clipboard" class="w-4 h-4 mr-3"></i>PROGRES</a>
+            <a href="{{ route('map.section.progres', ['section'=> $data->id]) }}"
+                class="w-32 text-white btn bg-theme-20"><i data-feather="clipboard" class="w-4 h-4 mr-3"></i>PROGRES</a>
 
             <!-- BEGIN: Modal Toggle -->
             @if (auth()->user()->role_id == 1 || $data->isMe())
@@ -82,82 +82,24 @@
         </div>
     </div>
     <script>
-        var urlTaksasi = "{!! $data->gambar_taksasi !!}";
-        var urlNdvi = "{!! $data->gambar_ndvi !!}";
-        var sw_lat = {!! $data->sw_latitude !!};
-        var sw_long = {!! $data->sw_longitude !!};
-        var ne_lat = {!! $data->ne_latitude !!};
-        var ne_long = {!! $data->ne_longitude !!};
-        const sw = [sw_lat, sw_long];
-        const ne = [ne_lat, ne_long];
-
-        const geometry = {!! $geojson !!};
-
-        const myGeoJSON = {
+        var geometry = {!! $data->geometry !!}
+    var geojson = L.geoJSON({
             "type":"FeatureCollection",
             "features":geometry,
-        }
-
-        var map = L.map('map').fitBounds([
-            sw, ne
-        ]);
+        }, {
+            style: {
+                fillOpacity: 0,
+                weight: 1,
+            }
+        });
+    var map = L.map('map').fitBounds(geojson.getBounds());
         var accessToken =
         "pk.eyJ1IjoiZmhtYWxiYSIsImEiOiJja3BlMnMxMmoxdG5tMm9ueDg2bGhkd25uIn0._R9TCI9p116Gvg1fdsc9GQ";
-
-        var weatherMapKey = "b1b15e88fa797225412429c1c50c122a1"
-        var weatherMap = `http://maps.openweathermap.org/maps/2.0/weather/TA2/{z}/{x}/{y}?appid=${weatherMapKey}&fill_bound=true&opacity=0.6&palette=-65:821692;-55:821692;-45:821692;-40:821692;-30:8257db;-20:208cec;-10:20c4e8;0:23dddd;10:c2ff28;20:fff028;25:ffc228;30:fc8014`
-
-        L.tileLayer(
-            "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
-            {
-                attribution:
-                    'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                maxZoom: 18,
-                id: "mapbox/streets-v11",
-                tileSize: 512,
-                zoomOffset: -1,
-                accessToken: accessToken,
-                drawControl: true,
-            }
-        ).addTo(map);
-        var overlay = L.tileLayer(weatherMap)
-
-        var taksasi = L.imageOverlay("/storage/"+urlTaksasi, [ne, sw]).addTo(map);
-        var ndvi = L.imageOverlay("/storage/"+urlNdvi, [ne, sw]);
-
-        var progres = L.geoJSON(myGeoJSON,{
-            onEachFeature: function (feature, layer) {
-                layer.bindPopup(
-                    `<div>
-                        <table class='table table-hover'>
-                            <tr>
-                                <td>ID</td>
-                                <td>: ${feature.properties.id}</td>
-                            </tr>
-                            <tr>
-                                <td>Catatan</td>
-                                <td>: ${feature.properties.catatan}</td>
-                            </tr>
-                            <tr>
-                                <td>Created At</td>
-                                <td class="whitespace-nowrap">: ${feature.properties.created_at}</td>
-                            </tr>
-                        </table>
-                    </div>`
-                )
-            },
-        }).addTo(map);
-        var baseMaps = {
-            "Taksasi Overlay":taksasi,
-            "NDVI Overlay" : ndvi,
-        };
-
-        var overlaysMaps = {
-            "Weather" : overlay,
-            "Progres" : progres,
-        }
-
-        L.control.layers(baseMaps, overlaysMaps).addTo(map);
         map.scrollWheelZoom.disable();
+    geojson.addTo(map);
+    L.tileLayer("https://api.maptiler.com/maps/hybrid/{z}/{x}/{y}.jpg?key=alBl9LqyJYaeNUXETEvW",{
+        attribution:'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+    }).addTo(map);
     </script>
 </x-app-layout>

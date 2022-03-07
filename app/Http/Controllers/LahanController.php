@@ -35,50 +35,45 @@ class LahanController extends Controller
     {
         return view('map.create');
     }
-    public function store(Request $request)
+    public function store(Request $request, $pg, $area, $location)
     {
         // return $request;
 
         $counter = MasterGroup::where('type', 'SEC')->whereDate('created_at', today())->get()->count();
+        $sectionCounter = MasterGroup::where('type', 'SEC')->get()->count();
 
         $number = $counter + 1;
         $attr = $this->validate($request, [
             'name' => 'required|min:4',
-            'pg' => 'required',
-            'area' => 'required',
-            'location' => 'required',
             'variaty' => 'required',
-            'age' => 'required',
-            'gambar_taksasi' => 'required',
-            'gambar_ndvi' => 'required',
-            'sw_latitude' => 'required',
-            'sw_longitude' => 'required',
-            'ne_latitude' => 'required',
-            'ne_longitude' => 'required',
+            'geometry' => 'required|json',
+            'age' => 'required|date'
         ]);
 
         $attrMaster['id'] = date('ymd') . '4' . sprintf('%03d', $number);
         $attrMaster['name'] = $attr['name'];
         $attrMaster['chief'] = auth()->user()->id;
         $attrMaster['type'] = 'SEC';
-        $attrMaster['pg'] = $attr['pg'];
-        $attrMaster['area'] = $attr['area'];
-        $attrMaster['location'] = $attr['location'];
-        $attrMaster['section'] = $number;
+        $attrMaster['pg'] = $pg;
+        $attrMaster['area'] = $area;
+        $attrMaster['location'] = $location;
+        $attrMaster['section'] = $sectionCounter + 1;
 
         MasterGroup::create($attrMaster);
 
         $attrSection['master_id'] = $attrMaster['id'];
-        $attrSection['sw_latitude'] = $attr['sw_latitude'];
-        $attrSection['sw_longitude'] = $attr['sw_longitude'];
-        $attrSection['ne_latitude'] = $attr['ne_latitude'];
-        $attrSection['ne_longitude'] = $attr['ne_longitude'];
+        $attrSection['master_id'] = $attrMaster['id'];
+        // $attrSection['sw_latitude'] = $attr['sw_latitude'];
+        // $attrSection['sw_longitude'] = $attr['sw_longitude'];
+        // $attrSection['ne_latitude'] = $attr['ne_latitude'];
+        // $attrSection['ne_longitude'] = $attr['ne_longitude'];
         $attrSection['variaty'] = $attr['variaty'];
         $attrSection['age'] = $attr['age'];
+        $attrSection['geometry'] = $attr['geometry'];
         $attrSection['crop'] = 'first';
         $attrSection['forcing_time'] = 10;
-        $attrSection['gambar_taksasi'] = $this->storeImage($request->file('gambar_taksasi'), 'taksasi');
-        $attrSection['gambar_ndvi'] = $this->storeImage($request->file('gambar_ndvi'), 'ndvi');
+        // $attrSection['gambar_taksasi'] = $this->storeImage($request->file('gambar_taksasi'), 'taksasi');
+        // $attrSection['gambar_ndvi'] = $this->storeImage($request->file('gambar_ndvi'), 'ndvi');
 
         Section::create($attrSection);
 

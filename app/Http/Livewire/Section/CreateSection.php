@@ -7,17 +7,22 @@ use Livewire\Component;
 
 class CreateSection extends Component
 {
-    public $pg;
-    public $area;
+    public $pg, $area, $location;
+
+    public function mount($pg, $area, $location)
+    {
+        $this->pg = $pg;
+        $this->area = $area;
+        $this->location = $location;
+    }
+
     public function render()
     {
-        $pgs = MasterGroup::where('type', 'PG')->get();
-        $areas = MasterGroup::where('type', 'AREA')->where('pg', $this->pg)->get();
-        $locations = MasterGroup::where('type', 'LOC')->where('pg', $this->pg)->where('area', $this->area)->get();
+        $pg = MasterGroup::where('type', 'PG')->where('pg', $this->pg)->first();
+
+        $data = $pg->plantationGroup;
         return view('livewire.section.create-section', [
-            'pgOption' => $pgs,
-            'areaOption' => $areas,
-            'locationOption' => $locations,
+            'data' => $data,
         ]);
     }
 }

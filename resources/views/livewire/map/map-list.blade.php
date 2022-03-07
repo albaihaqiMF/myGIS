@@ -20,8 +20,8 @@ MyGIS | List Data
     @endif
     <div class="col-span-12 overflow-auto intro-y lg:overflow-visible">
         <div class="flex flex-wrap items-center justify-between col-span-12 mt-2 intro-y sm:flex-nowrap">
-            <a href="{{ route('map.section.create') }}" class="mr-2 shadow-md btn btn-primary">
-                <span>
+            <a href="{{ route('map.section.selection') }}" class="mr-2 shadow-md btn btn-primary">
+                <span wire:ignore>
                     <i data-feather="plus" class="w-5 h-5 mr-3 font-bold"></i>
                 </span>
                 Add New Data
