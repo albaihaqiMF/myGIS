@@ -14,6 +14,7 @@ use App\Http\Livewire\Profile\ProfileShow;
 use App\Http\Livewire\Section\CreateSection;
 use App\Http\Livewire\Section\SelectSection;
 use App\Mail\RegisterMail;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
@@ -85,9 +86,12 @@ Route::prefix('data')->group(function () {
 });
 
 Route::prefix('test')->group(function () {
-    // Route::get('mail', function () {
-    //     return new RegisterMail();
-    // });
+    Route::get('/', function () {
+        $json = File::get(base_path("database/json/plantation_groups.json"));
+        $json = json_decode($json);
+
+        return $json;
+    });
     Route::get('mail/send/{email}', function ($email) {
         Mail::to($email)->send(new RegisterMail('username', 'password'));
 

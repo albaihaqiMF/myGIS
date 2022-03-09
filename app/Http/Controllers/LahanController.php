@@ -41,6 +41,7 @@ class LahanController extends Controller
 
         $counter = MasterGroup::where('type', 'SEC')->whereDate('created_at', today())->get()->count();
         $sectionCounter = MasterGroup::where('type', 'SEC')->get()->count();
+        // $location_id = MasterGroup::where('type', 'LOC')->where('location', $location)->first()->id;
 
         $number = $counter + 1;
         $attr = $this->validate($request, [
@@ -59,10 +60,9 @@ class LahanController extends Controller
         $attrMaster['location'] = $location;
         $attrMaster['section'] = $sectionCounter + 1;
 
-        MasterGroup::create($attrMaster);
 
         $attrSection['master_id'] = $attrMaster['id'];
-        $attrSection['master_id'] = $attrMaster['id'];
+        // $attrSection['location_id'] = $location_id;
         // $attrSection['sw_latitude'] = $attr['sw_latitude'];
         // $attrSection['sw_longitude'] = $attr['sw_longitude'];
         // $attrSection['ne_latitude'] = $attr['ne_latitude'];
@@ -75,6 +75,7 @@ class LahanController extends Controller
         // $attrSection['gambar_taksasi'] = $this->storeImage($request->file('gambar_taksasi'), 'taksasi');
         // $attrSection['gambar_ndvi'] = $this->storeImage($request->file('gambar_ndvi'), 'ndvi');
 
+        MasterGroup::create($attrMaster);
         Section::create($attrSection);
 
         return redirect(

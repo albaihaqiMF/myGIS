@@ -14,24 +14,20 @@ class SectionSeeder extends Seeder
      */
     public function run()
     {
-        $data = [
-            'master_id'         => '2201010004',
-            'sw_latitude'       => -6.3914220000000,
-            'sw_longitude'      => 106.7028170000000,
-            'ne_latitude'       => -6.0926120000000,
-            'ne_longitude'      => 106.9670920000000,
-            'age'               => '2021-12-05',
-            'variaty'           => 'Variaty 1',
-            'crop'              => 'second',
-            'forcing_time'      => 2,
-            'gambar_taksasi'    => "images/dummy/taksasi.png",
-            'gambar_ndvi'       => "images/dummy/ndvi.png",
-            'geometry'          => json_encode([
-                'type' => "FeatureCollection",
-                'features' => array(),
-            ]),
-        ];
+        $json = \Illuminate\Support\Facades\File::get(base_path("database/json/sections.json"));
+        $section = json_decode($json);
 
-        Section::create($data);
+        foreach ($section as $key => $value) {
+            Section::insert([
+                'master_id' => $value->master_id,
+                'geometry' => $value->geometry,
+                'age' => $value->age,
+                'variaty' => $value->variaty,
+                'crop' => $value->crop,
+                'forcing_time' => $value->forcing_time,
+                'created_at' => $value->created_at,
+                'updated_at' => $value->updated_at,
+            ]);
+        }
     }
 }

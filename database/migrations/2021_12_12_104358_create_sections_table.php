@@ -15,17 +15,16 @@ class CreateSectionsTable extends Migration
     {
         Schema::create('sections', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('location_id')->constrained('locations');
             $table->char('master_id', 10)->unique();
             $table->foreign('master_id')->references('id')->on('master_groups')->cascadeOnDelete();
             $table->longText('detail')->nullable();
 
-            $table->decimal('sw_latitude', 24, 21);
-            $table->decimal('sw_longitude', 24, 21);
-            $table->decimal('ne_latitude', 24, 21);
-            $table->decimal('ne_longitude', 24, 21);
-            $table->string('gambar_taksasi');
-            $table->string('gambar_ndvi');
+            $table->decimal('sw_latitude', 24, 21)->nullable();
+            $table->decimal('sw_longitude', 24, 21)->nullable();
+            $table->decimal('ne_latitude', 24, 21)->nullable();
+            $table->decimal('ne_longitude', 24, 21)->nullable();
+            $table->string('gambar_taksasi')->nullable();
+            $table->string('gambar_ndvi')->nullable();
 
             $table->json('geometry');
 

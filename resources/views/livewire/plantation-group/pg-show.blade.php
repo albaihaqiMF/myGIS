@@ -19,7 +19,7 @@
         </table>
     </div>
 </div>
-
+<script src="{{asset('assets/js/styleFeatures.js')}}"></script>
 <script>
     var geometry = {!! $data->geometry !!}
     var geojson = L.geoJSON({
@@ -28,16 +28,40 @@
         }, {
             style: {
                 fillOpacity: 0,
-                weight: 1,
+                weight: .2,
             }
         });
+
+    var section = {!! $sections !!}
+    var sectionGeoJson = L.geoJSON({
+            "type":"FeatureCollection",
+            "features":section,
+        }, {
+            style: {
+                fillOpacity: 0,
+                weight: 1,
+            },
+            onEachFeature:function(feature, layer){
+                var properties = feature.properties;
+                    layer.setStyle({
+                        fillColor: properties.color,
+                        weight:0,
+                        fillOpacity:.5
+                    });
+            }
+        });
+
     var map = L.map('map').fitBounds(geojson.getBounds());
         var accessToken =
         "pk.eyJ1IjoiZmhtYWxiYSIsImEiOiJja3BlMnMxMmoxdG5tMm9ueDg2bGhkd25uIn0._R9TCI9p116Gvg1fdsc9GQ";
 
+    sectionGeoJson.addTo(map);
     geojson.addTo(map);
     L.tileLayer("https://api.maptiler.com/maps/hybrid/{z}/{x}/{y}.jpg?key=alBl9LqyJYaeNUXETEvW",{
         attribution:'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         maxZoom: 18,
     }).addTo(map);
+    // L.control.layer({
+    //     'Base Layer', 'Second Layer'
+    // })
 </script>

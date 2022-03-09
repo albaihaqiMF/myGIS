@@ -10,11 +10,44 @@ class PgShow extends Component
 {
     public function mount($id)
     {
-        $this->data = PlantationGroup::where('master_id', $id)->first();
-        $this->detail = MasterGroup::find($id);
+        $this->id = $id;
+    }
+    public function getColor($value)
+    {
+        switch ($value) {
+            case 'first':
+                return '#22C55E';
+                break;
+            case 'second':
+                return '#EAB308';
+                break;
+            case 'third':
+                return '#EF4444';
+                break;
+            default:
+                return '#64748B';
+                break;
+        }
     }
     public function render()
     {
-        return view('livewire.plantation-group.pg-show');
+        $data = PlantationGroup::where('master_id', $this->id)->first();
+        $detail = MasterGroup::find($this->id);
+        $sections = MasterGroup::where('type', 'SEC')
+            ->where('pg', $detail->pg)
+            ->get();
+        $sections = $sections->map(function ($value) {
+            $data = $value->getSection;
+            $geometry = json_decode($data->geometry)[0];
+            $geometry->properties = [
+                'color' => $this->getColor($data->crop)
+            ];
+            return $geometry;
+        });
+        return view('livewire.plantation-group.pg-show', [
+            'data' => $data,
+            'detail' => $detail,
+            'sections' => $sections,
+        ]);
     }
 }

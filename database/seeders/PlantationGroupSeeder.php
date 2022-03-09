@@ -14,8 +14,17 @@ class PlantationGroupSeeder extends Seeder
      */
     public function run()
     {
-        PlantationGroup::create([
-            'master_id' => '2201010001',
-        ]);
+        $json = \Illuminate\Support\Facades\File::get(base_path("database/json/plantation_groups.json"));
+        $pg = json_decode($json);
+
+        foreach ($pg as $key => $value) {
+            PlantationGroup::insert([
+                'master_id' => $value->master_id,
+                'detail' => $value->detail,
+                'geometry' => $value->geometry,
+                'created_at' => $value->created_at,
+                'updated_at' => $value->updated_at,
+            ]);
+        }
     }
 }
