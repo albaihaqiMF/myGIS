@@ -8,9 +8,12 @@ use Livewire\Component;
 
 class PgShow extends Component
 {
+    public $layer;
+
     public function mount($id)
     {
         $this->id = $id;
+        $this->layer = 1;
     }
     public function getColor($value)
     {

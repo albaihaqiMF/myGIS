@@ -4,17 +4,16 @@
             <button class="w-10 h-10 rounded-full btn btn-primary">
                 <i data-feather="lock"></i>
             </button>
-            <div class="lg:w-32 font-medium text-base lg:mt-3 ml-3 lg:mx-auto">Select Section</div>
+            <div class="lg:w-32 text-base lg:mt-3 ml-3 lg:mx-auto">Select Section</div>
         </div>
         <div class="intro-x lg:text-center flex items-center mt-5 lg:mt-0 lg:block flex-1 z-10">
-            <button class="w-10 h-10 rounded-full btn text-gray-600 bg-gray-200 dark:bg-dark-1">2</button>
-            <div class="lg:w-32 text-base lg:mt-3 ml-3 lg:mx-auto text-gray-700 dark:text-gray-600">Detail Section
+            <button class="w-10 h-10 rounded-full btn btn-primary">2</button>
+            <div class="lg:w-32 font-medium text-base lg:mt-3 ml-3 lg:mx-auto">Detail Section
             </div>
         </div>
     </div>
     <div class="px-5 sm:px-20 mt-10 pt-10 border-t border-gray-200 dark:border-dark-5">
-        <div class="font-medium text-base">Profile Settings</div>
-        <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5 intro-y">
+        <div class="grid grid-cols-12 gap-4 gap-y-3 mt-3 intro-y">
             <form action="{{ route('map.section.store', [
                 'pg' => $pg,
                 'area' => $area,
