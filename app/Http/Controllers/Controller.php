@@ -128,4 +128,21 @@ class Controller extends BaseController
 
         return $token;
     }
+    public function getColor($value)
+    {
+        switch ($value) {
+            case 'first':
+                return '#22C55E';
+                break;
+            case 'second':
+                return '#EAB308';
+                break;
+            case 'third':
+                return '#EF4444';
+                break;
+            default:
+                return '#64748B';
+                break;
+        }
+    }
 }

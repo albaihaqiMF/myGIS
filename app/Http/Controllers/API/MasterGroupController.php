@@ -60,13 +60,38 @@ class MasterGroupController extends Controller
     }
     public function plantationGroupShow($id)
     {
-        $data = MasterGroup::where('type', 'PG')->where('id', $id)->first();
+        $attr = MasterGroup::where('type', 'PG')->where('id', $id)->first();
 
-        $data['chief'] = $data->getChief->name;
-
-        if ($data === null) {
+        if ($attr === null) {
             return $this->responseError('Data doesn\'t exist');
         }
+
+        $sections = MasterGroup::where('type', 'SEC')->where('pg', $attr->pg)->get();
+
+        $sections = $sections->map(function ($value) {
+            $data = $value->getSection;
+            $geometry = json_decode($data->geometry)[0];
+            $geometry->properties = [
+                'color' => $this->getColor($data->crop)
+            ];
+            return $geometry;
+        });
+
+        $data = [
+            'id' => $attr->id,
+            'name' => $attr->name,
+            'chief' => $attr->getChief->name,
+            'pg' => $attr->pg,
+            'area' => $attr->area,
+            'location' => $attr->location,
+            'section' => $attr->section,
+            'created_at' => $attr->created_at,
+            'updated_at' => $attr->updated_at,
+            'geometry' => [
+                "type" => "FeatureCollection",
+                "features" => $sections,
+            ],
+        ];
         return $this->responseOK('Data Plantation Group by id ' . $id . ' collected succesfully', $data);
     }
 
@@ -171,7 +196,7 @@ class MasterGroupController extends Controller
         if ($data === null) {
             return $this->responseError('Data doesn\'t exist');
         }
-        
+
         $data->getSection;
 
         $geojsonValue = $data->getSection->progress;
