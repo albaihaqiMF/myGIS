@@ -4,6 +4,10 @@ use App\Http\Controllers\LahanController;
 use App\Http\Controllers\UserController;
 use App\Http\Livewire\Area\AreaList;
 use App\Http\Livewire\Dashbaord;
+use App\Http\Livewire\Irigation\CreateIrigation;
+use App\Http\Livewire\Irigation\DetailIrigation;
+use App\Http\Livewire\Irigation\ListIrigation;
+use App\Http\Livewire\Irigation\SelectIrigation;
 use App\Http\Livewire\Location\CreateLocation;
 use App\Http\Livewire\Location\LocationList;
 use App\Http\Livewire\Map\MapList;
@@ -68,6 +72,14 @@ Route::middleware('auth')->group(function () {
 
             Route::post('/progres/{progres}', [LahanController::class, 'deleteProgres'])->name('progres.delete');
         });
+    });
+
+    Route::group(['as' => 'irigation.'], function () {
+        Route::get('irigation', ListIrigation::class)->name('list');
+        Route::get('irigation/detail/{id}/', DetailIrigation::class)->name('show');
+        Route::get('irigation/select', SelectIrigation::class)->name('select');
+        Route::get('irigation/create/{id}', CreateIrigation::class)->name('create');
+        Route::post('irigation/store/{id}', [LahanController::class, 'irigationStore'])->name('store');
     });
 
     Route::prefix('user')->group(function () {

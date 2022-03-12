@@ -13872,6 +13872,9 @@ html body {
   .xl\:col-span-4{
     grid-column: span 4 / span 4;
   }
+  .xl\:col-span-8{
+    grid-column: span 8 / span 8;
+  }
   .xl\:my-0{
     margin-top: 0px;
     margin-bottom: 0px;

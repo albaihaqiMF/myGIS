@@ -11,7 +11,6 @@
         </div>
     </div>
     <div class="px-5 sm:px-20 mt-10 pt-10 border-t border-gray-200 dark:border-dark-5">
-        <div class="font-medium text-base">Profile Settings</div>
         <div class="grid grid-cols-12 gap-4 gap-y-5 mt-5 intro-y">
             <div class="mb-3 col-span-12 xl:col-span-4">
                 <label for="pg" class="form-label">Plantation Group</label>

@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Irigation extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'master_id',
+        'plantation_group_id',
+        'created_by',
+        'geometry',
+        'state'
+    ];
+
+    public function creator()
+    {
+         return $this->belongsTo(User::class, 'created_by', 'id');
+    }
 }

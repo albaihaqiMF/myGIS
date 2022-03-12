@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Irigation;
 use App\Models\MasterGroup;
 use App\Models\PlantationGroup;
 use App\Models\Section;
@@ -247,5 +248,22 @@ class LahanController extends Controller
         PlantationGroup::create($attrPG);
 
         return redirect(route('map.pg.list'))->with('success', 'Created Plantation Group successfully');
+    }
+
+    public function irigationStore(Request $request, $id)
+    {
+        $attr = $request->validate([
+            'name' => 'required',
+            'geometry' => 'required'
+        ]);
+
+        $attr['state'] = 'empty';
+        $attr['created_by'] = auth()->user()->id;
+        $attr['plantation_group_id'] = $id;
+
+        Irigation::create($attr);
+
+        return redirect()->route('irigation.list')
+        ->with('success', 'Irigation created successfully');
     }
 }
