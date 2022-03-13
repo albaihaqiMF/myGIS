@@ -41,6 +41,7 @@ MyGIS | Irigation
                 <tr>
                     <th class="whitespace-nowrap">No</th>
                     <th class="text-center whitespace-nowrap">Nama</th>
+                    <th class="text-center whitespace-nowrap">Plantation Group</th>
                     <th class="text-center whitespace-nowrap">State</th>
                     <th class="text-center whitespace-nowrap">Actions</th>
                 </tr>
@@ -48,21 +49,28 @@ MyGIS | Irigation
             <tbody>
                 @foreach ($data as $key => $item)
                 <tr class="intro-x">
-                    <td> {{ $key+1 }}</td>
+                    <td class="w-20"> {{ $key+1 }}</td>
                     <td>
-                        <a href="{{ route('map.pg.show', [
-                                'id' => $item->id
-                            ]) }}" class="font-medium whitespace-nowrap">{{ $item->name }}</a>
+                        <p class="font-medium whitespace-nowrap">{{ $item->name }}</p>
                         <div class="text-gray-600 text-xs whitespace-nowrap mt-0.5">Created by {{
                             $item->creator->name
                             }}</div>
                     </td>
-                    <td>
-                        {{$item->state}}
+                    <td class="text-center">
+                        <span class="text-blue-500">{{$item->plantationGroup->name }}</span>
                     </td>
-                    <td>
-                        <a href="#">
-                            <i data-feather="eye" class="w-5 h-5 mr-3"></i> Detail
+                    <td class="text-center">
+                        <p>{{$item->state}}</p>
+                        <div class="progress mt-3 w-1/2 mx-auto">
+                            <div class="progress-bar bg-theme-25" style="width: {{$item->volume}}" role="progressbar"
+                                aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <a href="{{ route('irigation.show', [
+                            'data' => $item->id
+                        ]) }}" class="flex flex-col items-center md:flex-row text-green-500 justify-center">
+                            <i data-feather="eye" class="w-5 h-5 mr-1"></i> Detail
                         </a>
                     </td>
                 </tr>

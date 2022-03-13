@@ -76,10 +76,11 @@ Route::middleware('auth')->group(function () {
 
     Route::group(['as' => 'irigation.'], function () {
         Route::get('irigation', ListIrigation::class)->name('list');
-        Route::get('irigation/detail/{id}/', DetailIrigation::class)->name('show');
+        Route::get('irigation/detail/{data}/', DetailIrigation::class)->name('show');
         Route::get('irigation/select', SelectIrigation::class)->name('select');
         Route::get('irigation/create/{id}', CreateIrigation::class)->name('create');
         Route::post('irigation/store/{id}', [LahanController::class, 'irigationStore'])->name('store');
+        Route::put('irigation/update/{id}', [LahanController::class, 'irigationUpdate'])->name('update');
     });
 
     Route::prefix('user')->group(function () {

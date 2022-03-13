@@ -7,12 +7,38 @@ use Livewire\Component;
 
 class ListIrigation extends Component
 {
-    public function mount()
+    public function getVolume($state)
     {
-         $this->data = Irigation::all();
+        switch ($state) {
+            case 'empty':
+                return '3%';
+                break;
+            case 'quarter':
+                return '25%';
+                break;
+            case 'half':
+                return '50%';
+                break;
+            case 'full':
+                return '100%';
+                break;
+            default:
+                return false;
+                break;
+        }
     }
+
     public function render()
     {
-        return view('livewire.irigation.list-irigation');
+        $data = Irigation::all();
+
+        $data = $data->map(function ($value) {
+            $value->volume = $this->getVolume($value->state);
+
+            return $value;
+        });
+        return view('livewire.irigation.list-irigation', [
+            'data' => $data
+        ]);
     }
 }

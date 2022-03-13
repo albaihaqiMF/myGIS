@@ -45,6 +45,12 @@
                 </li>
             </ul>
         </li>
+        <li>
+            <a href="{{ route('irigation.list') }}" class="menu">
+                <div class="menu__icon"> <i data-feather="slack"></i> </div>
+                <div class="menu__title"> Irigation </div>
+            </a>
+        </li>
         @if (auth()->user()->role_id == 1)
         <li>
             <a href="{{ route('user.list') }}" class="menu">

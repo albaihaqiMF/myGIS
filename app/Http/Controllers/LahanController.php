@@ -266,4 +266,16 @@ class LahanController extends Controller
         return redirect()->route('irigation.list')
         ->with('success', 'Irigation created successfully');
     }
+
+    public function irigationUpdate(Irigation $id, Request $request)
+    {
+        $data = $id;
+        $attr = $request->validate([
+            'name' => 'required',
+            'state' => 'required'
+        ]);
+        $data->update($attr);
+
+        return back()->with('success', 'Irigation updated successfully');
+    }
 }

@@ -20,6 +20,15 @@ class Irigation extends Model
 
     public function creator()
     {
-         return $this->belongsTo(User::class, 'created_by', 'id');
+        return $this->belongsTo(User::class, 'created_by', 'id');
+    }
+
+    public function plantationGroup()
+    {
+        return $this->belongsTo(MasterGroup::class, 'plantation_group_id');
+    }
+    public function isMe()
+    {
+        return auth()->user()->id == $this->created_by;
     }
 }
