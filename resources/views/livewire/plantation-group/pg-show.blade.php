@@ -63,7 +63,6 @@
             onEachFeature: (feature, layer)=>{
                 var properties = feature.properties;
                 var attr = feature.geometry;
-                console.log('test layer',properties.color)
                 attr.type !== 'Point' && layer.setStyle({
                     fillColor: properties.color,
                     weight:0,
@@ -71,7 +70,6 @@
                 });
             }
         });
-    console.log(irigationGeoJson)
 
     var map = L.map('map').fitBounds(geojson.getBounds());
         var accessToken =
@@ -84,9 +82,9 @@
         maxZoom: 18,
     }).addTo(map);
 
-    irigationGeoJson.addTo(map)
+    // irigationGeoJson.addTo(map)
     let overlays = {
         'Irigation' : irigationGeoJson
     }
-    L.control.layer(overlays).addTo(map)
+    L.control.layers(null,overlays).addTo(map)
 </script>
