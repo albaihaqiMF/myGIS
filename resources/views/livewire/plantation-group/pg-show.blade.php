@@ -64,7 +64,7 @@
                 var properties = feature.properties;
                 var attr = feature.geometry;
                 console.log('test layer',properties.color)
-                attr.type !== 'Point' layer.setStyle({
+                attr.type !== 'Point' && layer.setStyle({
                     fillColor: properties.color,
                     weight:0,
                     fillOpacity:.5
