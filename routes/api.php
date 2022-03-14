@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\IrigationController;
 use App\Http\Controllers\API\MasterGroupController;
 use App\Http\Controllers\ApiController;
 use Illuminate\Http\Request;
@@ -30,4 +31,6 @@ Route::prefix('map')->group(function () {
 
     Route::get('/section', [MasterGroupController::class, 'section']);
     Route::get('/section/{id}', [MasterGroupController::class, 'sectionShow']);
+
+    Route::get('/irigation', [IrigationController::class, 'list']);
 });
