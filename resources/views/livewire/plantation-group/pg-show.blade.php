@@ -43,13 +43,35 @@
             },
             onEachFeature:function(feature, layer){
                 var properties = feature.properties;
-                    layer.setStyle({
-                        fillColor: properties.color,
-                        weight:0,
-                        fillOpacity:.5
-                    });
+                layer.setStyle({
+                    fillColor: properties.color,
+                    weight:0,
+                    fillOpacity:.5
+                });
             }
         });
+
+    var irigation = {!! $irigations !!}
+    var irigationGeoJson = L.geoJSON({
+            "type":"FeatureCollection",
+            "features":irigation,
+        }, {
+            style: {
+                fillOpacity: 1,
+                weight: 1,
+            },
+            onEachFeature: (feature, layer)=>{
+                var properties = feature.properties;
+                var attr = feature.geometry;
+                console.log('test layer',properties.color)
+                attr.type !== 'Point' layer.setStyle({
+                    fillColor: properties.color,
+                    weight:0,
+                    fillOpacity:.5
+                });
+            }
+        });
+    console.log(irigationGeoJson)
 
     var map = L.map('map').fitBounds(geojson.getBounds());
         var accessToken =
@@ -61,7 +83,10 @@
         attribution:'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
         maxZoom: 18,
     }).addTo(map);
-    // L.control.layer({
-    //     'Base Layer', 'Second Layer'
-    // })
+
+    irigationGeoJson.addTo(map)
+    let overlays = {
+        'Irigation' : irigationGeoJson
+    }
+    L.control.layer(overlays).addTo(map)
 </script>

@@ -3575,9 +3575,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-40{
   width: 10rem;
 }
-.w-2\/3{
-  width: 66.666667%;
-}
 .max-w-6xl{
   max-width: 72rem;
 }
@@ -3854,11 +3851,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .p-0{
   padding: 0px;
 }
-.p-3{
-  padding: 0.75rem;
-}
 .p-10{
   padding: 2.5rem;
+}
+.p-3{
+  padding: 0.75rem;
 }
 .py-4{
   padding-top: 1rem;
@@ -4130,6 +4127,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-text-opacity: 1;
   color: rgb(22 35 67 / var(--tw-text-opacity));
 }
+.text-blue-500{
+  --tw-text-opacity: 1;
+  color: rgb(59 130 246 / var(--tw-text-opacity));
+}
 .text-red-500{
   --tw-text-opacity: 1;
   color: rgb(239 68 68 / var(--tw-text-opacity));
@@ -4161,10 +4162,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 .text-emerald-600{
   --tw-text-opacity: 1;
   color: rgb(5 150 105 / var(--tw-text-opacity));
-}
-.text-blue-500{
-  --tw-text-opacity: 1;
-  color: rgb(59 130 246 / var(--tw-text-opacity));
 }
 .text-opacity-70{
   --tw-text-opacity: 0.7;

@@ -32,6 +32,26 @@ class PgShow extends Component
                 break;
         }
     }
+    public function irigationColor($value)
+    {
+        switch ($value) {
+            case 'empty':
+                return '#E0F2FE';
+                break;
+            case 'quarter':
+                return '#7DD3FC';
+                break;
+            case 'half':
+                return '#7DD3FC';
+                break;
+            case 'full':
+                return '#075985';
+                break;
+            default:
+                return '#F0F9FF';
+                break;
+        }
+    }
     public function render()
     {
         $data = PlantationGroup::where('master_id', $this->id)->first();
@@ -47,10 +67,21 @@ class PgShow extends Component
             ];
             return $geometry;
         });
+
+        $irigations = $detail->irigations;
+
+        $irigations = $irigations->map(function ($value) {
+            $geometry = json_decode($value->geometry)[0];
+            $geometry->properties = [
+                'color' => $this->irigationColor($value->state)
+            ];
+            return $geometry;
+        });
         return view('livewire.plantation-group.pg-show', [
             'data' => $data,
             'detail' => $detail,
             'sections' => $sections,
+            'irigations' => $irigations,
         ]);
     }
 }

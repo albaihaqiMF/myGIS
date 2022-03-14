@@ -18,6 +18,7 @@ use App\Http\Livewire\Profile\ProfileShow;
 use App\Http\Livewire\Section\CreateSection;
 use App\Http\Livewire\Section\SelectSection;
 use App\Mail\RegisterMail;
+use App\Models\MasterGroup;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
@@ -100,10 +101,17 @@ Route::prefix('data')->group(function () {
 
 Route::prefix('test')->group(function () {
     Route::get('/', function () {
-        $json = File::get(base_path("database/json/plantation_groups.json"));
-        $json = json_decode($json);
+        $irigations = MasterGroup::find(2202101003)->irigations;
 
-        return $json;
+        $irigations = $irigations->map(function ($value) {
+            $geometry = json_decode($value->geometry)[0];
+            $geometry->properties = [
+                'color' => $value->state
+            ];
+            return $geometry;
+        });
+
+        return $irigations;
     });
     Route::get('mail/send/{email}', function ($email) {
         Mail::to($email)->send(new RegisterMail('username', 'password'));

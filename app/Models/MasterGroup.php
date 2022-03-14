@@ -66,4 +66,10 @@ class MasterGroup extends Model
     {
         return $this->belongsTo(User::class, 'chief');
     }
+
+
+    public function irigations()
+    {
+         return $this->hasMany(Irigation::class, 'plantation_group_id');
+    }
 }
