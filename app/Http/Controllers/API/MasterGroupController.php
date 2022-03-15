@@ -197,8 +197,6 @@ class MasterGroupController extends Controller
             return $this->responseError('Data doesn\'t exist');
         }
 
-        $data->getSection;
-
         $geojsonValue = $data->getSection->progress;
         $geojsonValue = $geojsonValue->map(function ($value) {
             return Progres::mapData($value);
@@ -207,9 +205,15 @@ class MasterGroupController extends Controller
             "type" => "FeatureCollection",
             "features" => $geojsonValue,
         ] : null;
-
+        $irigation = $data->getSection->irigations[0];
+        $geojson = json_decode($irigation['geometry'])[0];
+        $irigation['geometry'] = [
+            'type' => 'FeatureCollection',
+            'features' => array($geojson)
+        ];
         $section = MasterGroup::mapSection($data);
         $section['progres'] = $geojson;
+        $section['irigation'] = $irigation;
         return $this->responseOK('Data Section by id ' . $id . ' collected succesfully', $section);
     }
 }

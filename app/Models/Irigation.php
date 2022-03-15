@@ -18,6 +18,10 @@ class Irigation extends Model
         'state'
     ];
 
+    protected $hidden = [
+        'pivot'
+    ];
+
     public function creator()
     {
         return $this->belongsTo(User::class, 'created_by', 'id');

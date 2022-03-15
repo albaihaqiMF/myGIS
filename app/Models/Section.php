@@ -29,7 +29,8 @@ class Section extends Model
     ];
 
     protected $hidden = [
-        'deleted_at'
+        'deleted_at',
+        'pivot'
     ];
 
     public function scopeCget($query, $area)
@@ -57,7 +58,7 @@ class Section extends Model
             'age' => Helper::getAge($value->age),
             'variaty' => $value->variaty,
             'crop' => $value->crop,
-            'forcing_time' => $value->forcing_time,
+            'forcing_time' => $value->forcing_time . ' Bulan',
             'created_at' => date('H:i:s, d M Y', strtotime($value->created_at)),
             'updated_at' => date('H:i:s, d M Y', strtotime($value->updated_at)),
         ];
@@ -93,5 +94,10 @@ class Section extends Model
     public function isMe()
     {
         return $this->created_by == auth()->user()->id ? true : false;
+    }
+
+    public function irigations()
+    {
+        return $this->belongsToMany(Irigation::class, 'irigations_sections');
     }
 }

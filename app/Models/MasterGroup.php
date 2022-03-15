@@ -33,7 +33,7 @@ class MasterGroup extends Model
             'area'      => $value->area,
             'location'  => $value->location,
             'section'   => $value->section,
-            'geografi'  => Section::mapData($geografi)
+            'geografi'  => Section::mapData($geografi),
         ];
     }
 
