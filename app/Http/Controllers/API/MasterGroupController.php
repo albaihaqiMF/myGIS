@@ -206,10 +206,10 @@ class MasterGroupController extends Controller
             "features" => $geojsonValue,
         ] : null;
         $irigation = $data->getSection->irigations[0];
-        $geojson = json_decode($irigation['geometry'])[0];
+        $irigationGeojson = json_decode($irigation['geometry'])[0];
         $irigation['geometry'] = [
             'type' => 'FeatureCollection',
-            'features' => array($geojson)
+            'features' => array($irigationGeojson)
         ];
         $section = MasterGroup::mapSection($data);
         $section['progres'] = $geojson;
