@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Models\MasterGroup;
 use App\Models\Progres;
+use App\Models\Section;
 use Illuminate\Http\Request;
 
 use function PHPSTORM_META\map;
@@ -191,29 +192,39 @@ class MasterGroupController extends Controller
 
     public function sectionShow($id)
     {
-        $data = MasterGroup::where('type', 'SEC')->where('id', $id)->first();
+        $masterSection = MasterGroup::where('type', 'SEC')->where('id', $id)->first();
 
-        if ($data === null) {
+        $section = Section::where('master_id', $id)->first();
+        if ($masterSection === null || $section === null) {
             return $this->responseError('Data doesn\'t exist');
         }
 
-        $geojsonValue = $data->getSection->progress;
+        $geojsonValue = $masterSection->getSection->progress;
         $geojsonValue = $geojsonValue->map(function ($value) {
             return Progres::mapData($value);
         });
-        $geojson = $geojsonValue !== [] ? [
+        $geojson = $geojsonValue->count() !== 0 ? [
             "type" => "FeatureCollection",
             "features" => $geojsonValue,
         ] : null;
-        $irigation = $data->getSection->irigations[0];
-        $irigationGeojson = json_decode($irigation['geometry'])[0];
-        $irigation['geometry'] = [
-            'type' => 'FeatureCollection',
-            'features' => array($irigationGeojson)
-        ];
-        $section = MasterGroup::mapSection($data);
-        $section['progres'] = $geojson;
-        $section['irigation'] = $irigation;
-        return $this->responseOK('Data Section by id ' . $id . ' collected succesfully', $section);
+
+        $irigations = $section->irigations;
+
+        $irigation = $irigations->count() !== 0 ? $irigations[0] : null;
+
+
+        $attr = MasterGroup::mapSection($masterSection);
+        $attr['progres'] = $geojson;
+        if ($irigation !== null) {
+            $irigationGeojson = json_decode($irigation['geometry'])[0];
+            $irigation['geometry'] = [
+                'type' => 'FeatureCollection',
+                'features' => array($irigationGeojson)
+            ];
+        } else {
+            $irigation = null;
+        }
+        $attr['irigation'] = $irigation;
+        return $this->responseOK('Data Section by id ' . $id . ' collected succesfully', $attr);
     }
 }

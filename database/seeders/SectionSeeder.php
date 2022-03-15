@@ -18,15 +18,13 @@ class SectionSeeder extends Seeder
         $section = json_decode($json);
 
         foreach ($section as $key => $value) {
-            Section::insert([
+            Section::create([
                 'master_id' => $value->master_id,
                 'geometry' => $value->geometry,
-                'age' => $value->age,
+                'age' => now(),
                 'variaty' => $value->variaty,
                 'crop' => $value->crop,
                 'forcing_time' => $value->forcing_time,
-                'created_at' => $value->created_at,
-                'updated_at' => $value->updated_at,
             ]);
         }
     }

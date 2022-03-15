@@ -18,7 +18,7 @@ class MasterGroupSeeder extends Seeder
         $masterGroup = json_decode($json);
 
         foreach ($masterGroup as $key => $value) {
-            MasterGroup::insert([
+            MasterGroup::create([
                 'id' => $value->id,
                 'name' => $value->name,
                 'chief' => $value->chief,
@@ -28,8 +28,6 @@ class MasterGroupSeeder extends Seeder
                 'section' => $value->section,
                 'plot' => $value->plot,
                 'type' => $value->type,
-                'created_at' => $value->created_at,
-                'updated_at' => $value->updated_at,
             ]);
         }
 

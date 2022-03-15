@@ -101,17 +101,12 @@ Route::prefix('data')->group(function () {
 
 Route::prefix('test')->group(function () {
     Route::get('/', function () {
-        $irigations = MasterGroup::find(2202101003)->irigations;
+        $section = \App\Models\Section::find(1);
 
-        $irigations = $irigations->map(function ($value) {
-            $geometry = json_decode($value->geometry)[0];
-            $geometry->properties = [
-                'color' => $value->state
-            ];
-            return $geometry;
-        });
+        $irigations = $section->irigations;
 
-        return $irigations;
+
+        return $irigations->count();
     });
     Route::get('mail/send/{email}', function ($email) {
         Mail::to($email)->send(new RegisterMail('username', 'password'));

@@ -18,12 +18,10 @@ class PlantationGroupSeeder extends Seeder
         $pg = json_decode($json);
 
         foreach ($pg as $key => $value) {
-            PlantationGroup::insert([
+            PlantationGroup::create([
                 'master_id' => $value->master_id,
                 'detail' => $value->detail,
                 'geometry' => $value->geometry,
-                'created_at' => $value->created_at,
-                'updated_at' => $value->updated_at,
             ]);
         }
     }
