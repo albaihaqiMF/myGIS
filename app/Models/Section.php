@@ -93,7 +93,7 @@ class Section extends Model
 
     public function isMe()
     {
-        return $this->created_by == auth()->user()->id ? true : false;
+        return $this->created_by == auth()->user()->id;
     }
 
     public function irigations()

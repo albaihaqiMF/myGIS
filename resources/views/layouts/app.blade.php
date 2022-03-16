@@ -13,7 +13,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 <head>
     <meta charset="utf-8">
-    <link href="images/logo.svg" rel="shortcut icon">
+    <link href="./images/logo.svg" rel="shortcut icon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description"
         content="MyGIS admin is super flexible, powerful, clean & modern responsive tailwind admin template with unlimited possibilities.">
@@ -53,7 +53,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 </div>
                 <!-- END: Breadcrumb -->
                 {{-- @livewire('search') --}}
-                
+
                 <!-- BEGIN: Account Menu -->
                 <div class="intro-x dropdown w-8 h-8">
                     <div class="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in"

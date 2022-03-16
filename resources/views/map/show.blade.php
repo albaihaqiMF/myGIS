@@ -40,6 +40,7 @@
             </tbody>
         </table>
         <div class="flex gap-3 mt-6">
+            @if (auth()->user()->role_id == 1 || $data->isMe())
             <a href="{{ route('map.section.edit', [
                 'section' => $data->id
             ]) }}" class="w-32 btn btn-primary"><i data-feather="edit-2" class="w-4 h-4 mr-3"></i>EDIT</a>
@@ -47,10 +48,8 @@
                 class="w-32 text-white btn bg-theme-20"><i data-feather="clipboard" class="w-4 h-4 mr-3"></i>PROGRES</a>
 
             <!-- BEGIN: Modal Toggle -->
-            @if (auth()->user()->role_id == 1 || $data->isMe())
             <div class="text-center"> <a href="javascript:;" data-toggle="modal" data-target="#delete-modal-preview"
                     class="btn btn-danger"><i data-feather="trash-2" class="w-4 h-4 mr-3"></i>DELETE</a> </div>
-            @endif
             <!-- END: Modal Toggle -->
             <!-- BEGIN: Modal Content -->
             <div id="delete-modal-preview" class="modal" tabindex="-1" aria-hidden="true">
@@ -68,8 +67,8 @@
                                 <button type="button" data-dismiss="modal"
                                     class="w-24 mr-1 btn btn-outline-secondary dark:border-dark-5 dark:text-gray-300">Cancel</button>
                                 <form action="{{ route('map.section.delete', [
-                                            'section' => $data->id
-                                        ]) }}" method="POST">
+                                                    'section' => $data->id
+                                                ]) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="w-24 btn btn-danger">Delete</button>
@@ -79,6 +78,7 @@
                     </div>
                 </div>
             </div> <!-- END: Modal Content -->
+            @endif
         </div>
     </div>
     <script>
