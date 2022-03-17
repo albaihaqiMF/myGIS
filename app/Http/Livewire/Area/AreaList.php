@@ -26,7 +26,7 @@ class AreaList extends Component
 
     public function createArea()
     {
-        $number = MasterGroup::where('type', 'AREA')->get()->count();
+        $number = MasterGroup::where('type', 'AREA')->orderBy('area', 'desc')->first()->area;
         $attr = $this->validate();
 
 

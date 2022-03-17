@@ -41,7 +41,7 @@ class LahanController extends Controller
         // return $request;
 
         $counter = MasterGroup::where('type', 'SEC')->whereDate('created_at', today())->get()->count();
-        $sectionCounter = MasterGroup::where('type', 'SEC')->get()->count();
+        $sectionCounter = MasterGroup::where('type', 'SEC')->orderBy('section', 'desc')->first()->section;
         // $location_id = MasterGroup::where('type', 'LOC')->where('location', $location)->first()->id;
 
         $number = $counter + 1;
@@ -225,7 +225,7 @@ class LahanController extends Controller
     }
     public function pgCreate(Request $request)
     {
-        $number = MasterGroup::where('type', 'PG')->whereDate('created_at', today())->get()->count();
+        $number = MasterGroup::where('type', 'PG')->orderBy('pg', 'desc')->first()->pg;
 
         $attr = $request->validate([
             'name' => 'required',
