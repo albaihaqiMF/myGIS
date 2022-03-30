@@ -34,3 +34,5 @@ Route::prefix('map')->group(function () {
 
     Route::get('/irigation', [IrigationController::class, 'list']);
 });
+
+Route::post('node/store', [ApiController::class, 'storeNode']);

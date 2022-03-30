@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Area;
 use App\Models\Section;
+use App\Models\Sensor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ApiController extends Controller
 {
@@ -35,7 +37,7 @@ class ApiController extends Controller
     {
         $data = Area::all();
 
-        $data = $data->map(function($value){
+        $data = $data->map(function ($value) {
             return [
                 'id' => (int)$value->id,
                 'name' => $value->name,
@@ -45,5 +47,42 @@ class ApiController extends Controller
         });
 
         return $this->responseOK('Data Collected Successfully', $data);
+    }
+
+    public function storeNode(Request $request)
+    {
+        $header = $request->header('APP-KEY');
+
+        if ($header !== env('API_KEY')) {
+            return $this->responseError('Unauthorized key');
+        }
+
+        $validation = Validator::make($request->all(), [
+            'soil_moisture' => 'required',
+            'humidity' => 'required',
+            'temp' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
+        ]);
+
+        if ($validation->fails()) {
+            return $this->responseError('Fields required', $validation->errors());
+        }
+        try {
+
+            $data = Sensor::create([
+                'soil_moisture' => $request->soil_moisture,
+                'humidity' => $request->humidity,
+                'temp' => $request->temp,
+                'latitude' => $request->latitude,
+                'longitude' => $request->longitude
+            ]);
+
+            return $this->responseOK('Success', $data);
+
+        } catch (\Throwable $th) {
+            return $this->responseError('Something Wrong!');
+        }
+
     }
 }
