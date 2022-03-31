@@ -10,6 +10,7 @@ class Sensor extends Model
     use HasFactory;
 
     protected $fillable = [
+        'node',
         'soil_moisture',
         'humidity',
         'temp',

@@ -58,6 +58,7 @@ class ApiController extends Controller
         }
 
         $validation = Validator::make($request->all(), [
+            'node' => 'required',
             'soil_moisture' => 'required',
             'humidity' => 'required',
             'temp' => 'required',
@@ -71,6 +72,7 @@ class ApiController extends Controller
         try {
 
             $data = Sensor::create([
+                'node' => $request->node,
                 'soil_moisture' => $request->soil_moisture,
                 'humidity' => $request->humidity,
                 'temp' => $request->temp,
