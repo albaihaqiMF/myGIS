@@ -28,6 +28,8 @@ License: You must have a valid license purchased only from themeforest(the above
         crossorigin="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw-src.css" />
     <link rel="stylesheet" href="{{ mix('css/app.css') }}" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <!-- END: CSS Assets-->
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"

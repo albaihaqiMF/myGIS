@@ -1,8 +1,8 @@
 {
     "name": "mygis",
     "version": "1.0.6",
-    "description": "TailwindCSS HTML Admin Template",
-    "author": "Left4code",
+    "description": "MyGIS Indonesia by fahmi",
+    "author": "fk4project",
     "private": true,
     "scripts": {
         "dev": "npm run development",
