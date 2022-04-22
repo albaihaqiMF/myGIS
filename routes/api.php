@@ -37,5 +37,5 @@ Route::prefix('map')->group(function () {
 
 Route::get('node/store', [ApiController::class, 'storeNode']);
 Route::post('node/post', [ApiController::class, 'storeNode']);
-Route::get('node/no-key/store/', [ApiController::class, 'storeNodeNoToken']);
-Route::post('node/no-key/store/', [ApiController::class, 'storeNodeNoToken']);
+Route::get('node/no-key/store', [ApiController::class, 'storeNodeNoToken']);
+Route::post('node/no-key/post', [ApiController::class, 'storeNodeNoToken']);
