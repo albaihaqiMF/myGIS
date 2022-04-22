@@ -81,10 +81,38 @@ class ApiController extends Controller
             ]);
 
             return $this->responseOK('Success', $data);
-
         } catch (\Throwable $th) {
             return $this->responseError('Something Wrong!');
         }
+    }
+    public function storeNodeNoToken(Request $request)
+    {
+        $validation = Validator::make($request->all(), [
+            'node' => 'required',
+            'soil_moisture' => 'required',
+            'humidity' => 'required',
+            'temp' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
+        ]);
 
+        if ($validation->fails()) {
+            return $this->responseError('Fields required', $validation->errors());
+        }
+        try {
+
+            $data = Sensor::create([
+                'node' => $request->node,
+                'soil_moisture' => $request->soil_moisture,
+                'humidity' => $request->humidity,
+                'temp' => $request->temp,
+                'latitude' => $request->latitude,
+                'longitude' => $request->longitude
+            ]);
+
+            return $this->responseOK('Success', $data);
+        } catch (\Throwable $th) {
+            return $this->responseError('Something Wrong!');
+        }
     }
 }
