@@ -36,3 +36,4 @@ Route::prefix('map')->group(function () {
 });
 
 Route::get('node/store', [ApiController::class, 'storeNode']);
+Route::post('node/post', [ApiController::class, 'storeNode']);
