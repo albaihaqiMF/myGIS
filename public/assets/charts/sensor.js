@@ -1,7 +1,7 @@
 let data = [
     {
         name: "sales",
-        data: ["30", "40", "35", "50", "49", "60", "70", "91", "125"],
+        data: [0, 0, 0, 0, 0, 0, 0],
     },
 ];
 
@@ -11,6 +11,9 @@ function chartLine(element = "#chart", series = data, categories = null) {
     var options = {
         chart: {
             type: "line",
+        },
+        stroke: {
+            curve: "smooth",
         },
         series: series,
         xaxis: {
@@ -34,8 +37,6 @@ async function getUsers() {
 
         let data = await res.json();
 
-        console.log(data.soil_moisture, data);
-
         return data;
     } catch (error) {
         console.log(error);
@@ -43,10 +44,14 @@ async function getUsers() {
 }
 
 var soilChart = chartLine("#soil_moisture");
+var humidityChart = chartLine("#humidity");
+var tempChart = chartLine("#temp");
 setInterval(() => {
     getUsers()
         .then((res) => {
             soilChart.updateSeries(res.soil_moisture);
+            humidityChart.updateSeries(res.humidity);
+            tempChart.updateSeries(res.temp);
         })
         .catch((e) => {
             console.log(e);

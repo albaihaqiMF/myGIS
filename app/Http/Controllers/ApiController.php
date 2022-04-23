@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Validator;
 
 class ApiController extends Controller
 {
+    public function digitDecimal($number, $digits = 2)
+    {
+        return number_format((float)$number, $digits, '.', '');
+    }
+
     public function listMap(Request $request)
     {
         $area = $request->area ? $request->area : null;
@@ -70,13 +75,22 @@ class ApiController extends Controller
         if ($validation->fails()) {
             return $this->responseError('Fields required', $validation->errors());
         }
+        $node = Node::where('name', $request->node)->first();
+
+        if ($node == null) {
+            Node::insert([
+                'name' => $request->node,
+            ]);
+
+            $node = Node::where('name', $request->node)->first();
+        }
         try {
 
             $data = Sensor::create([
-                'node' => $request->node,
-                'soil_moisture' => $request->soil_moisture,
-                'humidity' => $request->humidity,
-                'temp' => $request->temp,
+                'node_id' => $node->id,
+                'soil_moisture' => $this->digitDecimal($request->soil_moisture),
+                'humidity' => $this->digitDecimal($request->humidity),
+                'temp' => $this->digitDecimal($request->temp),
                 'latitude' => $request->latitude,
                 'longitude' => $request->longitude
             ]);
@@ -109,42 +123,87 @@ class ApiController extends Controller
 
             $node = Node::where('name', $request->node)->first();
         }
-        // try {
+        try {
 
-        $data = Sensor::create([
-            'node_id' => $node->id,
-            'soil_moisture' => $request->soil_moisture,
-            'humidity' => $request->humidity,
-            'temp' => $request->temp,
-            'latitude' => $request->latitude,
-            'longitude' => $request->longitude
-        ]);
+            $data = Sensor::create([
+                'node_id' => $node->id,
+                'soil_moisture' => $this->digitDecimal($request->soil_moisture),
+                'humidity' => $this->digitDecimal($request->humidity),
+                'temp' => $this->digitDecimal($request->temp),
+                'latitude' => $request->latitude,
+                'longitude' => $request->longitude
+            ]);
 
-        return $this->responseOK('Success', $data);
-        // } catch (\Throwable $th) {
-        //     return $this->responseError('Something Wrong!');
-        // }
+            return $this->responseOK('Success', $data);
+        } catch (\Throwable $th) {
+            return $this->responseError('Something Wrong!');
+        }
     }
     public function getData()
     {
         $format = [];
-        $soil_moisture1 = Sensor::select('soil_moisture')->where('node', 'N1')->limit(10)->orderBy('created_at', 'desc')->get();
-        $soil_moisture2 = Sensor::select('soil_moisture')->where('node', 'N2')->limit(10)->orderBy('created_at', 'desc')->get();
-        $format['soil_moisture'][] = ['name' => 'N1', 'data' => $soil_moisture1->map(function ($value) {
-            return $value->soil_moisture;
-        })];
-        $format['soil_moisture'][] = ['name' => 'N2', 'data' => $soil_moisture2->map(function ($value) {
-            return $value->soil_moisture;
-        })];
+
+        $nodes = Node::all();
+
+        foreach ($nodes as $value) {
+            $node = $value->sensors;
+            $format['soil_moisture'][] = [
+                'name' => $value->name,
+                'data' => $node->map(function ($val) {
+                    return $val->soil_moisture;
+                })
+            ];
+            $format['humidity'][] = [
+                'name' => $value->name,
+                'data' => $node->map(function ($val) {
+                    return $val->humidity;
+                })
+            ];
+            $format['temp'][] = [
+                'name' => $value->name,
+                'data' => $node->map(function ($val) {
+                    return $val->temp;
+                })
+            ];
+        }
 
         return $format;
     }
 
     public function generateRandomData()
     {
-        $var = request('node');
-        $node = Node::insert(['name' => $var]);
+        $nodes = $this->getNodeId();
 
-        return $node;
+        $number = rand(40, 50) * (rand(0, 1) - .78);
+
+        Sensor::create([
+            'node_id' => $nodes[rand(0, count($nodes) - 1)],
+            'soil_moisture' => number_format((float)$number, 2, '.', ''),
+            'humidity' => number_format((float)$number, 2, '.', ''),
+            'temp' => number_format((float)rand(20, 40) - (rand(1, 3) * .79), 2, '.', ''),
+            'latitude' => -5.23472651,
+            'longitude' => 105.23058694
+        ]);
+    }
+
+    public function getNodeName()
+    {
+        $nodes = Node::get('name');
+
+        $data = $nodes->map(function ($val) {
+            return $val->name;
+        });
+
+        return $data;
+    }
+    public function getNodeId()
+    {
+        $nodes = Node::all();
+
+        $data = $nodes->map(function ($val) {
+            return $val->id;
+        });
+
+        return $data;
     }
 }

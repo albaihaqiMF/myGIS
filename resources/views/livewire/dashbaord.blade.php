@@ -130,9 +130,15 @@
             </div>
         </div>
         <div class="col-span-12 lg:col-span-4 intro-y">
-            <h2 class="mb-1 font-semibold">Soil Moisture</h2>
+            <h2 class="mb-1 font-semibold">Humidity</h2>
             <div class="box">
-                <div id="chart"></div>
+                <div id="humidity"></div>
+            </div>
+        </div>
+        <div class="col-span-12 lg:col-span-4 intro-y">
+            <h2 class="mb-1 font-semibold">Temperature</h2>
+            <div class="box">
+                <div id="temp"></div>
             </div>
         </div>
     </div>

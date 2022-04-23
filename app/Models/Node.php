@@ -10,4 +10,9 @@ class Node extends Model
     use HasFactory;
 
     protected $fillable = ['name'];
+
+    public function sensors()
+    {
+         return $this->hasMany(Sensor::class)->limit(10)->latest();
+    }
 }
