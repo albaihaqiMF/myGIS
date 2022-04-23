@@ -174,16 +174,16 @@ class ApiController extends Controller
     {
         $nodes = $this->getNodeId();
 
-        $number = rand(40, 50) * (rand(0, 1) - .78);
-
-        Sensor::create([
+        $data = Sensor::create([
             'node_id' => $nodes[rand(0, count($nodes) - 1)],
-            'soil_moisture' => number_format((float)$number, 2, '.', ''),
-            'humidity' => number_format((float)$number, 2, '.', ''),
+            'soil_moisture' => number_format((float)rand(40, 50) * (rand(0, 1) - .78), 2, '.', ''),
+            'humidity' => number_format((float)rand(30, 40) * (rand(0, 1) - .78) * (rand(2, 3) * .38), 2, '.', ''),
             'temp' => number_format((float)rand(20, 40) - (rand(1, 3) * .79), 2, '.', ''),
             'latitude' => -5.23472651,
             'longitude' => 105.23058694
         ]);
+
+        return $this->responseOK('Berhasil generate data random', $data);
     }
 
     public function getNodeName()

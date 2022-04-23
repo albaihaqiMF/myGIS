@@ -6,7 +6,29 @@ let data = [
 ];
 
 let category = [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999];
+function chartArea(element = "#chart", series = data, categories = null) {
+    var options = {
+        chart: {
+            type: "area",
+        },
+        dataLabels: {
+            enabled: false,
+        },
+        stroke: {
+            curve: "smooth",
+        },
+        series: series,
+        xaxis: {
+            categories: categories,
+        },
+    };
 
+    var chart = new ApexCharts(document.querySelector(element), options);
+
+    chart.render();
+
+    return chart;
+}
 function chartLine(element = "#chart", series = data, categories = null) {
     var options = {
         chart: {
@@ -45,7 +67,7 @@ async function getUsers() {
 
 var soilChart = chartLine("#soil_moisture");
 var humidityChart = chartLine("#humidity");
-var tempChart = chartLine("#temp");
+var tempChart = chartArea("#temp");
 setInterval(() => {
     getUsers()
         .then((res) => {
