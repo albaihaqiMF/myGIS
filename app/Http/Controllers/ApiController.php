@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Area;
+use App\Models\Node;
 use App\Models\Section;
 use App\Models\Sensor;
 use Illuminate\Http\Request;
@@ -99,20 +100,51 @@ class ApiController extends Controller
         if ($validation->fails()) {
             return $this->responseError('Fields required', $validation->errors());
         }
-        try {
+        $node = Node::where('name', $request->node)->first();
 
-            $data = Sensor::create([
-                'node' => $request->node,
-                'soil_moisture' => $request->soil_moisture,
-                'humidity' => $request->humidity,
-                'temp' => $request->temp,
-                'latitude' => $request->latitude,
-                'longitude' => $request->longitude
+        if ($node == null) {
+            Node::insert([
+                'name' => $request->node,
             ]);
 
-            return $this->responseOK('Success', $data);
-        } catch (\Throwable $th) {
-            return $this->responseError('Something Wrong!');
+            $node = Node::where('name', $request->node)->first();
         }
+        // try {
+
+        $data = Sensor::create([
+            'node_id' => $node->id,
+            'soil_moisture' => $request->soil_moisture,
+            'humidity' => $request->humidity,
+            'temp' => $request->temp,
+            'latitude' => $request->latitude,
+            'longitude' => $request->longitude
+        ]);
+
+        return $this->responseOK('Success', $data);
+        // } catch (\Throwable $th) {
+        //     return $this->responseError('Something Wrong!');
+        // }
+    }
+    public function getData()
+    {
+        $format = [];
+        $soil_moisture1 = Sensor::select('soil_moisture')->where('node', 'N1')->limit(10)->orderBy('created_at', 'desc')->get();
+        $soil_moisture2 = Sensor::select('soil_moisture')->where('node', 'N2')->limit(10)->orderBy('created_at', 'desc')->get();
+        $format['soil_moisture'][] = ['name' => 'N1', 'data' => $soil_moisture1->map(function ($value) {
+            return $value->soil_moisture;
+        })];
+        $format['soil_moisture'][] = ['name' => 'N2', 'data' => $soil_moisture2->map(function ($value) {
+            return $value->soil_moisture;
+        })];
+
+        return $format;
+    }
+
+    public function generateRandomData()
+    {
+        $var = request('node');
+        $node = Node::insert(['name' => $var]);
+
+        return $node;
     }
 }

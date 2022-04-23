@@ -39,3 +39,7 @@ Route::get('node/store', [ApiController::class, 'storeNode']);
 Route::post('node/post', [ApiController::class, 'storeNode']);
 Route::get('node/no-key/store', [ApiController::class, 'storeNodeNoToken']);
 Route::post('node/no-key/post', [ApiController::class, 'storeNodeNoToken']);
+
+Route::get('node/get', [ApiController::class, 'getData']);
+
+Route::get('node/generate-random', [ApiController::class, 'generateRandomData']);

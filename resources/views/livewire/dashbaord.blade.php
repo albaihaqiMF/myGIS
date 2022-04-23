@@ -116,3 +116,25 @@
         @endif
     </div>
 </div>
+<div class="col-span-12 mt-8">
+    <div class="intro-y flex items-center h-10">
+        <h2 class="text-lg font-medium truncate mr-5">
+            Graphics
+        </h2>
+    </div>
+    <div class="grid grid-cols-12 gap-6 mt-5">
+        <div class="col-span-12 lg:col-span-4 intro-y">
+            <h2 class="mb-1 font-semibold">Soil Moisture</h2>
+            <div class="box">
+                <div id="soil_moisture"></div>
+            </div>
+        </div>
+        <div class="col-span-12 lg:col-span-4 intro-y">
+            <h2 class="mb-1 font-semibold">Soil Moisture</h2>
+            <div class="box">
+                <div id="chart"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{{asset('assets/charts/sensor.js')}}"></script>

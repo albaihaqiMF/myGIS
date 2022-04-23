@@ -15,7 +15,6 @@ class CreateSensorsTable extends Migration
     {
         Schema::create('sensors', function (Blueprint $table) {
             $table->id();
-            $table->string('node');
             $table->float('soil_moisture');
             $table->float('humidity');
             $table->float('temp');
