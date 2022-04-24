@@ -46,6 +46,12 @@
             </ul>
         </li>
         <li>
+            <a href="{{ route('node.list') }}" class="menu">
+                <div class="menu__icon"> <i data-feather="radio"></i> </div>
+                <div class="menu__title"> Sensor </div>
+            </a>
+        </li>
+        <li>
             <a href="{{ route('irigation.list') }}" class="menu">
                 <div class="menu__icon"> <i data-feather="slack"></i> </div>
                 <div class="menu__title"> Irigation </div>
