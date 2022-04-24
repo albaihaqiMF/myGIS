@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LahanController;
+use App\Http\Controllers\NodeController;
 use App\Http\Controllers\UserController;
 use App\Http\Livewire\Area\AreaList;
 use App\Http\Livewire\Dashbaord;
@@ -74,6 +75,8 @@ Route::middleware('auth')->group(function () {
             Route::post('/progres/{progres}', [LahanController::class, 'deleteProgres'])->name('progres.delete');
         });
     });
+
+    Route::get('node', [NodeController::class, 'index'])->name('node.list');
 
     Route::group(['as' => 'irigation.'], function () {
         Route::get('irigation', ListIrigation::class)->name('list');

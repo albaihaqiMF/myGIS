@@ -48,6 +48,13 @@
             </ul>
         </li>
         <li>
+            <a href="{{ route('node.list') }}"
+                class="side-menu{{ request()->is('node') ? ' side-menu--active' : '' }}">
+                <div class="side-menu__icon"> <i data-feather="radio"></i> </div>
+                <div class="side-menu__title"> Sensor </div>
+            </a>
+        </li>
+        <li>
             <a href="{{ route('irigation.list') }}"
                 class="side-menu{{ request()->is('irigation') ? ' side-menu--active' : '' }}">
                 <div class="side-menu__icon"> <i data-feather="slack"></i> </div>
