@@ -1,7 +1,7 @@
 <x-app-layout>
     <div class="grid grid-cols-12 gap-4">
         <div class="col-span-12 intro-x">
-            <div class="alert alert-success alert-dismissible show flex items-center mb-2" role="alert"> <i
+            <div class="alert bg-emerald-500 text-white alert-dismissible show flex items-center mb-2" role="alert"> <i
                     data-feather="alert-triangle" class="w-6 h-6 mr-2"></i> 10 latest data of sensor <button
                     type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"> <i data-feather="x"
                         class="w-4 h-4"></i> </button> </div>
