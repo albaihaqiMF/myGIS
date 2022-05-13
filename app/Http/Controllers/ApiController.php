@@ -156,7 +156,7 @@ class ApiController extends Controller
             $format['humidity'][] = [
                 'name' => $value->name,
                 'data' => $node->map(function ($val) {
-                    return $val->humidity;
+                    return number_format((float)$val->humidity, 2, '.', '');
                 })
             ];
             $format['temp'][] = [
