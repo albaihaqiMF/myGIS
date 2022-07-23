@@ -42,7 +42,7 @@
     var weatherMap = `http://maps.openweathermap.org/maps/2.0/weather/TA2/{z}/{x}/{y}?appid=${weatherMapKey}&fill_bound=true&opacity=0.6&palette=-65:821692;-55:821692;-45:821692;-40:821692;-30:8257db;-20:208cec;-10:20c4e8;0:23dddd;10:c2ff28;20:fff028;25:ffc228;30:fc8014`
 
     L.tileLayer(
-        "https://api.maptiler.com/maps/hybrid/?key=alBl9LqyJYaeNUXETEvW#",
+        "https://api.maptiler.com/maps/hybrid/{z}/{x}/{y}.jpg?key=alBl9LqyJYaeNUXETEvW",
         {
             attribution:
                 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -60,7 +60,6 @@
     }
 
     L.control.layers(null,overlaysMaps).addTo(map);
-    // map.scrollWheelZoom.disable();
 
     var drawnItems = new L.FeatureGroup();
     map.addLayer(drawnItems);

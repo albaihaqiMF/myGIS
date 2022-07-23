@@ -27,7 +27,7 @@ class LoginVerification extends Controller
             ->orWhere('username', $request->email)->first();
 
         if ($user !== null && Hash::check($request->password, $user->password)) {
-            Auth::login($user);
+            Auth::login($user, $request->remember ?? false);
         }
 
         return redirect(route('dashboard'))->with('success', 'Berhasil Melakukan Login');
