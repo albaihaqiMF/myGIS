@@ -61,11 +61,13 @@ class PgShow extends Component
             ->get();
         $sections = $sections->map(function ($value) {
             $section = $value->getSection ?? null;
-            $geometry = json_decode($section->geometry)[0] ?? null;
-            $geometry->properties = [
-                'color' => $this->getColor($section->crop)
-            ];
-            return $section ? $geometry : null;
+            if ($section != null) {
+                $geometry = json_decode($section->geometry)[0] ?? null;
+                $geometry->properties = [
+                    'color' => $this->getColor($section->crop)
+                ];
+            }
+            return $geometry;
         });
 
         $irigations = $detail->irigations;
