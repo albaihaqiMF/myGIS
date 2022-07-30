@@ -3647,6 +3647,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .grid-cols-12{
   grid-template-columns: repeat(12, minmax(0, 1fr));
 }
+.grid-cols-3{
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
 .flex-col{
   flex-direction: column;
 }
@@ -3689,6 +3692,11 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-space-y-reverse: 0;
   margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
+}
+.space-y-2 > :not([hidden]) ~ :not([hidden]){
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
 }
 .overflow-auto{
   overflow: auto;
@@ -4290,6 +4298,18 @@ Ensure the default browser behavior of the `hidden` attribute.
 .ease-in{
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }
+h1{
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+}
+@media (min-width: 768px){
+  h1{
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
 /*
  |--------------------------------------------------------------------------
  | Fonts
@@ -13767,6 +13787,12 @@ html body {
   .md\:col-span-6{
     grid-column: span 6 / span 6;
   }
+  .md\:col-span-5{
+    grid-column: span 5 / span 5;
+  }
+  .md\:col-span-7{
+    grid-column: span 7 / span 7;
+  }
   .md\:mx-0{
     margin-left: 0px;
     margin-right: 0px;
@@ -13782,6 +13808,9 @@ html body {
   }
   .md\:grid-cols-2{
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .md\:grid-cols-3{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   .md\:flex-row{
     flex-direction: row;

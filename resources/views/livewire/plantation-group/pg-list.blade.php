@@ -40,10 +40,9 @@ MyGIS | Plantation Group
             <thead>
                 <tr>
                     <th class="whitespace-nowrap">NAMA</th>
-                    <th class="text-center whitespace-nowrap">WILAYAH</th>
-                    <th class="text-center whitespace-nowrap">LOKASI</th>
-                    <th class="text-center whitespace-nowrap">SEKSI</th>
+                    <th class="text-center whitespace-nowrap">IDs</th>
                     <th class="text-center whitespace-nowrap">TYPE</th>
+                    <th class="text-center whitespace-nowrap">CREATED AT</th>
                     <th class="text-center whitespace-nowrap">ACTIONS</th>
                 </tr>
             </thead>
@@ -62,13 +61,11 @@ MyGIS | Plantation Group
                                 }}</div>
                         </td>
                         <td class="w-32 text-center">
-                            {{ $item->area }}
+                            {{ $item->id }}
                         </td>
-                        <td class="w-32 text-center">
-                            {{ $item->location }}
-                        </td>
-                        <td class="w-32 text-center">
-                            {{ $item->section }}
+
+                        <td class="text-center">
+                            {{ $item->created_at->diffForHumans() }}
                         </td>
                         <td class="w-32 text-center">
                             {{ $item->type }}

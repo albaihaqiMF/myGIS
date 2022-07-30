@@ -64,7 +64,7 @@
         @if (auth()->user()->role_id == 1)
         <li>
             <a href="{{ route('user.list') }}"
-                class="side-menu{{ request()->is('user.*') ? ' side-menu--active' : '' }}">
+                class="side-menu{{ request()->routeIs('user.*') ? ' side-menu--active' : '' }}">
                 <div class="side-menu__icon"> <i data-feather="users"></i> </div>
                 <div class="side-menu__title"> Users </div>
             </a>
