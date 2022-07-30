@@ -60,10 +60,9 @@ class PgShow extends Component
             ->where('pg', $detail->pg)
             ->get();
         $sections = $sections->map(function ($value) {
-            $section = $value->getSection;
-            $geometry = json_decode($section->geometry)[0];
+            $geometry = json_decode($value->getSection->geometry)[0] ?? null;
             $geometry->properties = [
-                'color' => $this->getColor($section->crop)
+                'color' => $this->getColor($value->getSection->crop)
             ];
             return $geometry;
         });
