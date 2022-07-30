@@ -61,6 +61,7 @@ class PgShow extends Component
             ->get();
         $sections = $sections->map(function ($value) {
             $section = $value->getSection ?? null;
+            $geometry = null;
             if ($section != null) {
                 $geometry = json_decode($section->geometry)[0] ?? null;
                 $geometry->properties = [
