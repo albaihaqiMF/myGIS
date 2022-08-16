@@ -64,11 +64,11 @@ MyGIS | Plantation Group
                             {{ $item->id }}
                         </td>
 
-                        <td class="text-center">
-                            {{ $item->created_at->diffForHumans() }}
-                        </td>
                         <td class="w-32 text-center">
                             {{ $item->type }}
+                        </td>
+                        <td class="text-center">
+                            {{ $item->created_at->diffForHumans() }}
                         </td>
                         <td class="w-56 table-report__action">
                             <div class="flex items-center justify-center">
