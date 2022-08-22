@@ -95,7 +95,6 @@
     }).addTo(map);
 
     map.scrollWheelZoom.disable();
-    // irigationGeoJson.addTo(map)
     let overlays = {
         'Irigation' : irigationGeoJson
     }
