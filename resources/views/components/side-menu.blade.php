@@ -56,7 +56,7 @@
         </li>
         <li>
             <a href="{{ route('irigation.list') }}"
-                class="side-menu{{ request()->is('irigation') ? ' side-menu--active' : '' }}">
+                class="side-menu{{ request()->routeIs('irigation.*') ? ' side-menu--active' : '' }}">
                 <div class="side-menu__icon"> <i data-feather="slack"></i> </div>
                 <div class="side-menu__title"> Irigation </div>
             </a>
